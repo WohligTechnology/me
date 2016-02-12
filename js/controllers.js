@@ -14,6 +14,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg'
     ];
   })
+.controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("aboutus");
+    $scope.menutitle = NavigationService.makeactive("About");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.mySlides = [
+      '../img/landing.jpg',
+      '../img/landing.jpg',
+    ];
+  })
   .controller('LandingCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("landing");
