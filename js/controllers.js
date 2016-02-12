@@ -35,6 +35,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.header = "";
 
   })
+  .controller('SuccessstoriesCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("successstories");
+    $scope.menutitle = NavigationService.makeactive("Success Stories");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    TemplateService.header = "";
+
+    $scope.successstories = [
+      {
+      img: "img/computer.jpg",
+      name: "seema yadav",
+      designation: "Manager",
+      company: "aapcot",
+      descp: "Lorem ipsum dummy text"
+    },
+      {
+      img: "img/computer.jpg",
+      name: "seema yadav",
+      designation: "Manager",
+      company: "aapcot",
+      descp: "Lorem ipsum dummy text"
+    }
+  ];
+  })
 
 .controller('headerctrl', function($scope, TemplateService) {
   $scope.template = TemplateService;

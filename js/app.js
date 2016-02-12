@@ -29,6 +29,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     url: "/about",
     templateUrl: "views/template.html",
     controller: 'AboutCtrl'
+  })
+
+  .state('successstories', {
+    url: "/successstories",
+    templateUrl: "views/template.html",
+    controller: 'SuccessstoriesCtrl'
   });
 
   $urlRouterProvider.otherwise("/home");

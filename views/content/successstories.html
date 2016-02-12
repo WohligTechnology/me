@@ -1,0 +1,25 @@
+<section class="successstories">
+  <div class="backgrund-gray">
+    <div class="container-fluid">
+      <div class="heading text-center">
+        <h3>Success Stories</h3>
+      </div>
+      <div class="successstory-slider">
+        <flex-slider class="carousel" flex-slide="story in successstories track by $index" animation="slide">
+          <li>
+            <div class="story-slider" style="width:250px; margin: 0 auto;">
+              <div class="story-imgholder">
+                <img ng-src="{{story.img}}" alt="" class="img-responsive img-circle">
+              </div>
+              <h3 class="name">{{story.name}}</h3>
+              <h4>{{story.designation}} <span class="brand-primary">{{story.company}}</span></h4>
+            </div>
+            <div class="story-descp">
+              <p class="story-part">{{story.descp}}</p>
+            </div>
+          </li>
+        </flex-slider>
+      </div>
+    </div>
+  </div>
+</section>
