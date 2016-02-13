@@ -3,17 +3,14 @@
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
 @import "../bower_components/flexslider/flexslider.css";
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
-
 /* Bootstrap Variables Goes Here */
-
 $brand-primary: #0d9dff !default;
 $brand-success: #84ce3c !default;
 $brand-warning: #ffec39 !default;
 $brand-danger: #fc483f !default;
 $brand-info: #000072 !default;
-
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
-.full-width{
+.full-width {
   width: 100%;
 }
 img.loading {
@@ -29,23 +26,26 @@ img {
 img.doneLoading {
   opacity: 1;
 }
+a {
+  cursor: pointer;
+}
 nav li:hover .dropdown-menu {
   display: block;
 }
-.rl{
+.rl {
   position: relative;
 }
-.ab{
+.ab {
   position: absolute;
 }
-.pt45{
-  padding-top: 45px;
+.pt45 {
+  padding-top: 50px;
 }
 .flexslider {
-    margin: 0 0 30px;
-    border: 0px solid #ffffff;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 0px;
+  margin: 0 0 30px;
+  border: 0 solid #ffffff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 0;
 }
 /* Start writing sass here */

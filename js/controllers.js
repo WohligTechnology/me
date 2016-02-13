@@ -8,16 +8,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
 
     $scope.mySlides = [
-      'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg',
-      'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg',
-      'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
-      'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg'
+      '../img/landing.jpg',
     ];
   })
 .controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("aboutus");
     $scope.menutitle = NavigationService.makeactive("About");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.mySlides = [
+      '../img/landing.jpg',
+    ];
+  })
+.controller('RegistrationCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("registration");
+    $scope.menutitle = NavigationService.makeactive("Registration");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
