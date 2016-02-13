@@ -33,16 +33,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       '../img/landing.jpg',
     ];
   })
-.controller('RegistrationCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('RegisterLancerCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
-    $scope.template = TemplateService.changecontent("registration");
-    $scope.menutitle = NavigationService.makeactive("Registration");
+    $scope.template = TemplateService.changecontent("registerlancer");
+    $scope.menutitle = NavigationService.makeactive("Register Lancer");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    // $scope.submitForm = function(formregistration,formValid) {
+    //   if(formValid.$Valid){
+    //     $scope.completeRegister = true;
+    //   }
+    //   else {
+    //
+    //   }
+    // };
 
     $scope.mySlides = [
       '../img/landing.jpg',
     ];
+  })
+.controller('RegisterClientCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("registerclient");
+    $scope.menutitle = NavigationService.makeactive("register Client");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
   })
   .controller('LandingCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
