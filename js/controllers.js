@@ -23,7 +23,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.mySlides = [
       '../img/landing.jpg',
-      '../img/landing.jpg',
     ];
   })
   .controller('LandingCtrl', function($scope, TemplateService, NavigationService, $timeout) {
