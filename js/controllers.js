@@ -22,6 +22,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       '../img/landing.jpg',
     ];
   })
+.controller('JobListingCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("job-listing");
+    $scope.menutitle = NavigationService.makeactive("Job Listing");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.mySlides = [
+      '../img/landing.jpg',
+    ];
+  })
 .controller('RegistrationCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("registration");
