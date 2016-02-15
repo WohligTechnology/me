@@ -33,6 +33,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       '../img/landing.jpg',
     ];
   })
+.controller('JobDetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("job-detail");
+    $scope.menutitle = NavigationService.makeactive("Job Listing");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.mySlides = [
+      '../img/landing.jpg',
+    ];
+  })
 .controller('RegisterLancerCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("registerlancer");
