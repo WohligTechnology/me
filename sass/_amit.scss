@@ -46,8 +46,8 @@ $linkedin: #007bb6;
   input {
     min-height: 40px;
     border-radius: 2px;
-    border-color: transparent;
+    border-color: inherit; 
     background-color: $brand-gray;
-  }   
+  }
 }
 // end of register client and lancer
