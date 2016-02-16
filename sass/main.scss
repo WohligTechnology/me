@@ -122,7 +122,7 @@ footer {
           text-align: center;
         }
         &:hover {
-          color: darken(#fff, 20%);;
+          color: darken(#fff, 20%);
           text-decoration: none;
         }
       }
@@ -135,4 +135,5 @@ footer {
     }
   }
 }
+@import "amit";
 /* Start writing sass here */
