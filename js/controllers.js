@@ -11,7 +11,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       '../img/landing.jpg',
     ];
   })
-.controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("aboutus");
     $scope.menutitle = NavigationService.makeactive("About");
@@ -22,7 +22,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       '../img/landing.jpg',
     ];
   })
-.controller('JobListingCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('JobListingCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("job-listing");
     $scope.menutitle = NavigationService.makeactive("Job Listing");
@@ -33,7 +33,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       '../img/landing.jpg',
     ];
   })
-.controller('JobDetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('JobDetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("job-detail");
     $scope.menutitle = NavigationService.makeactive("Job Listing");
@@ -43,6 +43,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.mySlides = [
       '../img/landing.jpg',
     ];
+  })
+  .controller('JobSearchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("job-search");
+    $scope.menutitle = NavigationService.makeactive("Job Search");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
   })
 .controller('RegisterLancerCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -63,7 +70,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       '../img/landing.jpg',
     ];
   })
-.controller('RegisterClientCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('RegisterClientCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("registerclient");
     $scope.menutitle = NavigationService.makeactive("register Client");
@@ -88,22 +95,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
     TemplateService.header = "";
 
-    $scope.successstories = [
-      {
+    $scope.successstories = [{
       img: "img/computer.jpg",
       name: "seema yadav",
       designation: "Manager",
       company: "aapcot",
       descp: "Lorem ipsum dummy text"
-    },
-      {
+    }, {
       img: "img/computer.jpg",
       name: "seema yadav",
       designation: "Manager",
       company: "aapcot",
       descp: "Lorem ipsum dummy text"
-    }
-  ];
+    }];
   })
 
 .controller('headerctrl', function($scope, TemplateService) {

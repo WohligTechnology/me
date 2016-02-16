@@ -21,6 +21,28 @@ $base-primary: #0489c7!default;
 }
 body {
   font-family: Micross,Arial, sans-serif;
+  .no-scroll {
+    overflow: hidden;
+    .slide-menu {
+      height: 115%;
+    }
+  }
+}
+.slide-menu {
+  background-color: #e96542;
+  text-align: center;
+  width: 390px;
+  padding: 30px 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow-x: scroll;
+  transform: translateX(-100%);
+  -webkit-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
 }
 img.loading {
   text-align: center;
@@ -57,7 +79,7 @@ nav li:hover .dropdown-menu {
   position: absolute;
 }
 .pt45 {
-  padding-top: 50px;
+  padding-top: 20px;
 }
 .flexslider {
   margin: 0 0 30px;
@@ -137,8 +159,11 @@ footer {
     }
   }
 }
-.slide-menu {
-    width: 280px;
+.about-cont {
+  padding-bottom: 20px;
+  p {
+    margin-bottom: 15px;
+  }
 }
 @import "amit";
 /* Start writing sass here */

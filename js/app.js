@@ -50,6 +50,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     templateUrl: "views/template.html",
     controller: 'JobDetailCtrl'
   })
+  .state('jobsearch', {
+    url: "/jobsearch",
+    templateUrl: "views/template.html",
+    controller: 'JobSearchCtrl'
+  })
 
   .state('successstories', {
     url: "/successstories",
