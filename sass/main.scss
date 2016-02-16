@@ -45,6 +45,7 @@ nav li:hover .dropdown-menu {
   background-color: #fff;
   border-color: #fff;
   border-width: 0;
+  box-shadow: 1px 0 6px #ddd;
 }
 .navbar-brand img {
   width: 130px;
@@ -121,7 +122,8 @@ footer {
           padding: 7px 0 0;
           text-align: center;
         }
-        &:hover {
+        &:hover,
+        &:focus {
           color: darken(#fff, 20%);
           text-decoration: none;
         }
