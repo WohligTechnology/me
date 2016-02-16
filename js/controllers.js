@@ -24,7 +24,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   })
   .controller('JobListingCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
-    $scope.template = TemplateService.changecontent("job-listing");
+    $scope.template = TemplateService.changecontent("joblisting");
     $scope.menutitle = NavigationService.makeactive("Job Listing");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
