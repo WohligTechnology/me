@@ -5,6 +5,40 @@ ul.footermenu {
   }
 }
 body { padding-top: 30px; }
+.form-control:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: none;
+}
+.no-radius { border-radius: 0;}
+.checkbox {
+  input[type="checkbox"] {
+    display: none;
+  }
+  input[type="checkbox"] + label {
+    font-size: 13px;
+    padding-left: 10px;
+  }
+  input[type="checkbox"] + label span {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    margin: -2px 4px 0 0;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid $base-primary;
+  }
+  input[type="checkbox"] + label span {
+    background-color: transparent;
+  }
+  input[type="checkbox"]:checked + label span {
+    background-color: $base-primary;
+  }
+  input[type="checkbox"] + label span,
+  input[type="checkbox"]:checked + label span {
+    @include transition(background-color 0.4s linear);
+  }
+}
 
 // Variables
 $brand-gray: #eaeaea;
@@ -42,12 +76,42 @@ $linkedin: #007bb6;
 // .input-placeholder {
 //   @include placeholder { color: #000; }
 // }
-.registration {
+
+.account { padding: 5px 0; }
+.register-form {
+  margin-bottom: 30px;
   input {
     min-height: 40px;
     border-radius: 2px;
-    border-color: inherit; 
+    border-color: transparent;
+    background-color: $brand-gray;
+    box-shadow: none;
+  }
+  .form-group { margin-bottom: 25px; }
+}
+.input-icon {
+  top: 50%;
+  right: 2%;
+  @include transform(translate(2%,-50%));
+  color: #777;
+  font-size: 16px;
+}
+.user {
+  i { font-size: 50px; }
+  input,
+  .profile-pic {
+    width: 60%;
+    padding: 30px 0 20px;
+    top: 0;
+    right: 0;
     background-color: $brand-gray;
   }
+  input {
+    min-height: 140px;
+    opacity: 0;
+    z-index: 1;
+  }
+  p { margin-top: 20px; }
 }
+.signup { padding: 8px 50px; }
 // end of register client and lancer
