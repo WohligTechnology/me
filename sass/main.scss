@@ -245,5 +245,11 @@ cursor: pointer;
     top: 50%;
     transform: translate(-50%,-50%)!important;
 }
+.landing{
+  background: url(../img/background.jpg) no-repeat top center;
+  position: relative;
+  background-size: cover;
+
+}
 @import "amit";
 /* Start writing sass here */
