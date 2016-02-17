@@ -75,7 +75,7 @@ body { padding-top: 30px; }
 }
 
 .story-slider {
-  width: 100%;
+  width: 100% !important;
   padding: 20px 0;
   background-color: #fff;
 }
@@ -83,6 +83,20 @@ body { padding-top: 30px; }
   @include square(120px);
   margin: 0 auto;
   overflow: hidden;
+}
+.story-part {
+  &:before {
+    // @include square(50px);
+    background-image: url('../img/left-comma.png');
+    background-repeat: no-repeat;
+    content: '';
+  }
+  &:after {
+    // @include square(50px);
+    background-image: url('../img/right-comma.png');
+    background-repeat: no-repeat;
+      content: '';
+  }
 }
 
 // end success stories
