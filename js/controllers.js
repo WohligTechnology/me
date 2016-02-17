@@ -8,7 +8,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
 
     $scope.mySlides = [
-      '../img/landing.jpg',
+      'img/landing.jpg',
     ];
   })
   .controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -55,6 +55,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("search");
     $scope.menutitle = NavigationService.makeactive("Search");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+  })
+  .controller('SearchcategoryCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("search-category");
+    $scope.menutitle = NavigationService.makeactive("Search Category");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
