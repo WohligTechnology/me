@@ -88,8 +88,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   })
   .controller('PostjobCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
-    $scope.template = TemplateService.changecontent("post job");
-    $scope.menutitle = NavigationService.makeactive("Post job");
+    $scope.template = TemplateService.changecontent("post-job");
+    $scope.menutitle = NavigationService.makeactive("Post Job");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
