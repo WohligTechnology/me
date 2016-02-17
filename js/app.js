@@ -40,6 +40,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     templateUrl: "views/template.html",
     controller: 'SearchresultCtrl'
   })
+  .state('postjob', {
+    url: "/post-job",
+    templateUrl: "views/template.html",
+    controller: 'PostjobCtrl'
+  })
   .state('registerlancer', {
     url: "/registerlancer",
     templateUrl: "views/template.html",

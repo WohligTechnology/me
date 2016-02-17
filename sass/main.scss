@@ -170,5 +170,29 @@ footer {
     margin-bottom: 15px;
   }
 }
+.display-inline{
+  display: inline-block;
+}
+.i-class{
+  float: right;
+  span{
+    font-size: 30px;
+background: #0D9DFF;
+border: 2px solid #0489C7;
+color: #fff;
+border-radius: 100%;
+height: 50px;
+width: 50px;
+padding: 3px 0px 0px 20px;
+display: block;
+cursor: pointer;
+  }
+}
+.modal-dialog {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%)!important;
+}
 @import "amit";
 /* Start writing sass here */
