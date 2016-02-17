@@ -30,6 +30,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     templateUrl: "views/template.html",
     controller: 'AboutCtrl'
   })
+  .state('profile', {
+    url: "/profile",
+    templateUrl: "views/template.html",
+    controller: 'ProfileCtrl'
+  })
   .state('registerlancer', {
     url: "/registerlancer",
     templateUrl: "views/template.html",
