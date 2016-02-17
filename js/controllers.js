@@ -8,7 +8,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
 
     $scope.mySlides = [
-      'img/landing.jpg',
+      '../img/landing.jpg',
     ];
   })
   .controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -55,13 +55,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("search");
     $scope.menutitle = NavigationService.makeactive("Search");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
-  })
-  .controller('SearchcategoryCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-    //Used to name the .html file
-    $scope.template = TemplateService.changecontent("search-category");
-    $scope.menutitle = NavigationService.makeactive("Search Category");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
@@ -135,20 +128,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Success Stories");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    TemplateService.header = "";
+    // TemplateService.header = "";
 
     $scope.successstories = [{
-      img: "img/computer.jpg",
+      img: "img/search.png",
       name: "seema yadav",
       designation: "Manager",
       company: "aapcot",
-      descp: "Lorem ipsum dummy text"
+      descp: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     }, {
-      img: "img/computer.jpg",
+      img: "img/search.png",
       name: "seema yadav",
       designation: "Manager",
       company: "aapcot",
-      descp: "Lorem ipsum dummy text"
+      descp: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     }];
   })
 

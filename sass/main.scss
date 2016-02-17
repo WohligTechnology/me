@@ -11,6 +11,10 @@ $brand-danger: #fc483f !default;
 $brand-info: #000072 !default;
 $base-color: #000!default;
 $base-primary: #0489c7!default;
+$brand-gray: #eaeaea;
+$facebook: #3b5998;
+$googleplus: #dd4b39;
+$linkedin: #007bb6;
 @font-face {
   font-family: Micross;
   src: url('../fonts/micross.ttf');
@@ -20,6 +24,7 @@ $base-primary: #0489c7!default;
   width: 100%;
 }
 body {
+  padding-top: 30px;
   font-family: Micross,Arial, sans-serif;
   .no-scroll {
     overflow: hidden;
@@ -29,6 +34,52 @@ body {
   }
 }
 
+.no-radius { border-radius: 0;}
+.checkbox {
+  input[type="checkbox"] {
+    display: none;
+  }
+  input[type="checkbox"] + label {
+    font-size: 13px;
+    padding-left: 10px;
+  }
+  input[type="checkbox"] + label span {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    margin: -2px 4px 0 0;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid $base-primary;
+  }
+  input[type="checkbox"] + label span {
+    background-color: transparent;
+  }
+  input[type="checkbox"]:checked + label span {
+    background-color: $base-primary;
+  }
+  input[type="checkbox"] + label span,
+  input[type="checkbox"]:checked + label span {
+    @include transition(background-color 0.4s linear);
+  }
+}
+
+// bg class
+.brand-gray-bg { background-color: $brand-gray; }
+.white-bg { background-color: #fff; }
+
+
+// btn-class
+.btn-facebook { @include button-variant(white, $facebook, $facebook); }
+.btn-googleplus { @include button-variant (white, $googleplus, $googleplus ); }
+.btn-linkedin { @include button-variant (white, $linkedin, $linkedin); }
+
+.btn:focus,
+:active {
+  border-color: inherit;
+  outline: none;
+ }
+ //end btn-class
 .slide-menu {
   background-color: #e96542;
   text-align: center;
