@@ -276,15 +276,31 @@ input.aside {
   }
 }
 .name-row {
-    padding-left: 160px;
+  padding-left: 160px;
+  h5 {
+    font-size: 20px;
+    margin-top: 0;
+  }
 }
 .list.white-bg {
-    padding: 20px;
+  padding: 20px;
 }
 .job-cont ul {
   display: block;
+  padding-top: 10px;
   li {
     display: inline-block;
+  }
+  li+li {
+    border-left: 1px solid #000;
+    padding: 0 5px;
+  }
+}
+.right-side {
+  padding-bottom: 10px;
+  .reg-box {
+    padding: 80px 50px
+    background: #453d3b;
   }
 }
 @import "amit";
