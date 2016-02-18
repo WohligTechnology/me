@@ -183,16 +183,17 @@ a.navbar-brand {
 .cont-home {
   padding-top: 20px;
   text-align: justify;
-  p {
-    height: 80px;
-    overflow: hidden;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-  }
+  // p {
+  //   overflow: hidden;
+  //   -o-text-overflow: ellipsis;
+  //   text-overflow: ellipsis;
+  // }
 }
 footer {
   background: $base-primary;
   padding: 8px 0 3px;
+  position: relative;
+  z-index: 10000;
   ul {
     li {
       display: inline-block;
