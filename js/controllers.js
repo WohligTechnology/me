@@ -161,9 +161,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('headerctrl', function($scope, TemplateService) {
   $scope.template = TemplateService;
+
+  $scope.slideclass = "slide-out"
+  $scope.slidemenu = function() {
+    if($scope.slideclass == "slide-out")
+    $scope.slideclass = "slide-in";
+    else
+    $scope.slideclass = "slide-out"
+  }
+
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $(window).scrollTop(0);
   });
+
 })
 
 ;

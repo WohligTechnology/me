@@ -1,10 +1,10 @@
 <ul class="nav navbar-nav">
     <li ng-repeat="menu in navigation" class="{{menu.classis}}">
         <a ui-sref="{{menu.link}}">{{menu.name}}</a>
-        <ul class="dropdown-menu" ng-if="menu.subnav!='';">
+        <!-- <ul class="dropdown-menu" ng-if="menu.subnav!='';">
             <li ng-repeat="submenu in menu.subnav">
                 <a ui-sref="{{submenu.link}}">{{submenu.name}}</a>
             </li>
-        </ul>
+        </ul> -->
     </li>
 </ul>

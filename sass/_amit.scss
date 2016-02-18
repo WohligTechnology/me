@@ -11,6 +11,41 @@ body { padding-top: 30px; }
   box-shadow: none;
 }
 
+// slidemenu
+.get-slidemenu {
+  width: 250px;
+  background-color: $base-primary;
+  .navbar-nav { float: none; }
+}
+.slide-out {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  @include transform(translateX(300px));
+  @include transition(all 300ms linear);
+}
+.slide-in {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  @include transform(translateX(0px));
+  @include transition(all 300ms linear);
+ }
+
+.backsidemenu {
+  border: none;
+  float: right;
+  background-color: transparent;
+  .icon-bar {
+    @include size(35px,3px);
+    margin: 5px 0;
+    display: block;
+    background-color: $base-primary;
+  }
+}
+
+// end slidemenu
+
 // register client and lancer
 .btn-social-icon { padding-right: 10px; }
 .social-btn {
@@ -44,6 +79,7 @@ body { padding-top: 30px; }
   color: #777;
   font-size: 16px;
 }
+i.fa-mobile.input-icon { font-size: 22px; }
 .user {
   i { font-size: 50px; }
   input,
