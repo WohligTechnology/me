@@ -19,7 +19,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
 
     $scope.mySlides = [
-      '../img/landing.jpg',
+      'img/landing.jpg',
     ];
   })
   .controller('JobListingCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -30,7 +30,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
 
     $scope.mySlides = [
-      '../img/landing.jpg',
+      'img/landing.jpg',
     ];
   })
   .controller('JobDetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -41,7 +41,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
 
     $scope.mySlides = [
-      '../img/landing.jpg',
+      'img/landing.jpg',
     ];
   })
   .controller('JobSearchCtrl', function($scope, TemplateService, NavigationService, $timeout) {

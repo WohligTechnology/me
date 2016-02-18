@@ -266,5 +266,26 @@ input.side {
 input.aside {
   padding-left: 50px;
 }
+.left-side {
+  height: 100px;
+  width: 140px;
+  top: 20px;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+.name-row {
+    padding-left: 160px;
+}
+.list.white-bg {
+    padding: 20px;
+}
+.job-cont ul {
+  display: block;
+  li {
+    display: inline-block;
+  }
+}
 @import "amit";
 /* Start writing sass here */
