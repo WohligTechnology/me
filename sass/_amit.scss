@@ -15,7 +15,15 @@ body { padding-top: 30px; }
 .get-slidemenu {
   width: 250px;
   background-color: $base-primary;
+  text-align: center;
   .navbar-nav { float: none; }
+  .navbar-nav > li { float: none; }
+  .navbar-default .navbar-nav > .active > a,
+  .navbar-default .navbar-nav > .active > a:hover,
+  .navbar-default .navbar-nav > .active > a:focus{
+    color: #fff;
+    background-color: transparent;
+  }
 }
 .slide-out {
   position: absolute;
@@ -60,7 +68,7 @@ body { padding-top: 30px; }
 //   @include placeholder { color: #000; }
 // }
 
-.account { padding: 5px 0; }
+.account { padding: 10px 0 0; }
 .register-form {
   margin-bottom: 30px;
   input {
