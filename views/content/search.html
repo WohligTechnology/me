@@ -1,57 +1,56 @@
-<div class="pt45">
+<div class="pt45 brand-gray-bg">
   <section>
   <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="search">
-          <div class="search-icon">
-        <i class="fa fa-search"></i>
+    <div class="search-job">
+      <form action="" class="form-inline">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon white-bg no-radius"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control no-radius" placeholder="Graphic Designer">
+              </div>
+            </div>
           </div>
-          <div class="search-input">
-            <input type="search">
+          <div class="col-md-3">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon white-bg no-radius"><i class="fa fa-map-marker"></i></span>
+                <input type="text" class="form-control no-radius" placeholder="Mumbai">
+              </div>
+            </div>
           </div>
-          <div class="search-rslt">
-            <span>30 UI Designer found !</span>
+          <div class="col-md-3">
+            <button class="btn btn-primary no-radius">Search Jobs</button>
           </div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div class="search">
-          <div class="search-icon">
-        <i class="fa fa-map-marker"></i>
-          </div>
-          <div class="search-input">
-            <input type="search">
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <button class="btn btn-primary">Search Jobs</button>
-      </div>
+      </form>
+      <p class="result-text">30 Graphic Designer Profiles found !</p>
     </div>
     <div class="row">
       <div class="col-md-9">
-        <div class="search-prsn">
+        <div class="search-prsn white-bg" ng-repeat="list in jobs">
           <div class="row">
             <div class="col-md-2">
               <div class="pro-img">
-                <img src="img/search.png">
+                <img ng-src="{{list.img}}">
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
               <div class="user-info">
                 <div class="user-name">
-                  <h4>Sania Mirza</h4>
+                  <h4>{{list.name}}</h4>
                 </div>
                 <div class="user-exp">
-                  <span>Graphic designer (4 year experiance)</span>
+                  <p>{{list.prof}} <span>({{list.exp}} year experiance)</span></p>
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
               <div class="view-btn">
-                <button class="btn btn-primary">View resume</button>
-                <button class="btn btn-primary">Hire him/her</button>
+                <button class="btn btn-primary">View Profile</button>
+                <button class="btn btn-primary">Shortlist</button>
+                <button class="btn btn-primary">Set Interview</button>
               </div>
             </div>
           </div>

@@ -57,6 +57,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Search");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.jobs = [
+      {
+        img: "img/search.png",
+        name: "Sania Mirza",
+        prof: "Graphic designer",
+        exp: "1"
+      },
+      {
+        img: "img/search.png",
+        name: "Rital Nalk",
+        prof: "Graphic designer",
+        exp: "4"
+      },
+      {
+        img: "img/search.png",
+        name: "Pranit Sahu",
+        prof: "Graphic designer",
+        exp: "2"
+      },
+      {
+        img: "img/search.png",
+        name: "Deepak Shah",
+        prof: "Graphic designer",
+        exp: "3"
+      },
+    ];
   })
   .controller('SearchcategoryCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file

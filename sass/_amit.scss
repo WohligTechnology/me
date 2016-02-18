@@ -12,6 +12,37 @@ body {
   border-color: transparent;
   box-shadow: none;
 }
+.custom-select {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 999;
+  select {
+    @include appearance(none);
+    border: none;
+    width: 100%;
+    background-color: transparent;
+    outline: 0;
+    color: white;
+    cursor: pointer;
+    height: 40px;
+    position: relative;
+    z-index: 9999;
+  }
+  &:after {
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\f0d7";
+    height: 40px;
+    width: 28px;
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+  }
+}
 // slidemenu
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -188,3 +219,91 @@ i.fa-mobile.input-icon {
   }
 }
 // end success stories
+
+// post-job
+
+.landing {
+  padding: 10% 0;
+  background: url('../img/background.jpg') no-repeat;
+}
+.post-job {
+  .search-input  {
+    select {
+    height: 50px;
+    padding: 8px 45px;
+    color: $base-primary;
+    font-size: 18px;
+    option { background-color: rgba(255,255,255,0.9) ; }
+  }
+  .job-select {
+    @include size(100%,50px);
+    border: 1px solid $base-primary;
+    border-radius: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255,255,255,0.9);
+  }
+}
+  .custom-select:after {
+    @include square(50px);
+    border-radius: 8px;
+    color: rgba(4, 137, 199, 0.9);
+    line-height: 50px;
+  }
+}
+.post-job-btn button {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin: 15px 0;
+  font-size: 20px;
+}
+.post-jb a {
+  padding: 10px 0;
+  border-bottom: 1px solid $base-primary;
+  display: inline-block;
+  font-size: 18px;
+}
+.heading-job-bg {
+  padding: 5px 0;
+  background-color: #f9f9f9;
+}
+.benefit-list {
+  margin: 40px 0;
+  li {
+    margin: 20px 0;
+    font-size: 18px;
+    list-style-type: none;
+    i {
+      margin-right: 10px;
+      color: #008000;
+      font-size: 22px;
+    }
+  }
+}
+// end of post-job
+
+// job list
+.search-job {
+  padding: 25px 0 0;
+  .input-group-addon { border: none; }
+  input {
+    border: 1px solid transparent;
+    box-shadow: none;
+  }
+}
+.result-text {
+  margin: 15px 0;
+  font-size: 16px;
+}
+.search-prsn {
+  padding: 20px 0;
+  margin-bottom: 10px;
+  .pro-img {
+    @include square(75px);
+    margin: 0 auto;
+  }
+  .view-btn button { margin: 0 5px; }
+}
+// end job list
