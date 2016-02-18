@@ -33,8 +33,9 @@ body {
     }
   }
 }
-
-.no-radius { border-radius: 0;}
+.no-radius {
+  border-radius: 0;
+}
 .checkbox {
   input[type="checkbox"] {
     display: none;
@@ -63,23 +64,29 @@ body {
     @include transition(background-color 0.4s linear);
   }
 }
-
 // bg class
-.brand-gray-bg { background-color: $brand-gray; }
-.white-bg { background-color: #fff; }
-
-
+.brand-gray-bg {
+  background-color: $brand-gray;
+}
+.white-bg {
+  background-color: #fff;
+}
 // btn-class
-.btn-facebook { @include button-variant(white, $facebook, $facebook); }
-.btn-googleplus { @include button-variant (white, $googleplus, $googleplus ); }
-.btn-linkedin { @include button-variant (white, $linkedin, $linkedin); }
-
-.btn:focus,
+.btn-facebook {
+  @include button-variant(white, $facebook, $facebook);
+}
+.btn-googleplus {
+  @include button-variant (white, $googleplus, $googleplus );
+}
+.btn-linkedin {
+  @include button-variant (white, $linkedin, $linkedin);
+}
+.btn :focus,
 :active {
   border-color: inherit;
   outline: none;
- }
- //end btn-class
+}
+//end btn-class
 .slide-menu {
   background-color: #e96542;
   text-align: center;
@@ -166,8 +173,12 @@ a.navbar-brand {
   }
 }
 .slider {
-  .flex-direction-nav .flex-prev { left: 10px; }
-  .flex-direction-nav .flex-next { right: 10px; }
+  .flex-direction-nav .flex-prev {
+    left: 10px;
+  }
+  .flex-direction-nav .flex-next {
+    right: 10px;
+  }
 }
 .cont-home {
   padding-top: 20px;
@@ -221,30 +232,38 @@ footer {
     margin-bottom: 15px;
   }
 }
-.display-inline{
+.display-inline {
   display: inline-block;
 }
-.i-class{
+.i-class {
   float: right;
-  span{
+  span {
     font-size: 30px;
-background: #0D9DFF;
-border: 2px solid #0489C7;
-color: #fff;
-border-radius: 100%;
-height: 50px;
-width: 50px;
-padding: 3px 0px 0px 20px;
-display: block;
-cursor: pointer;
+    background: #0D9DFF;
+    border: 2px solid #0489C7;
+    color: #fff;
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    padding: 3px 0 0 20px;
+    display: block;
+    cursor: pointer;
   }
 }
 .modal-dialog {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%)!important;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%)!important;
 }
-
+input.side {
+  position: absolute;
+  width: 40px;
+  padding-left: 8px;
+  font-weight: 600;
+}
+input.aside {
+  padding-left: 50px;
+}
 @import "amit";
 /* Start writing sass here */

@@ -49,7 +49,8 @@
                 </div>
               </div>
               <div class="form-group rl">
-                <input name="mobile" required ng-model="formregistration.mobile" type="text" class="form-control input-placeholder" placeholder="+91 Contact Number">
+                <input type="text" name="name" value="+91" disabled class="side">
+                <input name="mobile" required ng-model="formregistration.mobile" type="text" class="form-control input-placeholder aside" placeholder="Contact Number">
                 <i class="fa fa-mobile input-icon ab"></i>
                 <div class="ab" ng-show="registration.mobile.$error.required && registration.mobile.$touched">
                   Please Enter Your Contact Number.
