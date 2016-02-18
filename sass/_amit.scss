@@ -69,8 +69,21 @@ body { padding-top: 30px; }
 .successstory-slider {
   .flexslider {
     border: none;
-    margin: 0;
+    margin: 0 0 20px;
     background-color: transparent;
+  }
+  .flex-control-nav {
+    padding: 30px 0px 20px;
+    position: static;
+    background-color: #fff;
+  }
+  .flex-control-paging li a {
+    border-color: $brand-gray;
+    background: $brand-gray;
+  }
+  .flex-control-paging li a.flex-active {
+    border-color: $base-primary;
+    background: $base-primary;
   }
 }
 
@@ -84,18 +97,28 @@ body { padding-top: 30px; }
   margin: 0 auto;
   overflow: hidden;
 }
+.story-descp { padding: 100px 0; }
 .story-part {
+  width: 70%;
+margin: 0 auto;
+font-size: 18px;
   &:before {
-    // @include square(50px);
+    content: '';
+    @include square(60px);
+    position: absolute;
+    top: -50px;
+    left: -50px;
     background-image: url('../img/left-comma.png');
     background-repeat: no-repeat;
-    content: '';
   }
   &:after {
-    // @include square(50px);
+    content: '';
+    @include square(60px);
+    position: absolute;
+    right: 0;
+    bottom: -50px;
     background-image: url('../img/right-comma.png');
     background-repeat: no-repeat;
-      content: '';
   }
 }
 
