@@ -287,7 +287,13 @@ i.fa-mobile.input-icon {
 // job list
 .search-job {
   padding: 25px 0 0;
-  .input-group-addon { border: none; }
+  .input-group-addon {
+    border-left: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    border-right: 1px solid $brand-gray;
+    color: #b0b0b0;
+  }
   input {
     border: 1px solid transparent;
     box-shadow: none;
@@ -307,3 +313,50 @@ i.fa-mobile.input-icon {
   .view-btn button { margin: 0 5px; }
 }
 // end job list
+
+// company job
+.company-profiletab {
+  .nav-tabs {
+    border: none;
+    margin: 20px 0 20px 100px;
+  }
+  .nav-tabs > li > a {
+    width: 180px;
+    padding: 10px 35px;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    background-color: #ccc;
+    color: #616161;
+    text-align: center;
+  }
+  .nav-tabs > li.active > a,
+  .nav-tabs > li.active > a:hover,
+  .nav-tabs > li.active > a:focus {
+    border: none;
+    border-radius: 0;
+    background-color: $base-primary;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+.about-company,
+.list-jobs {
+  padding: 20px 10px;
+  @include box-shadow(0 4px 25px -8px rgb(144, 144, 144) inset);
+}
+.job-list-main {
+  padding: 20px;
+  border-radius: 8px;
+  background-color: $brand-gray;
+  @include box-shadow(0 2px 3px #6B6A6A);
+}
+.edit-btn {
+  i {
+    margin: 0px 5px;
+    color: #b0b0b0;
+    cursor: pointer;
+    font-size: 18px;
+  }
+}
+// company job end
