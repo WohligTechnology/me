@@ -8,7 +8,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
 
     $scope.mySlides = [
-      'img/landing.jpg',
+      'img/banners/1.jpg',
+      'img/banners/2.jpg',
+      'img/banners/3.jpg',
+      'img/banners/4.jpg'
     ];
   })
   .controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -62,10 +65,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         description: "  I am looking for a mobile app developer to work on various IOS and Android apps. The first project would be to develop a mobile app for both IOS and Android where we will provide."
       },
     ];
-
-
-
-
   })
   .controller('JobDetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
