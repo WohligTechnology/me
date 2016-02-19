@@ -128,13 +128,25 @@ nav li:hover .dropdown-menu {
   border-width: 0;
   box-shadow: 1px 0 6px #ddd;
 }
-.navbar-brand img { width: 130px;}
-.rl { position: relative;}
-.ab { position: absolute;}
-.pt45 { padding-top: 20px; }
-.m-clear{ margin: 0; }
-.m-center { margin: 0 auto; }
-.block{
+.navbar-brand img {
+  width: 130px;
+}
+.rl {
+  position: relative;
+}
+.ab {
+  position: absolute;
+}
+.pt45 {
+  padding-top: 20px;
+}
+.m-clear {
+  margin: 0;
+}
+.m-center {
+  margin: 0 auto;
+}
+.block {
   display: block;
 }
 .flexslider {
@@ -279,6 +291,19 @@ input.aside {
 }
 .name-row {
   // padding-left: 160px;
+  min-height: 125px;
+  .post-made {
+    li {
+      display: inline-block;
+      padding: 0 5px;
+    }
+    li + li {
+      border-left: 1px solid #ddd;
+    }
+  }
+  .bottom-ul {
+    bottom: 0;
+  }
   h5 {
     font-size: 20px;
     margin-top: 0;
@@ -315,10 +340,10 @@ input.aside {
   background: $brand-gray;
   border: 1px solid $base-primary;
   color: $base-primary;
-  &:hover{
+  &:hover {
     color: darken($base-primary, 10%);
     background: darken($brand-gray,10%);
-      border-color: darken($base-primary, 10%);
+    border-color: darken($base-primary, 10%);
   }
 }
 @import "amit";
