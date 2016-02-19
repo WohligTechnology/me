@@ -314,7 +314,7 @@ i.fa-mobile.input-icon {
 }
 // end job list
 
-// company job
+// company job  - profile page
 .company-profiletab {
   .nav-tabs {
     border: none;
@@ -350,6 +350,7 @@ i.fa-mobile.input-icon {
   border-radius: 8px;
   background-color: $brand-gray;
   @include box-shadow(0 2px 3px #6B6A6A);
+  .job-detail { margin-top: 20px; }
 }
 .edit-btn {
   i {
@@ -359,4 +360,12 @@ i.fa-mobile.input-icon {
     font-size: 18px;
   }
 }
-// company job end
+.profile-detail {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+.pro-head {
+  .head-title { margin: 0px 0px 15px; }
+}
+// company job profilepage end
