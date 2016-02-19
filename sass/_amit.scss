@@ -86,7 +86,7 @@ body {
   background-color: transparent;
   &:focus { outline: none; }
   .icon-bar {
-    @include size(35px,3px);
+    @include size(30px,3px);
     margin: 5px 0;
     display: block;
     background-color: $base-primary;
@@ -369,3 +369,26 @@ i.fa-mobile.input-icon {
   .head-title { margin: 0px 0px 15px; }
 }
 // company job profilepage end
+
+// resume page
+.resume { padding: 30px 0; }
+.resume-heading {
+  padding: 10px;
+  background-color: $base-primary;
+  color: #fff;
+  font-size: 18px;
+}
+.resume-info { margin: 30px 0; }
+.resume-detail {
+  padding: 20px;
+  font-size: 15px;
+  .icon {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+}
+.skill-list {
+  padding: 0;
+  li { list-style-type: none; }
+}
+// resume page end
