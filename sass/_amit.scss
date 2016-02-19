@@ -122,6 +122,13 @@ body {
     background-color: $brand-gray;
     box-shadow: none;
   }
+  textarea{
+    resize: none;
+    border-radius: 2px;
+    border-color: transparent;
+    background-color: $brand-gray;
+    box-shadow: none;
+  }
   .form-group {
     margin-bottom: 25px;
   }

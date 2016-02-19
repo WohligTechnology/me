@@ -177,14 +177,44 @@ a.navbar-brand {
   font-weight: 600;
 }
 .blue-color {
-  color: $base-primary;
+  color: $base-primary!important;
 }
 .pad30 {
-  padding: 30px 0;
+  padding: 0 0 30px;
 }
 .home-head {
   span {
     font-size: 24px;
+    color: #000;
+  }
+}
+.box {
+  padding: 0 20px 20px;
+  .box-cont {
+    padding: 10px;
+    h5 {
+      font-size: 16px;
+    }
+    .inline-make {
+      li {
+        display: inline-block;
+        padding: 10px;
+        text-align: center;
+      }
+      li+li {
+        border-left: 1px solid #ddd;
+      }
+    }
+  }
+  span.head {
+    font-size: 15px;
+    color: #b0b0b0;
+    margin-bottom: 8px;
+    display: block;
+  }
+  span.sub-title {
+    font-size: 16px;
+    color: darken(#b0b0b0, 30%);
   }
 }
 .slider {

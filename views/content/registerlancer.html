@@ -74,15 +74,23 @@
                 </div>
               </div>
               <div class="form-group rl">
-                <input name="job" required ng-model="formregistration.job" type="text" class="form-control input-placeholder" placeholder="Job role">
-                <i class="fa fa-user input-icon ab"></i>
+                <textarea name="job" required ng-model="formregistration.job" type="text" class="form-control input-placeholder" placeholder="Job Description"></textarea>
+                <i class="fa fa-pencil-square-o input-icon ab"></i>
                 <div class="ab" ng-show="registration.job.$error.required && registration.job.$touched">
-                  Please Enter Your Job Role.
+                  Please Enter Your Job Description.
+                </div>
+              </div>
+              <label>Please Upload Your Resume</label>
+              <div class="form-group rl">
+                <input name="upload" required ng-model="formregistration.upload" type="file" class="form-control input-placeholder" placeholder="Please Upload Resume">
+                <i class="fa fa-file input-icon ab"></i>
+                <div class="ab" ng-show="registration.upload.$error.required && registration.upload.$touched">
+                  Please Upload Your Resume.
                 </div>
               </div>
               <div class="form-group">
                 <div class="checkbox">
-                  <input name ="tc" required ng-model="formregistration.tc" type="checkbox" class="form-control" id="check">
+                  <input name="tc" required ng-model="formregistration.tc" type="checkbox" class="form-control" id="check">
                   <label for="check"><span></span> I Accept The Terms And Conditions And Privacy Policy Of The Website. </label>
                 </div>
                 <div class="" ng-show="registration.tc.$error.required && registration.tc.$touched"></div>

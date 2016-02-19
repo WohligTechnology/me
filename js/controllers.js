@@ -8,10 +8,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
 
     $scope.mySlides = [
-      'img/banners/1.jpg',
-      'img/banners/2.jpg',
-      'img/banners/3.jpg',
-      'img/banners/4.jpg'
+      'img/landing.jpg',
     ];
   })
   .controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
