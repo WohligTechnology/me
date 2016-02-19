@@ -29,35 +29,41 @@
         <p class="result-text bold"> 1000 Mobile developers found!</p>
       </div>
       <div class="row">
-        <div class="col-md-9">
-          <div class="list white-bg">
-            <div class="left-side ab">
-              <img src="img/house.jpg" alt="" class="full-width">
-            </div>
-            <div class="name-row">
-              <div class="pull-right">
-                <div class="btn btn-primary no-radius">View Details</div>
-                <div class="btn btn-primary no-radius">Apply Now</div>
+        <div class="col-md-9 pr5">
+          <div class="list white-bg" ng-repeat="data in joblist">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="left-side">
+                  <img src="img/resgration.png" alt="">
+                </div>
               </div>
-              <h5 class="blue-color bold">Bobcorn</h5>
-              <div class="job-cont">
-                <ul class="list-unstyled">
-                  <li class=" bold">Hourly</li>
-                  <li class=" bold">1000-2000 Rs.</li>
-                  <li class=" bold">40 hours weekly</li>
-                  <li class=" bold">Posted 2 months ago</li>
-                  <li class=" bold">expires Jan 26,2016</li>
-                </ul>
-              </div>
-              <div class="box-cont">
-                <p>
-                  I am looking for a mobile app developer to work on various IOS and Android apps. The first project would be to develop a mobile app for both IOS and Android where we will provide.
-                </p>
+              <div class="col-md-9">
+                <div class="name-row">
+                  <div class="pull-right">
+                    <div class="btn btn-inverse no-radius">View Details</div>
+                    <div class="btn btn-primary no-radius">Apply Now</div>
+                  </div>
+                  <h5 class="blue-color bold">Bobcorn</h5>
+                  <div class="job-cont">
+                    <ul class="list-unstyled">
+                      <li class=" bold">Hourly</li>
+                      <li class=" bold">1000-2000 Rs.</li>
+                      <li class=" bold">40 hours weekly</li>
+                      <li class=" bold">Posted 2 months ago</li>
+                      <li class=" bold">expires Jan 26,2016</li>
+                    </ul>
+                  </div>
+                  <div class="box-cont">
+                    <p>
+                      I am looking for a mobile app developer to work on various IOS and Android apps. The first project would be to develop a mobile app for both IOS and Android where we will provide.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 pl5">
           <div class="right-side">
             <img src="img/ladyphone.jpg" alt="" class="full-width">
             <div class="reg-box text-center">
@@ -67,6 +73,5 @@
         </div>
       </div>
     </div>
-  </div>
   </div>
 </section>

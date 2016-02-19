@@ -32,6 +32,40 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.mySlides = [
       'img/landing.jpg',
     ];
+
+    $scope.joblist = [
+      {
+      img: "img/resgration.png",
+      name: "Bobcorn",
+      money: "1000-2000",
+      hours: "40",
+      lastpost: "2 months ago",
+      month: "Jan 26,2016",
+      description:"  I am looking for a mobile app developer to work on various IOS and Android apps. The first project would be to develop a mobile app for both IOS and Android where we will provide."
+},
+      {
+      img: "img/resgration.png",
+      name: "Bobcorn",
+      money: "1000-2000",
+      hours: "40",
+      lastpost: "2 months ago",
+      month: "Jan 26,2016",
+      description:"  I am looking for a mobile app developer to work on various IOS and Android apps. The first project would be to develop a mobile app for both IOS and Android where we will provide."
+},
+      {
+        img: "img/resgration.png",
+        name: "Bobcorn",
+        money: "1000-2000",
+        hours: "40",
+        lastpost: "2 months ago",
+        month: "Jan 26,2016",
+        description: "  I am looking for a mobile app developer to work on various IOS and Android apps. The first project would be to develop a mobile app for both IOS and Android where we will provide."
+      },
+    ];
+
+
+
+
   })
   .controller('JobDetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
