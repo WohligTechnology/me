@@ -121,6 +121,7 @@ body {
     border-color: transparent;
     background-color: $brand-gray;
     box-shadow: none;
+    padding-right: 35px;
   }
   textarea{
     resize: none;
@@ -128,6 +129,7 @@ body {
     border-color: transparent;
     background-color: $brand-gray;
     box-shadow: none;
+    padding-right: 35px;
   }
   .form-group {
     margin-bottom: 25px;
@@ -265,6 +267,10 @@ i.fa-mobile.input-icon {
   border-radius: 8px;
   margin: 15px 0;
   font-size: 20px;
+  border-radius: 0;
+}
+.heading-job-bg h4 {
+    font-size: 20px;
 }
 .post-jb a {
   padding: 10px 0;

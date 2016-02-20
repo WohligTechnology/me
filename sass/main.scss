@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300italic,100italic,100,400italic,700,700italic,900);
 @import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
@@ -16,8 +17,7 @@ $facebook: #3b5998;
 $googleplus: #dd4b39;
 $linkedin: #007bb6;
 @font-face {
-  font-family: Micross;
-  src: url('../fonts/micross.ttf');
+  font-family: Lato;
 }
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 .full-width {
@@ -35,6 +35,9 @@ body {
 }
 .no-radius {
   border-radius: 0;
+}
+.btn{
+  border-radius: 0px;
 }
 .checkbox {
   input[type="checkbox"] {
