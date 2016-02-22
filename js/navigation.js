@@ -21,7 +21,7 @@ var navigationservice = angular.module('navigationservice', [])
     name: "My Profile",
     classis: "active",
     icon: "fa-user",
-    link: "profile"
+    link: "companyprofile"
   },
   {
     name: "Success Stories",
