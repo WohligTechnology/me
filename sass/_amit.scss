@@ -121,7 +121,6 @@ body {
     border-color: transparent;
     background-color: $brand-gray;
     box-shadow: none;
-    padding-right: 35px;
   }
   textarea{
     resize: none;
@@ -235,31 +234,29 @@ i.fa-mobile.input-icon {
   padding: 10% 0;
   background: url('../img/background.jpg') no-repeat;
 }
-.post-job {
-  .search-input  {
-    select {
-    height: 50px;
-    padding: 8px 45px;
-    color: $base-primary;
-    font-size: 18px;
-    option { background-color: rgba(255,255,255,0.9) ; }
-  }
-  .job-select {
-    @include size(100%,50px);
-    border: 1px solid $base-primary;
-    border-radius: 8px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(255,255,255,0.9);
-  }
+.search-input  {
+  select {
+  height: 50px;
+  padding: 8px 30px;
+  color: $base-primary;
+  font-size: 18px;
+  option { background-color: rgba(255,255,255,0.9) ; }
 }
-  .custom-select:after {
-    @include square(50px);
-    border-radius: 8px;
-    color: rgba(4, 137, 199, 0.9);
-    line-height: 50px;
-  }
+.job-select {
+  @include size(100%,50px);
+  border: 1px solid $base-primary;
+  border-radius: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255,255,255,0.9);
+}
+}
+.custom-select:after {
+  @include square(50px);
+  border-radius: 8px;
+  color: rgba(4, 137, 199, 0.9);
+  line-height: 50px;
 }
 .post-job-btn button {
   width: 100%;
@@ -405,3 +402,10 @@ i.fa-mobile.input-icon {
   li { list-style-type: none; }
 }
 // resume page end
+
+// search-category
+.search-btn {
+  padding: 8px 24px;
+  margin: 20px 0;
+}
+// end search category
