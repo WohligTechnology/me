@@ -12,16 +12,16 @@ var navigationservice = angular.module('navigationservice', [])
     }]
   },
   {
-    name: "My Profile",
-    classis: "active",
-    icon: "fa-user",
-    link: "profile"
-  },
-  {
     name: "Register/Sign in",
     classis: "active",
     icon: "fa-key",
     link: "registerlancer"
+  },
+  {
+    name: "My Profile",
+    classis: "active",
+    icon: "fa-user",
+    link: "profile"
   },
   {
     name: "Success Stories",
@@ -30,10 +30,10 @@ var navigationservice = angular.module('navigationservice', [])
     link: "successstories"
   },
   {
-    name: "My Community",
+    name: "My Community (Coming Soon)",
     classis: "active",
     icon: "fa-commenting-o",
-    link: "community"
+    link: ""
   },
   {
     name: "About Us",

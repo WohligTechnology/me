@@ -58,7 +58,7 @@ body {
   }
 }
 .get-slidemenu {
-  width: 250px;
+  width: 300px;
   background-color: $base-primary;
   .navbar-nav { float: none; }
   .navbar-nav > li { float: none; }
@@ -170,6 +170,7 @@ i.fa-mobile.input-icon {
 }
 // end of register client and lancer
 // success stories
+.heading { padding: 10px 0 0; }
 .successstory-slider {
   .flexslider {
     border: none;
@@ -355,6 +356,7 @@ i.fa-mobile.input-icon {
   padding: 20px 10px;
   @include box-shadow(0 4px 25px -8px rgb(144, 144, 144) inset);
 }
+.notifications { padding: 20px 10px; }
 .job-list-main {
   padding: 20px;
   border-radius: 8px;
@@ -406,6 +408,7 @@ i.fa-mobile.input-icon {
 // search-category
 .search-btn {
   padding: 8px 24px;
-  margin: 20px 0;
+  margin: 40px 0;
 }
 // end search category
+.minh { min-height: 150px; }
