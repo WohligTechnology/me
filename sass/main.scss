@@ -231,11 +231,9 @@ a.navbar-brand {
 .cont-home {
   padding-top: 20px;
   text-align: justify;
-  // p {
-  //   overflow: hidden;
-  //   -o-text-overflow: ellipsis;
-  //   text-overflow: ellipsis;
-  // }
+  p {
+    font-size: 15px;
+  }
 }
 footer {
   background: $base-primary;
@@ -279,6 +277,7 @@ footer {
   padding-bottom: 20px;
   p {
     margin-bottom: 15px;
+    font-size: 16px;
   }
 }
 .display-inline {
