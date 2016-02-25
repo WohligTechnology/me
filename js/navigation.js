@@ -1,6 +1,7 @@
+var adminurl = 'http://wohlig.io:81/callApi/flexi/json/';
 var navigationservice = angular.module('navigationservice', [])
 
-.factory('NavigationService', function() {
+.factory('NavigationService', function($http) {
   var navigation = [{
     name: "Home",
     classis: "active",
@@ -57,6 +58,77 @@ var navigationservice = angular.module('navigationservice', [])
       }
       return menuname;
     },
-
+    signUpClient: function (formData, callback) {
+      console.log('form data: ', formData);
+      $http({
+        url: adminurl + 'createclient',
+        method: 'POST',
+        withCredentials: true,
+        data: {
+          "image":formData.image.name,
+          "companyName":formData.company,
+          "name":formData.name,
+          "password":formData.password,
+          "email": formData.mail,
+          "contact":formData.mobile,
+          "location":formData.location,
+          "jobRole":formData.job,
+          "tc":formData.tc,
+          "accessLevel":"client"
+        }
+      }).success(callback);
+    },
+    signUpLancer: function (formData, callback) {
+      console.log('form data: ', formData);
+      $http({
+        url: adminurl + 'createfreelancer',
+        method: 'POST',
+        withCredentials: true,
+        data: {
+          "accessLevel":"freelancer",
+          "picture":formData.picture.name,
+          "resume":formData.resume.name,
+          "name":formData.name,
+          "email": formData.mail,
+          "contactNo":formData.mobile,
+          "password":formData.password,
+          "location":formData.location,
+          "jobRole":formData.job,
+          "tc":formData.tc,
+        }
+      }).success(callback);
+    },
+    getCityOptions:function (callback) {
+      $http.get(adminurl+'getcityoptions').success(callback);
+    },
+    getCategoryOptions:function (callback) {
+      $http.get(adminurl+'findallcategories').success(callback);
+    },
+    findAllJobs: function (callback) {
+      $http({
+        url: adminurl + 'findalljobs',
+        method: 'POST',
+        withCredentials: true,
+        data: {
+          "job":"designer",
+          "city":"mumbai"
+        }
+      }).success(callback);
+    },
+    getAllFreelancers: function (callback) {
+      $http.get(adminurl+'findallfreelancers').success(callback);
+    },
+    getCompanyProfile: function (callback) {
+      $http.get(adminurl+'findonecompanyprofile/1').success(callback);
+    },
+    getTestimonials: function (callback) {
+      $http.get(adminurl+'findalltestimonials').success(callback);
+    },
+    getEachJobDetail: function (callback) {
+      $http.get(adminurl+'findonejob/1').success(callback);
+    },
+    getMyProfilePage: function (callback) {
+      $http.get(adminurl+'findoneprofile/1').success(callback);
+    }
   };
 });

@@ -11,10 +11,10 @@
             <div class="search-input custom-select text-center">
               <select class="form-control">
                 <option>Select Category</option>
-                <option>2</option>
-                <option>3</option>
+                <option ng-repeat="category in categoryOptions">{{category}}</option>
+                <!-- <option>3</option>
                 <option>4</option>
-                <option>5</option>
+                <option>5</option> -->
               </select>
               <span class="job-select"></span>
             </div>

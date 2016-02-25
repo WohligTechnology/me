@@ -42,11 +42,11 @@
                     <div class="pull-right">
                       <div class="btn btn-primary no-radius">Apply Now</div>
                     </div>
-                    <h5 class="blue-color">Bobcorn <span>(Mobile App Developer)</span></h5>
-                    <p>Mumbai</p>
+                    <h5 class="blue-color">{{jobDetail.company}} <span>({{jobDetail.roleRequired}})</span></h5>
+                    <p>{{jobDetail.city}}</p>
                     <ul class="list-unstyled bottom-ul ab post-made">
-                      <li>Posted 2 months ago</li>
-                      <li>expires Jan 27,2016</li>
+                      <li>{{jobDetail.postingDate}}</li>
+                      <li>expires {{jobDetail.expiryDate}}</li>
                     </ul>
                   </div>
                 </div>
@@ -55,35 +55,29 @@
             <div class="box">
               <div class="box-cont brand-gray-bg">
                 <h5 class="bold">About Company</h5>
-                <p>
-                  I am looking for a mobile app developer to work on various IOS and Android apps. The first project would be to develop a mobile app for both IOS and Android where we will provide
-                </p>
+                <p>{{jobDetail.companyDescription}}</p>
               </div>
               <div class="box-cont">
                 <h5 class="bold">Job Details</h5>
-                <p>
-                  I am looking for a mobile app developer to work on various IOS and Android apps. The first project would be to develop a mobile app for both IOS and Android where we will provide
-                </p>
+                <p>{{jobDetail.jobDescription}}</p>
               </div>
               <div class="box-cont">
                 <h5 class="bold">Responsibility</h5>
-                <p class="blue-color">
-                  I am looking for a mobile app developer to work on various IOS and Android apps. The first project would be to develop a mobile app for both IOS and Android where we will provide
-                </p>
+                <p class="blue-color">{{jobDetail.jobResponsibilities}}</p>
               </div>
               <div class="box-cont">
                 <ul class="list-unstyled inline-make">
                   <li>
                     <span class="head">Salary</span>
-                    <span class="sub-title">5000-10000</span>
+                    <span class="sub-title">{{jobDetail.payment}}</span>
                   </li>
                   <li>
                     <span class="head">Exposure</span>
-                    <span class="sub-title">WorldWide</span>
+                    <span class="sub-title">{{jobDetail.exposure}}</span>
                   </li>
                   <li>
                     <span class="head">Role</span>
-                    <span class="sub-title">Developer</span>
+                    <span class="sub-title">{{jobDetail.roleRequired}}</span>
                   </li>
                 </ul>
               </div>
@@ -92,7 +86,7 @@
         </div>
         <div class="col-md-3 rl5">
           <div class="right-side">
-            <img src="img/joblist.jpg" alt="">
+            <img src="{{jobDetail.image}}" alt="">
             <!-- <div class="detail-cont">
               Want to Apply? Please Sign in Register to apply.
               <button type="button" name="button" class="btn btn-primary btn-lg no-radius">Registration</button>

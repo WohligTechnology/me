@@ -20,17 +20,27 @@
           </div>
           <p class="or">Or</p>
         </div>
-        <form name="registration" class="register-form">
+        <form name="registration" class="register-form" ng-upload="uploadComplete(content)">
           <div class="row">
             <div class="col-md-3">
               <div class="form-group">
                 <div class="user rl">
-                  <input name="picture" required ng-model="formregistration.picture" type="file" class="form-control ab">
+                  <input name="picture" required ng-model="formregistration.picture" type="file" accept=".jpg,.png" class="form-control ab" file-model = "formregistration.picture">
+                  {{formregistration.picture.name}}<button ng-click = "uploadFile()">upload me</button>
                   <div class="profile-pic ab text-center">
                     <i class="fa fa-user"></i>
                     <p>Upload Picture</p>
                   </div>
                 </div>
+                <img ng-src="{{formregistration.picture.name|serverimage}}" style="height:200px;">
+                <!-- <ul>
+                  <li ng-repeat="item in uploader.queue">
+                      Name: <span ng-bind="item.file.name" file-input="item.file.name"></span><br/>
+                      <button ng-click="item.upload()">upload</button>
+                  </li>
+                </ul> -->
+                <!-- {{formregistration.picture}} -->
+                <!-- <span ng-show="formregistration.picture">Upload Successful</span> -->
                 <div class="" ng-show="registration.picture.$error.picture && registration.picture.$touched">
                   Please Upload Your Picture.
                 </div>
@@ -82,12 +92,13 @@
               </div>
               <label>Please Upload Your Resume</label>
               <div class="form-group rl">
-                <input name="upload" required ng-model="formregistration.upload" type="file" class="form-control input-placeholder" placeholder="Please Upload Resume">
+                <input name="upload" required ng-model="formregistration.resume" type="file" class="form-control input-placeholder" placeholder="Please Upload Resume" file-model = "formregistration.resume" accept=".docx,.pdf">
                 <i class="fa fa-file input-icon ab"></i>
                 <div class="ab" ng-show="registration.upload.$error.required && registration.upload.$touched">
                   Please Upload Your Resume.
                 </div>
               </div>
+              {{formregistration.upload}}
               <div class="form-group">
                 <div class="checkbox">
                   <input name="tc" required ng-model="formregistration.tc" type="checkbox" class="form-control" id="check">
@@ -98,7 +109,7 @@
             </div>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary signup" ui-sref="searchcategory">Sign up</button>
+            <button type="submit" class="btn btn-primary signup" ng-click="signUpLancer()" ui-sref="searchcategory">Sign up</button>
           </div>
         </form>
         <!-- <div class="text-center" ng-hide="completeRegister">

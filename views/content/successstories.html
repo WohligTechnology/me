@@ -5,17 +5,17 @@
         <h3>Success Stories</h3>
       </div>
       <div class="successstory-slider">
-        <flex-slider class="carousel" flex-slide="story in successstories track by $index" animation="slide" direction-nav="false">
+        <flex-slider class="carousel" flex-slide="story in testimonials track by $index" animation="slide" direction-nav="false">
           <li>
             <div class="story-slider" style="width:250px; margin: 0 auto;">
               <div class="story-imgholder">
-                <img ng-src="{{story.img}}" alt="" class="img-responsive img-circle">
+                <img ng-src="{{story.image}}" alt="" class="img-responsive img-circle">
               </div>
               <h3 class="name text-center text-capitalize">{{story.name}}</h3>
               <h4 class="text-center">{{story.designation}} <span class="blue-color">{{story.company}}</span></h4>
             </div>
             <div class="story-descp text-center rl">
-              <p class="story-part rl">{{story.descp}}</p>
+              <p class="story-part rl">{{story.comment}}</p>
             </div>
           </li>
         </flex-slider>

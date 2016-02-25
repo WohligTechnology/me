@@ -359,6 +359,8 @@ i.fa-mobile.input-icon {
 .notifications { padding: 20px 10px; }
 .job-list-main {
   padding: 20px;
+  margin-bottom: 5px;
+  margin-top: 10px;
   border-radius: 8px;
   background-color: $brand-gray;
   @include box-shadow(0 2px 3px #6B6A6A);

@@ -13,9 +13,7 @@
                 <div class="search-input custom-select text-center">
                   <select class="form-control">
                     <option>Job Skills/Company</option>
-                    <option>C++</option>
-                    <option>Asp.net</option>
-                    <option>Andriod</option>
+                    <option ng-repeat="category in categoryOptions">{{category}}</option>
                   </select>
                   <span class="job-select"></span>
                 </div>
@@ -24,9 +22,7 @@
                 <div class="search-input custom-select text-center">
                   <select class="form-control">
                     <option>City/State</option>
-                    <option>Mumbai</option>
-                    <option>Manglore</option>
-                    <option>Baroda</option>
+                    <option ng-repeat="city in cityOptions">{{city}}</option>
                   </select>
                   <span class="job-select"></span>
                 </div>
