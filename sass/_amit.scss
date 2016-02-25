@@ -3,7 +3,7 @@ ul.footermenu {
   li+li {
     border-left: 1px solid #fff;
   }
-} 
+}
 body {
   padding-top: 30px;
 }
@@ -117,14 +117,14 @@ body {
   margin-bottom: 30px;
   input {
     min-height: 40px;
-    border-radius: 2px;
+    border-radius: 6px;
     border-color: transparent;
     background-color: $brand-gray;
     box-shadow: none;
   }
   textarea{
     resize: none;
-    border-radius: 2px;
+    border-radius: 6px;
     border-color: transparent;
     background-color: $brand-gray;
     box-shadow: none;
@@ -262,10 +262,8 @@ i.fa-mobile.input-icon {
 .post-job-btn button {
   width: 100%;
   padding: 10px 12px;
-  border-radius: 8px;
   margin: 15px 0;
   font-size: 20px;
-  border-radius: 0;
 }
 .heading-job-bg h4 {
     font-size: 20px;

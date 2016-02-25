@@ -36,9 +36,7 @@ body {
 .no-radius {
   border-radius: 0;
 }
-.btn{
-  border-radius: 0px;
-}
+
 .checkbox {
   input[type="checkbox"] {
     display: none;
@@ -191,6 +189,7 @@ a.navbar-brand {
     color: #000;
   }
 }
+.tagline { font-size: 18px; }
 .box {
   padding: 0 20px 20px;
   .box-cont {
@@ -235,6 +234,7 @@ a.navbar-brand {
     font-size: 15px;
   }
 }
+.flex-client-detail { padding-top: 28px; }
 footer {
   background: $base-primary;
   padding: 8px 0 3px;
