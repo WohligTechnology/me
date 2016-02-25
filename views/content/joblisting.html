@@ -8,7 +8,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon white-bg no-radius"><i class="fa fa-search"></i></span>
-                  <input type="text" class="form-control no-radius" placeholder="Graphic Designer">
+                  <input type="text" class="form-control no-radius" placeholder="Graphic Designer" ng-model="jobQuery">
                 </div>
               </div>
             </div>
@@ -16,7 +16,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon white-bg no-radius"><i class="fa fa-map-marker"></i></span>
-                  <input type="text" class="form-control no-radius" placeholder="Mumbai">
+                  <input type="text" class="form-control no-radius" placeholder="Mumbai" ng-model="cityQuery">
                 </div>
               </div>
             </div>
@@ -26,15 +26,16 @@
           </div>
         </form>
         <!-- <p class="result-text">30 Graphic Designer Profiles found !</p> -->
-        <p class="result-text bold"> 1000 Mobile developers found!</p>
+        <p class="result-text bold"> {{joblist.count}} Mobile developers found! </p>
       </div>
       <div class="row">
         <div class="col-md-9 pr5">
-          <div class="list white-bg" ng-repeat="data in joblist">
+          <span>
+          <div class="list white-bg" ng-repeat="data in jobNumber | filter:(cityQuery || jobQuery)" infinite-scroll='loadMore()' infinite-scroll-distance='2' infinite-scroll-listen-for-event="shouldscroll">
             <div class="row">
               <div class="col-md-3">
                 <div class="left-side">
-                  <img src="img/resgration.png" alt="">
+                  <img src="{{data.image}}" alt="">
                 </div>
               </div>
               <div class="col-md-9">
@@ -43,25 +44,26 @@
                     <div class="btn btn-inverse  mgr" ui-sref="jobdetail">View Details</div>
                     <div class="btn btn-primary">Apply Now</div>
                   </div>
-                  <h5 class="blue-color bold">Bobcorn</h5>
+                  <h5 class="blue-color bold">{{data.company}}</h5>
                   <div class="job-cont">
                     <ul class="list-unstyled">
-                      <li class=" bold">Hourly</li>
-                      <li class=" bold">1000-2000 Rs.</li>
-                      <li class=" bold">40 hours weekly</li>
-                      <li class=" bold">Posted 2 months ago</li>
-                      <li class=" bold">expires Jan 26,2016</li>
+                      <li class=" bold">{{data.jobPayment}}</li>
+                      <li class=" bold">{{data.payment}}</li>
+                      <li class=" bold">{{data.timeCommitment}}</li>
+                      <li class=" bold">{{data.postingDate}}</li>
+                      <li class=" bold">expires {{data.expiryDate}}</li>
+                      <li class=" bold">{{data.city}}</li>
+                      <li class=" bold">{{data.jobRole}}</li>
                     </ul>
                   </div>
                   <div class="box-cont">
-                    <p>
-                      I am looking for a mobile app developer to work on various IOS and Android apps. The first project would be to develop a mobile app for both IOS and Android where we will provide.
-                    </p>
+                    <p>{{data.description}}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          </span>
         </div>
         <div class="col-md-3 pl5">
           <div class="right-side">

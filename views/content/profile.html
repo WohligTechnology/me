@@ -30,14 +30,14 @@
                             <div class="profile-info">
                               <div class="pro-head">
                                 <h4 class="blue-color head-title">Company details</h4>
-                                <span>Nita Shah (CEO)</span>
-                                <span>nita@email.com</span>
+                                <span>{{myProfile.personalDetails.name}}</span>
+                                <span>{{myProfile.personalDetails.email}}</span>
                                 <div class="pro-add">
-                                  <span class="block">+91 8080808080</span>
-                                  <span class="block">Laxmi nivas, A-30</span>
-                                  <span class="block">Near Sadhana School</span>
+                                  <span class="block">{{myProfile.personalDetails.contactNo}}</span>
+                                  <span class="block">{{myProfile.personalDetails.address}}</span>
+                                  <!-- <span class="block">Near Sadhana School</span>
                                   <span class="block">Sion (East), Mumbai</span>
-                                  <span class="block">Maharashtra-420020</span>
+                                  <span class="block">Maharashtra-420020</span> -->
                                 </div>
                               </div>
                             </div>
@@ -58,8 +58,8 @@
                             <div class="profile-info">
                               <div class="pro-head">
                                 <h4 class="blue-color head-title">Education</h4>
-                                <span class="block">Narayana High School, Mumbai</span>
-                                <span class="block">K.J Somaiya Of Science &amp; Comm.</span>
+                                <span class="block" ng-repeat="edu in myProfile.education">{{edu.examination}}, {{edu.percentage}}, {{edu.institution}}</span>
+                                <!-- <span class="block">K.J Somaiya Of Science &amp; Comm.</span> -->
                               </div>
                             </div>
                           </div>
@@ -79,7 +79,12 @@
                             <div class="profile-info">
                               <div class="pro-head">
                                 <h4 class="blue-color head-title">Experience</h4>
-                                <span>As a UI Designer in wohlig technology. 4 year of expriance</span>
+                                <ul ng-repeat="we in myProfile.workExperience">
+                                  <li>{{we.company}}</li>
+                                  <li>{{we.duration}}</li>
+                                  <li>{{we.responsibilities}}</li>
+                                  <li>{{we.designation}}</li>
+                                </ul>
                               </div>
                             </div>
                           </div>

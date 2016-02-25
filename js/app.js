@@ -167,3 +167,51 @@ firstapp.directive('slideMenu', function($document) {
     }
   };
 });
+
+firstapp.filter('serverimage', function() {
+  return function(input) {
+    if (input) {
+      // console.log('serverimage: ', input);
+      // return input;
+      return  "img/fileUpload/" + input;
+    } else {
+      return "img/logo.png";
+    }
+  };
+});
+
+firstapp.directive('fileModel', ['$parse', function ($parse) {
+  return {
+   restrict: 'A',
+   link: function(scope, element, attrs) {
+      var model = $parse(attrs.fileModel);
+      var modelSetter = model.assign;
+      
+      element.bind('change', function(){
+         scope.$apply(function(){
+            modelSetter(scope, element[0].files[0]);
+         });
+      });
+   }
+  };
+}]);
+
+firstapp.service('fileUpload', ['$http', function ($http) {
+  this.uploadFileToUrl = function(file, uploadUrl){
+   var fd = new FormData();
+   fd.append('file', file);
+
+   $http.post(uploadUrl, fd, {
+      transformRequest: angular.identity,
+      headers: {'Content-Type': undefined}
+   })
+
+   .success(function(){
+    console.log('upload success')
+    console.log('uploaded to: ', uploadUrl)
+   })
+
+   .error(function(){
+   });
+  }
+}]);

@@ -1,7 +1,7 @@
 <div class="pt45">
   <div class="company-profiletab brand-gray-bg">
     <div class="container">
-      <h3 class="company-name blue-color">Aapcot Company Profile</h3>
+      <h3 class="company-name blue-color">{{company.companyDetails.companyName}} Company Profile</h3>
       <uib-tabset>
         <uib-tab>
           <uib-tab-heading><span>About Company</span></uib-tab-heading>
@@ -29,15 +29,15 @@
                             </div>
                             <div class="profile-info">
                               <div class="pro-head">
-                                <h4 class="blue-color head-title">Company details</h4>
-                                <span>Nita Shah (CEO)</span>
-                                <span>nita@email.com</span>
+                                <h4 class="blue-color head-title">Company details: </h4>
+                                <span>{{company.companyDetails.name}}</span>
+                                <span>{{company.companyDetails.email}}</span>
                                 <div class="pro-add">
-                                  <span class="block">+91 8080808080</span>
-                                  <span class="block">Laxmi nivas, A-30</span>
-                                  <span class="block">Near Sadhana School</span>
+                                  <span class="block">{{company.companyDetails.contactNo}}</span>
+                                  <span class="block">{{company.companyDetails.address}}</span>
+                                  <!-- <span class="block">Near Sadhana School</span>
                                   <span class="block">Sion (East), Mumbai</span>
-                                  <span class="block">Maharashtra-420020</span>
+                                  <span class="block">Maharashtra-420020</span> -->
                                 </div>
                               </div>
                             </div>
@@ -58,7 +58,27 @@
                             <div class="profile-info">
                               <div class="pro-head">
                                 <h4 class="blue-color head-title">Experience</h4>
-                                <span>As a UI Designer in wohlig technology. 4 year of expriance</span>
+                                <span>{{company.companyDetails.experience}}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="profile-detail">
+                        <div class="row">
+                          <div class="col-md-2">
+                            <div class="pro-icon">
+                              <img src="img/icon3.png">
+                            </div>
+                          </div>
+                          <div class="col-md-10">
+                            <div class="edit-btn pull-right">
+                              <img src="img/pencil.jpg" alt="" class="img-responsive">
+                            </div>
+                            <div class="profile-info">
+                              <div class="pro-head">
+                                <h4 class="blue-color head-title">Description</h4>
+                                <span>{{company.description}}</span>
                               </div>
                             </div>
                           </div>
@@ -91,15 +111,14 @@
                     </div>
                   </div>
                   <div class="col-md-9">
-                    <div class="job-list-main">
+                    <div class="job-list-main" ng-repeat="job in company.jobs">
                       <div class="edit-btn pull-right">
                         <i class="fa fa-pencil"></i>
                         <i class="fa fa-trash"></i>
                       </div>
-                      <h4 class="blue-color job-title text-uppercase m-clear">program manager - educational services.</h4>
+                      <h4 class="blue-color job-title text-uppercase m-clear">{{job.title}}</h4>
                       <div class="job-detail">
-                        <p class="text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                          specimen book.</p>
+                        <p class="text-justify">{{job.description}}</p>
                       </div>
                     </div>
                   </div>
