@@ -25,13 +25,21 @@
             <div class="col-md-3">
               <div class="form-group">
                 <div class="user rl">
-                  <input name="picture" required ng-model="formregistration.picture" type="file" accept=".jpg,.png" class="form-control ab" file-model = "formregistration.picture">
-                  {{formregistration.picture.name}}<button ng-click = "uploadFile()">upload me</button>
+                  <!-- <input name="picture" required ng-model="formregistration.picture" type="file" accept=".jpg,.png" class="form-control ab"> -->
+                    <input type="file" name="picture" ng-file-select="onFileSelect($files)" onclick="this.value=null" required ng-model="formregistration.picture" accept=".jpg,.png" class="form-control ab">
+                    <div ng-if="formregistration.picture">
+                      <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
+                    </div>
+                      <!-- Name: <span ng-bind="item.file.name"></span><br/>
+                      <button ng-click="item.upload()">upload</button> -->
+                      <!-- <br><button ng-click="item.onSuccess()">Success?</button> -->
+                  <!-- {{formregistration.picture.name}}<button ng-click = "uploadFile()">upload me</button> -->
                   <div class="profile-pic ab text-center">
                     <i class="fa fa-user"></i>
                     <p>Upload Picture</p>
                   </div>
                 </div>
+                <h4 ng-if="isloading">Loading...</h4>
                 <img ng-src="{{formregistration.picture.name|serverimage}}" style="height:200px;">
                 <!-- <ul>
                   <li ng-repeat="item in uploader.queue">
