@@ -166,6 +166,16 @@ i.fa-mobile.input-icon {
     padding: 0px 20px;
   }
 }
+.uploaded-img {
+  @include size(157px,140px);
+  position: relative;
+  img {
+    max-width: 100%;
+    @extend .ab;
+    @extend .get-center;
+
+  }
+}
 .signup {
   padding: 8px 50px;
 }
