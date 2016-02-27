@@ -24,7 +24,7 @@
           <div class="row">
             <div class="col-md-3">
               <div class="form-group">
-                <div class="user rl">
+                <div class="user rl" ng-controller="UploadCtrl">
                   <!-- <input name="picture" required ng-model="formregistration.picture" type="file" accept=".jpg,.png" class="form-control ab"> -->
                     <input type="file" name="picture" ng-file-select="onFileSelect($files)" onclick="this.value=null" required ng-model="formregistration.picture" accept=".jpg,.png" class="form-control ab">
                     <div ng-if="formregistration.picture">

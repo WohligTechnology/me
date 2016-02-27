@@ -300,7 +300,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
-.controller('RegisterLancerCtrl', function($scope, TemplateService, NavigationService, $timeout, $upload) {
+.controller('RegisterLancerCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("registerlancer");
     $scope.menutitle = NavigationService.makeactive("Register Lancer");
@@ -330,6 +330,37 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     // //   console.log('successfully uploaded!');
     // // })
 
+    $scope.mySlides = [
+      '../img/landing.jpg',
+    ];
+  })
+
+  .controller('RegisterClientCtrl', function($scope, fileUpload, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("registerclient");
+    $scope.menutitle = NavigationService.makeactive("register Client");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.formregistration = {};
+    $scope.signUpClient = function () {
+      NavigationService.signUpClient($scope.formregistration, function (data) {
+        console.log(data);
+      })
+    }
+
+    $scope.uploadFile = function(){
+     var file = $scope.formregistration.image;
+     
+     console.log('file is' );
+     console.dir(file);
+     
+     fileUpload.uploadFileToUrl(file, uploadUrl);
+    };
+  })
+
+  .controller('UploadCtrl', function($scope, $upload, $timeout) {
+    
     var uploadres = [];
     //imageupload
     var imagejstupld = "";
@@ -474,34 +505,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //   // $scope.color = '';
     //   // Look for way to clear the input[type=file] element
     // };
-
-    $scope.mySlides = [
-      '../img/landing.jpg',
-    ];
-  })
-
-  .controller('RegisterClientCtrl', function($scope, fileUpload, TemplateService, NavigationService, $timeout) {
-    //Used to name the .html file
-    $scope.template = TemplateService.changecontent("registerclient");
-    $scope.menutitle = NavigationService.makeactive("register Client");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
-
-    $scope.formregistration = {};
-    $scope.signUpClient = function () {
-      NavigationService.signUpClient($scope.formregistration, function (data) {
-        console.log(data);
-      })
-    }
-
-    $scope.uploadFile = function(){
-     var file = $scope.formregistration.image;
-     
-     console.log('file is' );
-     console.dir(file);
-     
-     fileUpload.uploadFileToUrl(file, uploadUrl);
-    };
   })
 
   .controller('LandingCtrl', function($scope, TemplateService, NavigationService, $timeout) {
