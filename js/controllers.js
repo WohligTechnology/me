@@ -1,5 +1,5 @@
 window.uploadUrl = "http://www.myfynx.com/newfynx/index.php/json/uploadImage";
-angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'angularFileUpload'])
+angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'angularFileUpload', 'angularMoment'])
 
 
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -199,10 +199,58 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.menutitle = NavigationService.makeactive("Profile");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    
+    $scope.myProfile = {};
     NavigationService.getMyProfilePage(function (data) {
       $scope.myProfile = data;
     })
+
+    $scope.showEditPD = function (value) {
+      console.log('In show edit');
+      if(value == 'showTrue') {
+        $scope.isEditPD = true;  
+      }
+      else {
+        $scope.isEditPD = false;
+      }
+    }
+
+    $scope.showEditEdu = function(value) {
+      if(value == 'showTrue') {
+        $scope.isEditEdu = true;  
+      }
+      else {
+        $scope.isEditEdu = false;
+      }
+    }
+
+    $scope.addNewEdu = function() {
+      edu = {examination: "", percentage: "", institution: ""}
+      $scope.myProfile.education.push(edu);
+    }
+
+    $scope.showEditExp = function(value) {
+      if(value == 'showTrue') {
+        $scope.isEditExp = true;  
+      }
+      else {
+        $scope.isEditExp = false;
+      }
+    }
+
+    $scope.addNewExp = function() {
+      exp = {company:"", duration:"", responsibilities:"", designation: ""}
+      $scope.myProfile.workExperience.push(exp);
+    }
+
+    NavigationService.findAllJobs(function (data) {
+      $scope.notifications = data;
+      console.log('notifications: ', $scope.notifications);
+      // $scope.jobNumber[0] = $scope.joblist.data[0];
+      // $scope.jobNumber[1] = $scope.joblist.data[1];
+    });
   })
+
   .controller('SearchresultCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("search-result");
@@ -210,6 +258,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
+  
   .controller('CompanyProfileCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("company-profile");
@@ -222,6 +271,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       console.log('company: ', $scope.company);
     })
   })
+  
   .controller('PostjobCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("post-job");
@@ -234,6 +284,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       console.log('categoryOptions: ', $scope.categoryOptions);
     })
   })
+  
   .controller('ResumeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("resume");
@@ -241,6 +292,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
+  
   .controller('Commmunity', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("community");

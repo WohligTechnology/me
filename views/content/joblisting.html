@@ -47,13 +47,13 @@
                   <h5 class="blue-color bold">{{data.company}}</h5>
                   <div class="job-cont">
                     <ul class="list-unstyled">
-                      <li class=" bold">{{data.jobPayment}}</li>
-                      <li class=" bold">{{data.payment}}</li>
-                      <li class=" bold">{{data.timeCommitment}}</li>
-                      <li class=" bold">{{data.postingDate}}</li>
-                      <li class=" bold">expires {{data.expiryDate}}</li>
-                      <li class=" bold">{{data.city}}</li>
-                      <li class=" bold">{{data.jobRole}}</li>
+                      <li class="bold">{{data.jobPayment}}</li>
+                      <li class="bold">{{data.payment}}</li>
+                      <li class="bold">{{data.timeCommitment}}</li>
+                      <li class="bold" am-time-ago="data.postingDate"></li>
+                      <li class="bold">expires {{data.expiryDate | amDateFormat:'MMMM Do YYYY HH:mm:ss'}}</li>
+                      <li class="bold">{{data.city}}</li>
+                      <li class="bold">{{data.jobRole}}</li>
                     </ul>
                   </div>
                   <div class="box-cont">

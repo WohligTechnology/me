@@ -25,19 +25,28 @@
                           </div>
                           <div class="col-md-10">
                             <div class="edit-btn pull-right">
-                              <img src="img/pencil.jpg" alt="" class="img-responsive">
+                              <img ng-src="img/pencil.jpg" class="img-responsive" ng-click="showEditPD('showTrue')">
                             </div>
                             <div class="profile-info">
                               <div class="pro-head">
-                                <h4 class="blue-color head-title">Company details</h4>
-                                <span>{{myProfile.personalDetails.name}}</span>
-                                <span>{{myProfile.personalDetails.email}}</span>
+                                <h4 class="blue-color head-title">Personal details</h4>
+                                <span ng-hide="isEditCD">{{myProfile.personalDetails.name}}</span>
+                                <span ng-hide="isEditCD">{{myProfile.personalDetails.email}}</span>
                                 <div class="pro-add">
-                                  <span class="block">{{myProfile.personalDetails.contactNo}}</span>
-                                  <span class="block">{{myProfile.personalDetails.address}}</span>
+                                  <span class="block" ng-hide="isEditCD">{{myProfile.personalDetails.contactNo}}</span>
+                                  <span class="block" ng-hide="isEditCD">{{myProfile.personalDetails.address}}</span>
                                   <!-- <span class="block">Near Sadhana School</span>
                                   <span class="block">Sion (East), Mumbai</span>
                                   <span class="block">Maharashtra-420020</span> -->
+                                  <div ng-show="isEditCD">
+                                    <form>
+                                      <br>Name: <input type="text" ng-model="myProfile.personalDetails.name">
+                                      <br>Email: <input type="text" ng-model="myProfile.personalDetails.email">
+                                      <br>Contact Number: <input type="text" ng-model="myProfile.personalDetails.contactNo">
+                                      <br>Address: <input type="text" ng-model="myProfile.personalDetails.address">
+                                      <button ng-click="showEditPD('showFalse')">Submit</button>
+                                    </form>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -53,14 +62,25 @@
                           </div>
                           <div class="col-md-10">
                             <div class="edit-btn pull-right">
-                              <img src="img/pencil.jpg" alt="" class="img-responsive">
+                              <img src="img/pencil.jpg" class="img-responsive" ng-click="showEditEdu('showTrue')">
                             </div>
                             <div class="profile-info">
                               <div class="pro-head">
                                 <h4 class="blue-color head-title">Education</h4>
-                                <span class="block" ng-repeat="edu in myProfile.education">{{edu.examination}}, {{edu.percentage}}, {{edu.institution}}</span>
+                                <span class="block" ng-repeat="edu in myProfile.education" ng-hide="isEditEdu">{{edu.examination}}, {{edu.percentage}}, {{edu.institution}}</span>
                                 <!-- <span class="block">K.J Somaiya Of Science &amp; Comm.</span> -->
                               </div>
+                            </div>
+                            <div ng-show="isEditEdu">
+                              <form>
+                                <div ng-repeat="edu in myProfile.education">
+                                <br>Examination: <input type="text" ng-model="edu.examination">
+                                <br>Percentage: <input type="text" ng-model="edu.percentage">
+                                <br>Institution: <input type="text" ng-model="edu.institution">
+                                </div>
+                                <button ng-click="addNewEdu()">Add New Education Detail</button>
+                                <button ng-click="showEditEdu('showFalse')">Submit</button>
+                              </form>
                             </div>
                           </div>
                         </div>
@@ -74,17 +94,29 @@
                           </div>
                           <div class="col-md-10">
                             <div class="edit-btn pull-right">
-                              <img src="img/pencil.jpg" alt="" class="img-responsive">
+                              <img src="img/pencil.jpg" alt="" class="img-responsive" ng-click="showEditExp('showTrue')">
                             </div>
                             <div class="profile-info">
                               <div class="pro-head">
                                 <h4 class="blue-color head-title">Experience</h4>
-                                <ul ng-repeat="we in myProfile.workExperience">
+                                <ul ng-repeat="we in myProfile.workExperience" ng-hide="isEditExp">
                                   <li>{{we.company}}</li>
                                   <li>{{we.duration}}</li>
                                   <li>{{we.responsibilities}}</li>
                                   <li>{{we.designation}}</li>
                                 </ul>
+                                <div ng-show="isEditExp">
+                                  <form>
+                                    <div ng-repeat="we in myProfile.workExperience">
+                                    <br>Company: <input type="text" ng-model="we.company">
+                                    <br>Duration: <input type="text" ng-model="we.duration">
+                                    <br>Responsibilities: <textarea ng-model="we.responsibilities"></textarea>
+                                    <br>Designation: <input type="text" ng-model="we.designation">
+                                    </div>
+                                    <button ng-click="addNewExp()">Add New Experience</button>
+                                    <button ng-click="showEditExp('showFalse')">Submit</button>
+                                  </form>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -110,7 +142,7 @@
           <div class="notifications">
             <div class="row">
               <div class="col-md-9">
-                <div class="list white-bg">
+                <div class="list white-bg" ng-repeat="notify in notifications.data">
                   <div class="row">
                     <div class="col-md-3">
                       <div class="company-imgholder">
@@ -120,78 +152,19 @@
                     <div class="col-md-9">
                       <div class="name-row">
                         <div class="pull-right">
-                          <span class="bold">1 Day Ago</span>
+                          <!-- <span >{{ | amDateFormat:'dddd, MMMM Do YYYY'}}</span> -->
+                          <span class="bold" am-time-ago="notify.postingDate"></span>
                         </div>
-                        <h5 class="blue-color bold">Build a simple Static Webpage</h5>
+                        <h5 class="blue-color bold">{{notify.title}}</h5>
                         <div class="job-cont">
                           <ul class="list-unstyled">
-                            <li class=" bold">Hourly</li>
-                            <li class=" bold">1000-2000 Rs.</li>
-                            <li class=" bold">40 hours weekly</li>
+                            <li class=" bold">{{notify.jobPayment}}</li>
+                            <li class=" bold">{{notify.payment}}</li>
+                            <li class=" bold">{{notify.timeCommitment}}</li>
                           </ul>
                         </div>
                         <div class="box-cont">
-                          <p>
-                            I am looking for a static web page developer to work on it. The first project would be to develop a static page.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="list white-bg">
-                  <div class="row">
-                    <div class="col-md-3">
-                      <div class="company-imgholder">
-                        <img src="img/house.jpg" alt="Company Image" class="img-responsive">
-                      </div>
-                    </div>
-                    <div class="col-md-9">
-                      <div class="name-row">
-                        <div class="pull-right">
-                          <span class="bold">2 Day Ago</span>
-                        </div>
-                        <h5 class="blue-color bold">Build a simple Dynamic Webpage</h5>
-                        <div class="job-cont">
-                          <ul class="list-unstyled">
-                            <li class=" bold">Hourly</li>
-                            <li class=" bold">1000-2000 Rs.</li>
-                            <li class=" bold">40 hours weekly</li>
-                          </ul>
-                        </div>
-                        <div class="box-cont">
-                          <p>
-                            I am looking for a Dynamic web page developer to work on it. The first project would be to develop a static page.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="list white-bg">
-                  <div class="row">
-                    <div class="col-md-3">
-                      <div class="company-imgholder">
-                        <img src="img/house.jpg" alt="Company Image" class="img-responsive">
-                      </div>
-                    </div>
-                    <div class="col-md-9">
-                      <div class="name-row">
-                        <div class="pull-right">
-                          <span class="bold">2 Day Ago</span>
-                        </div>
-                        <h5 class="blue-color bold">Build a simple Dynamic Webpage</h5>
-                        <div class="job-cont">
-                          <ul class="list-unstyled">
-                            <li class=" bold">Hourly</li>
-                            <li class=" bold">1000-2000 Rs.</li>
-                            <li class=" bold">40 hours weekly</li>
-                          </ul>
-                        </div>
-                        <div class="box-cont">
-                          <p>
-                            I am looking for a Dynamic web page developer to work on it. The first project would be to develop a static page.
-                          </p>
+                          <p>{{notify.description}}</p>
                         </div>
                       </div>
                     </div>
