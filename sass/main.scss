@@ -37,6 +37,38 @@ body {
   border-radius: 0;
 }
 
+.radio {
+  label {
+    padding-left: 0;
+  }
+  input[type="radio"] {
+    display: none;
+  }
+  input[type="radio"] + label {
+    color: #000;
+    font-size: 13px;
+  }
+  input[type="radio"] + label span {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    margin: -1px 4px 0 0;
+    cursor: pointer;
+    border: 1px solid #0489C7;
+    border-radius: 100%;
+  }
+  input[type="radio"] + label span {
+    background-color: transparent;
+  }
+  input[type="radio"]:checked + label span {
+    background-color: #0489C7;
+  }
+  input[type="radio"] + label span,
+  input[type="radio"]:checked + label span {
+    @include transition(background-color 0.4s linear);
+  }
+}
+
 .checkbox {
   input[type="checkbox"] {
     display: none;
