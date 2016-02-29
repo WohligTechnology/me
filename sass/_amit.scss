@@ -422,4 +422,18 @@ i.fa-mobile.input-icon {
   margin: 40px 0;
 }
 // end search category
+// post new job
+.select-newjob {
+select {
+  height: 40px;
+  padding: 8px 10px;
+  font-size: 15px;
+}
+.job-select { height: 40px; }
+&:after {
+  @include square(40px);
+  line-height: 40px;
+}
+}
+// end of post new job
 .minh { min-height: 150px; }

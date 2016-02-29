@@ -60,6 +60,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     templateUrl: "views/template.html",
     controller: 'CommmunityCtrl'
   })
+  .state('newjob', {
+    url: "/newjob",
+    templateUrl: "views/template.html",
+    controller: 'NewjobCtrl'
+  })
   .state('postjob', {
     url: "/post-job",
     templateUrl: "views/template.html",
@@ -186,7 +191,7 @@ firstapp.directive('fileModel', ['$parse', function ($parse) {
    link: function(scope, element, attrs) {
       var model = $parse(attrs.fileModel);
       var modelSetter = model.assign;
-      
+
       element.bind('change', function(){
          scope.$apply(function(){
             modelSetter(scope, element[0].files[0]);

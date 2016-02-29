@@ -67,7 +67,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //   $scope.jobNumber[0] = $scope.joblist.data[0];
     //   $scope.jobNumber[1] = $scope.joblist.data[1];
     // });
-    
+
     // $scope.loadMore = function () {
     //   if($scope.jobNumber.length < $scope.joblist.data.length) {
     //     var last = $scope.jobNumber.length - 1;
@@ -75,7 +75,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //     console.log('last: ', last)
     //     console.log('jobNumber: ', $scope.jobNumber)
     //     for (var i = 1; i <= 2; i++) {
-          
+
     //         console.log('in the if statement')
     //         $scope.jobNumber.push($scope.joblist.data[last + i]);
     //       }
@@ -161,7 +161,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.menutitle = NavigationService.makeactive("Search");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    
+
     $scope.jobs = {
     "count": 30,
     "lastPage": 3
@@ -181,16 +181,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
             "role": "Design Student",
             "experience": 1,
             "city": "Bangalore"
-        }, 
-        
+        },
+
         {
             "image": "img/search.png",
             "name": "Pranit Sahu",
             "role": "Design Intern",
             "experience": 3,
             "city": "Mangalore"
-        }, 
-        
+        },
+
         {
             "image": "img/search.png",
             "name": "Deepak Shah",
@@ -213,7 +213,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //   console.log('all freelancers: ', $scope.jobs);
     //   $scope.pageOfJobs[0] = $scope.jobs.data[0];
     //   $scope.pageOfJobs[1] = $scope.jobs.data[1];
-    //   console.log('all freelancers2: ', $scope.pageOfJobs);       
+    //   console.log('all freelancers2: ', $scope.pageOfJobs);
     // });
 
     // $scope.loadMoreTwo = function () {
@@ -263,7 +263,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.menutitle = NavigationService.makeactive("Search Category");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    
+
     $scope.cityOptions = ["mumbai", "delhi"]
     $scope.categoryOptions = ["Design", "Websites IT Software", "Mobile", "Data Entry", "Product Sourcing", "Sales & Marketing", "Business Accounting & Legal"]
     // NavigationService.getCityOptions(function (data) {
@@ -289,7 +289,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.menutitle = NavigationService.makeactive("Profile");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    
+
     $scope.myProfile = {
       "personalDetails": {
           "userId": "priyanka123",
@@ -330,7 +330,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.showEditPD = function (value) {
       console.log('In show edit');
       if(value == 'showTrue') {
-        $scope.isEditPD = true;  
+        $scope.isEditPD = true;
       }
       else {
         $scope.isEditPD = false;
@@ -339,7 +339,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
 
     $scope.showEditEdu = function(value) {
       if(value == 'showTrue') {
-        $scope.isEditEdu = true;  
+        $scope.isEditEdu = true;
       }
       else {
         $scope.isEditEdu = false;
@@ -353,7 +353,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
 
     $scope.showEditExp = function(value) {
       if(value == 'showTrue') {
-        $scope.isEditExp = true;  
+        $scope.isEditExp = true;
       }
       else {
         $scope.isEditExp = false;
@@ -495,7 +495,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
-  
+
   .controller('CompanyProfileCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("company-profile");
@@ -544,7 +544,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
           }
       ]}
   })
-  
+
   .controller('PostjobCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("post-job");
@@ -558,7 +558,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     // })
     $scope.categoryOptions = ["Design", "Websites IT Software", "Mobile", "Data Entry", "Product Sourcing", "Sales & Marketing", "Business Accounting & Legal"]
   })
-  
+
+  .controller('NewjobCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("newjob");
+    $scope.menutitle = NavigationService.makeactive("New Job");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+  })
+
   .controller('ResumeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("resume");
@@ -566,7 +574,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
-  
+
   .controller('Commmunity', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("community");
@@ -625,16 +633,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
 
     $scope.uploadFile = function(){
      var file = $scope.formregistration.image;
-     
+
      console.log('file is' );
      console.dir(file);
-     
+
      fileUpload.uploadFileToUrl(file, uploadUrl);
     };
   })
 
   .controller('UploadCtrl', function($scope, $upload, $timeout) {
-    
+
     var uploadres = [];
     //imageupload
     var imagejstupld = "";
@@ -751,10 +759,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
 
     // $scope.uploadFile = function(){
     //  var file = $scope.formregistration.picture;
-     
+
     //  console.log('file is' );
     //  console.dir(file);
-     
+
     //  var uploadUrl = "http://localhost/me/img/fileUpload";
     //  fileUpload.uploadFileToUrl(file, uploadUrl);
     // };
