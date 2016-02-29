@@ -25,11 +25,11 @@
             <div class="col-md-3">
               <div class="form-group">
                 <div class="user rl" ng-controller="UploadCtrl">
-                  <!-- <input name="picture" required ng-model="formregistration.picture" type="file" accept=".jpg,.png" class="form-control ab"> -->
-                    <input type="file" name="picture" ng-file-select="onFileSelect($files)" onclick="this.value=null" required ng-model="formregistration.picture" accept=".jpg,.png" class="form-control ab">
-                    <div ng-if="formregistration.picture">
+                  <input name="picture" required ng-model="formregistration.picture" type="file" accept=".jpg,.png" class="form-control ab">
+                    <!-- <input type="file" name="picture" ng-file-select="onFileSelect($files)" onclick="this.value=null" required ng-model="formregistration.picture" accept=".jpg,.png" class="form-control ab"> -->
+                    <!-- <div ng-if="formregistration.picture">
                       <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
-                    </div>
+                    </div> -->
                       <!-- Name: <span ng-bind="item.file.name"></span><br/>
                       <button ng-click="item.upload()">upload</button> -->
                       <!-- <br><button ng-click="item.onSuccess()">Success?</button> -->
@@ -39,10 +39,10 @@
                     <p>Upload Picture</p>
                   </div>
                 </div>
-                <div class="uploaded-img" ng-show="formregistration.picture">
+                <!-- <div class="uploaded-img" ng-show="formregistration.picture">
                   <img ng-src="{{formregistration.picture.name|serverimage}}">
-                </div>
-                <h4 ng-if="isloading">Loading...</h4>
+                </div> -->
+                <!-- <h4 ng-if="isloading">Loading...</h4> -->
                 <!-- <img ng-src="{{formregistration.picture.name|serverimage}}" style="height:200px;"> -->
                 <!-- <ul>
                   <li ng-repeat="item in uploader.queue">
