@@ -99,16 +99,24 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
     getCityOptions:function (callback) {
-      $http.get(adminurl+'getcityoptions').success(callback);
+      $http({
+        url: adminurl+'getcityoptions',
+        method:'POST',
+        withCredentials:true
+      }).success(callback);
     },
     getCategoryOptions:function (callback) {
-      $http.get(adminurl+'findallcategories').success(callback);
+      $http({
+        url: adminurl+'findallcategories',
+        method:'POST',
+        withCredentials:true
+      }).success(callback);
     },
     findAllJobs: function (callback) {
       $http({
         url: adminurl + 'findalljobs',
         method: 'POST',
-        withCredentials: true,
+        withCredentials:true,
         data: {
           "job":"designer",
           "city":"mumbai"
@@ -116,19 +124,39 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
     getAllFreelancers: function (callback) {
-      $http.get(adminurl+'findallfreelancers').success(callback);
+      $http({
+        url: adminurl+'findallfreelancers',
+        method:'POST',
+        withCredentials:true
+      }).success(callback);
     },
     getCompanyProfile: function (callback) {
-      $http.get(adminurl+'findonecompanyprofile/1').success(callback);
+      $http({
+        url: adminurl+'findonecompanyprofile',
+        method:'POST',
+        withCredentials:true
+      }).success(callback);
     },
     getTestimonials: function (callback) {
-      $http.get(adminurl+'findalltestimonials').success(callback);
+      $http({
+        url: adminurl+'findalltestimonials',
+        method:'POST',
+        withCredentials:true
+      }).success(callback);
     },
     getEachJobDetail: function (callback) {
-      $http.get(adminurl+'findonejob/1').success(callback);
+      $http({
+        url: adminurl+'findonejob',
+        method:'POST',
+        withCredentials:true
+      }).success(callback);
     },
     getMyProfilePage: function (callback) {
-      $http.get(adminurl+'findoneprofile/1').success(callback);
+      $http({
+        url: adminurl+'findoneprofile',
+        method: 'POST',
+        withCredentials:true
+      }).success(callback);
     }
   };
 });

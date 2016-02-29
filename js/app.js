@@ -173,7 +173,7 @@ firstapp.filter('serverimage', function() {
     if (input) {
       // console.log('serverimage: ', input);
       // return input;
-      return  "img/fileUpload/" + input;
+      return  "http://www.myfynx.com/newfynx/index.php/json/uploadImage/" + input;
     } else {
       return "img/logo.png";
     }

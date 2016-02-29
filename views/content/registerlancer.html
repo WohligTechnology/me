@@ -39,8 +39,11 @@
                     <p>Upload Picture</p>
                   </div>
                 </div>
+                <div class="uploaded-img" ng-show="formregistration.picture">
+                  <img ng-src="{{formregistration.picture.name|serverimage}}">
+                </div>
                 <h4 ng-if="isloading">Loading...</h4>
-                <img ng-src="{{formregistration.picture.name|serverimage}}" style="height:200px;">
+                <!-- <img ng-src="{{formregistration.picture.name|serverimage}}" style="height:200px;"> -->
                 <!-- <ul>
                   <li ng-repeat="item in uploader.queue">
                       Name: <span ng-bind="item.file.name" file-input="item.file.name"></span><br/>
