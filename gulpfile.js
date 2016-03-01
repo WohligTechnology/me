@@ -1,5 +1,6 @@
 var jsArray = [
   './bower_components/jquery/dist/jquery.min.js',
+  './bower_components/angular/angular.min.js',
   './bower_components/ScrollMagic/scrollmagic/minified/ScrollMagic.min.js',
   './bower_components/gsap/src/minified/TweenMax.min.js',
   './bower_components/ScrollMagic/scrollmagic/minified/plugins/animation.gsap.min.js',
@@ -7,8 +8,7 @@ var jsArray = [
   './bower_components/wowjs/dist/wow.min.js',
   './bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
   './bower_components/lodash/lodash.min.js',
-
-  './bower_components/angular/angular.min.js',
+  './bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js',
   './bower_components/angular-sanitize/angular-sanitize.min.js',
   './bower_components/angular-animate/angular-animate.min.js',
   './bower_components/angular-bootstrap/ui-bootstrap.min.js',
@@ -16,6 +16,13 @@ var jsArray = [
   './bower_components/ui-router/release/angular-ui-router.min.js',
   './bower_components/angular-flexslider/angular-flexslider.js',
   './bower_components/angular-scroll/angular-scroll.min.js',
+  './lib/fileupload/angular-file-upload.js',
+  './lib/fileupload/angular-file-upload-html5-shim.js',
+  './lib/fileupload/angular-file-upload-shim.js',
+  './lib/fileupload/FileAPI.min.js',
+  './lib/fileupload/upload.js',
+  './bower_components/moment/moment.js',
+  './bower_components/angular-moment/angular-moment.js',
 
   //uesr's js
   './js/app.js',
