@@ -23,8 +23,8 @@ $linkedin: #007bb6;
 .full-width {
   width: 100%;
 }
-body {
-  padding-top: 30px;
+body { 
+  padding-top: 60px;
   font-family: Micross,Arial, sans-serif;
   .no-scroll {
     overflow: hidden;
@@ -162,8 +162,9 @@ nav li:hover .dropdown-menu {
   box-shadow: 1px 0 6px #ddd;
 }
 .navbar-brand img {
-  width: 130px;
+  width: 180px;
 }
+.navbar { min-height: 70px; }
 .rl {
   position: relative;
 }
