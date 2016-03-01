@@ -423,11 +423,13 @@ i.fa-mobile.input-icon {
 }
 // end search category
 // post new job
+.new-jobpost { padding: 20px 0px 0px; }
 .select-newjob {
 select {
   height: 40px;
   padding: 8px 10px;
   font-size: 15px;
+  option[value="? undefined:undefined ?"] { display: none !important; }
 }
 .job-select { height: 40px; }
 &:after {
@@ -435,5 +437,7 @@ select {
   line-height: 40px;
 }
 }
+
+.newjob-form { padding: 60px 0; }
 // end of post new job
 .minh { min-height: 150px; }

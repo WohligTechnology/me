@@ -1,30 +1,34 @@
 <div class="new-jobpost brand-gray-bg">
   <h3 class="blue-color text-center">Post Your Job</h3>
   <div class="container-fluid">
-    <div class="white-bg">
+    <div class="white-bg newjob-form">
       <div class="container">
         <div class="row">
           <div class="col-md-offset-2 col-md-8">
             <div class="register-form">
-              <form action="">
+              <form name="newjobform">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Job Designation">
+                  <input type="text" name="designation" class="form-control" placeholder="Job Designation" ng-model="designation" required>
+                  <div class="ab" ng-show="newjobform.designation.$error.required && newjobform.designation.$touched" role="alert">Please enter your Job Designation.</div>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Department">
+                  <input type="text" name="department" ng-model="department" class="form-control" placeholder="Department" required>
+                  <div class="ab" ng-show="newjobform.department.$error.required && newjobform.department.$touched" role="alert">Please enter your Department.</div>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Description">
+                  <input type="text" name="description" class="form-control" ng-model="description" placeholder="Description" required>
+                  <div class="ab" ng-show="newjobform.description.$error.required && newjobform.description.$touched" role="alert">Please enter your Description.</div>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Reporting">
+                  <input type="text" name="reporting" ng-model="reporting" class="form-control" placeholder="Reporting" required>
+                  <div class="ab" ng-show="newjobform.reporting.$error.required && newjobform.reporting.$touched" role="alert">Please enter Reporting.</div>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <div class="search-input select-newjob custom-select text-center">
-                        <select class="form-control">
-                          <option>Experience</option>
+                        <select class="form-control" name="experience" ng-model="experience" required>
+                          <option value="Experience" selected >Experience</option>
                           <option>Less than 1 Year</option>
                           <option>1 - 5 Years</option>
                           <option>6 - 10 Years</option>
@@ -33,13 +37,14 @@
                         </select>
                         <span class="job-select"></span>
                       </div>
+                      <div class="ab" ng-show="newjobform.experience.$error.required && newjobform.experience.$touched" role="alert">Please enter your Experience.</div>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <div class="search-input custom-select select-newjob text-center">
-                        <select class="form-control">
-                          <option>Reportees</option>
+                        <select class="form-control" name="reportees" ng-model="reportees" required>
+                          <option selected>Reportees</option>
                           <option>1</option>
                           <option>2</option>
                           <option>3</option>
@@ -53,6 +58,7 @@
                         </select>
                         <span class="job-select"></span>
                       </div>
+                      <div class="ab" ng-show="newjobform.reportees.$error.required && newjobform.reportees.$touched" role="alert">Please enter Reportees.</div>
                     </div>
                   </div>
                 </div>
