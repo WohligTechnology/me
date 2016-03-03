@@ -517,7 +517,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
           "experience":"As a UI Designer in wohlig technology. 4 year of exprience"
       },
 
-      "description": "jowjewojoewjfowejfowejfifjowefowejfowejeeojoweijf",
+      "description": "Lorem ipsum dolor It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
 
       "jobs": [{
               "title": "program manager",

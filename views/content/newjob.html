@@ -4,7 +4,7 @@
     <div class="white-bg newjob-form">
       <div class="container">
         <div class="row">
-          <div class="col-md-offset-2 col-md-8">
+          <div class="col-md-offset-3 col-md-6">
             <div class="register-form">
               <form name="newjobform">
                 <div class="form-group">
@@ -23,7 +23,21 @@
                   <input type="text" name="reporting" ng-model="reporting" class="form-control" placeholder="Reporting" required>
                   <div class="ab" ng-show="newjobform.reporting.$error.required && newjobform.reporting.$touched" role="alert">Please enter Reporting.</div>
                 </div>
-                <div class="row">
+                <div class="form-group">
+                  <div class="search-input select-newjob custom-select text-center">
+                    <select class="form-control" name="experience" required>
+                      <option value="Experience" selected >Experience</option>
+                      <option>Less than 1 Year</option>
+                      <option>1 - 5 Years</option>
+                      <option>6 - 10 Years</option>
+                      <option>11 - 15 Years</option>
+                      <option>More than 15 Years</option>
+                    </select>
+                    <span class="job-select"></span>
+                  </div>
+                  <div class="ab" ng-show="newjobform.experience.$error.required && newjobform.experience.$touched" role="alert">Please enter your Experience.</div>
+                </div>
+                <!-- <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <div class="search-input select-newjob custom-select text-center">
@@ -61,7 +75,7 @@
                       <div class="ab" ng-show="newjobform.reportees.$error.required && newjobform.reportees.$touched" role="alert">Please enter Reportees.</div>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary" ui-sref="companyprofile">Post Job</button>
                 </div>
