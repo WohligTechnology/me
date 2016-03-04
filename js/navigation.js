@@ -7,10 +7,6 @@ var navigationservice = angular.module('navigationservice', [])
     classis: "active",
     icon: "fa-home",
     link: "home",
-    subnav: [{
-      name: "Subnav1",
-      classis: "active",
-    }]
   },
   {
     name: "Register/Sign in",

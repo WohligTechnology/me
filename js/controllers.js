@@ -30,62 +30,63 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.menutitle = NavigationService.makeactive("Job Listing");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    $scope.joblist = {"count": 1500}
-    $scope.jobNumber = [
-    {
-      "id":1,
-      "title":"efjowefjoiwefj",
-      "image":"img/resgration.png",
-      "company": "BobCorn",
-      "jobPayment": "Hourly",
-      "payment": "Rs. 1000-2000",
-      "timeCommitment": "40 hours weekly",
-      "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
-      "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
-      "description": "This is an awesome job! you should try it!!",
-      "city":"Mumbai",
-      "jobRole":"developer"
-      },
+    // $scope.joblist = {"count": 1500}
+    // $scope.jobNumber = [
+    // {
+    //   "id":1,
+    //   "title":"efjowefjoiwefj",
+    //   "image":"img/resgration.png",
+    //   "company": "BobCorn",
+    //   "jobPayment": "Hourly",
+    //   "payment": "Rs. 1000-2000",
+    //   "timeCommitment": "40 hours weekly",
+    //   "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
+    //   "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
+    //   "description": "This is an awesome job! you should try it!!",
+    //   "city":"Mumbai",
+    //   "jobRole":"developer"
+    //   },
 
-      {
-        "id":2,
-        "title":"efjowefjoiwefj",
-        "image":"img/resgration.png",
-        "company": "AapCot",
-        "jobPayment": "Hourly",
-        "payment": "Rs. 1000-2000",
-        "timeCommitment": "40 hours weekly",
-        "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
-        "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
-        "description": "This is an awesome job! you should try it!!",
-        "city":"Delhi",
-        "jobRole":"designer"
-      }];
-    // NavigationService.findAllJobs(function (data) {
-    //   $scope.joblist = data;
-    //   console.log('joblist: ', $scope.joblist);
-    //   $scope.jobNumber[0] = $scope.joblist.data[0];
-    //   $scope.jobNumber[1] = $scope.joblist.data[1];
-    // });
+    //   {
+    //     "id":2,
+    //     "title":"efjowefjoiwefj",
+    //     "image":"img/resgration.png",
+    //     "company": "AapCot",
+    //     "jobPayment": "Hourly",
+    //     "payment": "Rs. 1000-2000",
+    //     "timeCommitment": "40 hours weekly",
+    //     "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
+    //     "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
+    //     "description": "This is an awesome job! you should try it!!",
+    //     "city":"Delhi",
+    //     "jobRole":"designer"
+    //   }];
+    $scope.jobNumber = []
+    NavigationService.findAllJobs(function (data) {
+      $scope.joblist = data;
+      console.log('joblist: ', $scope.joblist);
+      $scope.jobNumber[0] = $scope.joblist.data[0];
+      $scope.jobNumber[1] = $scope.joblist.data[1];
+    });
 
-    // $scope.loadMore = function () {
-    //   if($scope.jobNumber.length < $scope.joblist.data.length) {
-    //     var last = $scope.jobNumber.length - 1;
-    //     console.log('joblist length: ', $scope.joblist.data.length)
-    //     console.log('last: ', last)
-    //     console.log('jobNumber: ', $scope.jobNumber)
-    //     for (var i = 1; i <= 2; i++) {
+    $scope.loadMore = function () {
+      if($scope.jobNumber.length < $scope.joblist.data.length) {
+        var last = $scope.jobNumber.length - 1;
+        console.log('joblist length: ', $scope.joblist.data.length)
+        console.log('last: ', last)
+        console.log('jobNumber: ', $scope.jobNumber)
+        for (var i = 1; i <= 2; i++) {
 
-    //         console.log('in the if statement')
-    //         $scope.jobNumber.push($scope.joblist.data[last + i]);
-    //       }
-    //     console.log('job number: ', $scope.jobNumber)
-    //   }
-    // }
+            console.log('in the if statement')
+            $scope.jobNumber.push($scope.joblist.data[last + i]);
+          }
+        console.log('job number: ', $scope.jobNumber)
+      }
+    }
 
-    // $scope.mySlides = [
-    //   'img/landing.jpg',
-    // ];
+    $scope.mySlides = [
+      'img/landing.jpg',
+    ];
 
     // $scope.joblist = [
     //   {
@@ -124,30 +125,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    $scope.jobDetail = {
-      "company": "BobCorn",
-      "roleRequired": "Mobile App Developer",
-      "city": "Mumbai",
-      "jobPayment": "hourly",
-      "payment": "Rs. 1000-2000",
-      "timeCommitment": "40 hours weekly",
-      "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
-      "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
-      "jobDescription": "This is an awesome job! you should try it!!",
-      "companyDescription": "This is an awesome company! you should try it!!",
-      "exposure": "WorldWideWeb",
-      "jobResponsibilities": "You are going to have alot of responsibilities!!",
-      "image":"img/joblist.jpg"
-    }
-    // NavigationService.getEachJobDetail(function (data) {
-    //   $scope.jobDetail = data;
-    //   console.log('job detail: ', $scope.jobDetail);
-    // });
+    // $scope.jobDetail = {
+    //   "company": "BobCorn",
+    //   "roleRequired": "Mobile App Developer",
+    //   "city": "Mumbai",
+    //   "jobPayment": "hourly",
+    //   "payment": "Rs. 1000-2000",
+    //   "timeCommitment": "40 hours weekly",
+    //   "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
+    //   "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
+    //   "jobDescription": "This is an awesome job! you should try it!!",
+    //   "companyDescription": "This is an awesome company! you should try it!!",
+    //   "exposure": "WorldWideWeb",
+    //   "jobResponsibilities": "You are going to have alot of responsibilities!!",
+    //   "image":"img/joblist.jpg"
+    // }
+
+    NavigationService.getEachJobDetail(function (data) {
+      $scope.jobDetail = data;
+      console.log('job detail: ', $scope.jobDetail);
+    });
 
     $scope.mySlides = [
       'img/landing.jpg',
     ];
   })
+
   .controller('JobSearchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("job-search");
@@ -155,6 +158,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
+  
   .controller('SearchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("search");
@@ -167,69 +171,71 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     "lastPage": 3
     }
 
-    $scope.pageOfJobs = [{
-            "image": "img/search.png",
-            "name": "Sonia Nehwal",
-            "role": "Graphic Designer",
-            "experience": 2,
-            "city": "Mumbai"
-        },
+    // $scope.pageOfJobs = [{
+    //         "image": "img/search.png",
+    //         "name": "Sonia Nehwal",
+    //         "role": "Graphic Designer",
+    //         "experience": 2,
+    //         "city": "Mumbai"
+    //     },
 
-        {
-            "image": "img/search.png",
-            "name": "Rital Naik",
-            "role": "Design Student",
-            "experience": 1,
-            "city": "Bangalore"
-        },
+    //     {
+    //         "image": "img/search.png",
+    //         "name": "Rital Naik",
+    //         "role": "Design Student",
+    //         "experience": 1,
+    //         "city": "Bangalore"
+    //     },
 
-        {
-            "image": "img/search.png",
-            "name": "Pranit Sahu",
-            "role": "Design Intern",
-            "experience": 3,
-            "city": "Mangalore"
-        },
+    //     {
+    //         "image": "img/search.png",
+    //         "name": "Pranit Sahu",
+    //         "role": "Design Intern",
+    //         "experience": 3,
+    //         "city": "Mangalore"
+    //     },
 
-        {
-            "image": "img/search.png",
-            "name": "Deepak Shah",
-            "role": "Senior Graphic Designer",
-            "experience": 5,
-            "city": "Mysore"
-        },
+    //     {
+    //         "image": "img/search.png",
+    //         "name": "Deepak Shah",
+    //         "role": "Senior Graphic Designer",
+    //         "experience": 5,
+    //         "city": "Mysore"
+    //     },
 
-        {
-            "image": "img/search.png",
-            "name": "Rahul Kane",
-            "role": "UI/UX designer",
-            "experience": 4,
-            "city": "Delhi"
-        }
-    ]
-    // $scope.pageOfJobs = []
-    // NavigationService.getAllFreelancers(function (data) {
-    //   $scope.jobs = data;
-    //   console.log('all freelancers: ', $scope.jobs);
-    //   $scope.pageOfJobs[0] = $scope.jobs.data[0];
-    //   $scope.pageOfJobs[1] = $scope.jobs.data[1];
-    //   console.log('all freelancers2: ', $scope.pageOfJobs);
-    // });
-
-    // $scope.loadMoreTwo = function () {
-    //   // console.log('In the load more two function')
-    //   // console.log('jobs length: ', $scope.jobs.data.length)
-    //   if($scope.pageOfJobs.length < $scope.jobs.data.length-1)
-    //   {
-    //     console.log('all freelancers1: ', $scope.pageOfJobs);
-    //     var last = $scope.pageOfJobs.length;
-    //     console.log('last: ', last);
-    //     for (var i = 0; i < 2; i++) {
-    //       $scope.pageOfJobs.push($scope.jobs.data[last + i]);
+    //     {
+    //         "image": "img/search.png",
+    //         "name": "Rahul Kane",
+    //         "role": "UI/UX designer",
+    //         "experience": 4,
+    //         "city": "Delhi"
     //     }
-    //     console.log('job number: ', $scope.pageOfJobs)
-    //   }
-    // }
+    // ]
+    
+    $scope.pageOfJobs = []
+    NavigationService.getAllFreelancers(function (data) {
+      $scope.jobs = data;
+      console.log('all freelancers: ', $scope.jobs);
+      $scope.pageOfJobs[0] = $scope.jobs.data[0];
+      $scope.pageOfJobs[1] = $scope.jobs.data[1];
+      console.log('all freelancers2: ', $scope.pageOfJobs);
+    });
+
+    $scope.loadMoreTwo = function () {
+      // console.log('In the load more two function')
+      // console.log('jobs length: ', $scope.jobs.data.length)
+      if($scope.pageOfJobs.length < $scope.jobs.data.length-1)
+      {
+        console.log('all freelancers1: ', $scope.pageOfJobs);
+        var last = $scope.pageOfJobs.length;
+        console.log('last: ', last);
+        for (var i = 0; i < 2; i++) {
+          $scope.pageOfJobs.push($scope.jobs.data[last + i]);
+        }
+        console.log('job number: ', $scope.pageOfJobs)
+      }
+    }
+
     // $scope.jobs = [
     //   {
     //     img: "img/search.png",
@@ -264,17 +270,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    $scope.cityOptions = ["mumbai", "delhi"]
-    $scope.categoryOptions = ["Design", "Websites IT Software", "Mobile", "Data Entry", "Product Sourcing", "Sales & Marketing", "Business Accounting & Legal"]
-    // NavigationService.getCityOptions(function (data) {
-    //   $scope.cityOptions = data;
-    //   console.log('cityOptions: ', $scope.cityOptions);
-    // })
+    // $scope.cityOptions = ["mumbai", "delhi"]
+    // $scope.categoryOptions = ["Design", "Websites IT Software", "Mobile", "Data Entry", "Product Sourcing", "Sales & Marketing", "Business Accounting & Legal"]
+    
+    NavigationService.getCityOptions(function (data) {
+      $scope.cityOptions = data;
+      console.log('cityOptions: ', $scope.cityOptions);
+    })
 
-    // NavigationService.getCategoryOptions(function (data) {
-    //   $scope.categoryOptions = data;
-    //   console.log('categoryOptions: ', $scope.categoryOptions);
-    // })
+    NavigationService.getCategoryOptions(function (data) {
+      $scope.categoryOptions = data;
+      console.log('categoryOptions: ', $scope.categoryOptions);
+    })
   })
   .controller('RegistrationCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -290,42 +297,43 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    $scope.myProfile = {
-      "personalDetails": {
-          "userId": "priyanka123",
-          "name": "Priyanka Kumbhar",
-          "email": "avicci@gmail.com",
-          "contactNo": "+918087120163",
-          "address": "Mayur Nagar, Aarey Colony, etc etc"
-      },
+    // $scope.myProfile = {
+    //   "personalDetails": {
+    //       "userId": "priyanka123",
+    //       "name": "Priyanka Kumbhar",
+    //       "email": "avicci@gmail.com",
+    //       "contactNo": "+918087120163",
+    //       "address": "Mayur Nagar, Aarey Colony, etc etc"
+    //   },
 
-      "education": [{
-          "examination": "hsc",
-          "percentage": "60%",
-          "institution": "Bkc college, mumbai"
-      }, {
-          "examination": "be",
-          "percentage": "60%",
-          "institution": "RCOE"
-      }],
+    //   "education": [{
+    //       "examination": "hsc",
+    //       "percentage": "60%",
+    //       "institution": "Bkc college, mumbai"
+    //   }, {
+    //       "examination": "be",
+    //       "percentage": "60%",
+    //       "institution": "RCOE"
+    //   }],
 
-      "workExperience": [{
-              "company": "babycorn",
-              "duration": "6 years",
-              "responsibilities": "jrfkhekhfkerf,ejfefiuefh,oejfoejfoif",
-              "designation": "Developer"
-          },
+    //   "workExperience": [{
+    //           "company": "babycorn",
+    //           "duration": "6 years",
+    //           "responsibilities": "jrfkhekhfkerf,ejfefiuefh,oejfoejfoif",
+    //           "designation": "Developer"
+    //       },
 
-          {
-              "company": "capsicum",
-              "duration": "6 years",
-              "responsibilities": "jrfkhekhfkerf,ejfefiuefh,oejfoejfoif",
-              "designation": "Developer"
-          }
-      ]}
-    // NavigationService.getMyProfilePage(function (data) {
-    //   $scope.myProfile = data;
-    // })
+    //       {
+    //           "company": "capsicum",
+    //           "duration": "6 years",
+    //           "responsibilities": "jrfkhekhfkerf,ejfefiuefh,oejfoejfoif",
+    //           "designation": "Developer"
+    //       }
+    //   ]}
+    
+    NavigationService.getMyProfilePage(function (data) {
+      $scope.myProfile = data;
+    })
 
     $scope.showEditPD = function (value) {
       console.log('In show edit');
@@ -365,127 +373,128 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       $scope.myProfile.workExperience.push(exp);
     }
 
-    // NavigationService.findAllJobs(function (data) {
-    //   $scope.notifications = data;
-    //   console.log('notifications: ', $scope.notifications);
-    //   // $scope.jobNumber[0] = $scope.joblist.data[0];
-    //   // $scope.jobNumber[1] = $scope.joblist.data[1];
-    // });
-    $scope.notifications = [{
-            "id":1,
-            "title":"efjowefjoiwefj",
-            "image":"img/resgration.png",
-            "company": "BobCorn",
-            "jobPayment": "Hourly",
-            "payment": "Rs. 1000-2000",
-            "timeCommitment": "40 hours weekly",
-            "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
-            "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
-            "description": "This is an awesome job! you should try it!!",
-            "city":"Mumbai",
-            "jobRole":"developer"
-        },
+    NavigationService.findAllJobs(function (data) {
+      $scope.notifications = data;
+      console.log('notifications: ', $scope.notifications);
+      // $scope.jobNumber[0] = $scope.joblist.data[0];
+      // $scope.jobNumber[1] = $scope.joblist.data[1];
+    });
 
-        {
-            "id":2,
-            "title":"efjowefjoiwefj",
-            "image":"img/resgration.png",
-            "company": "AapCot",
-            "jobPayment": "Hourly",
-            "payment": "Rs. 1000-2000",
-            "timeCommitment": "40 hours weekly",
-            "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
-            "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
-            "description": "This is an awesome job! you should try it!!",
-            "city":"Delhi",
-            "jobRole":"designer"
-        },
+    // $scope.notifications = [{
+    //         "id":1,
+    //         "title":"efjowefjoiwefj",
+    //         "image":"img/resgration.png",
+    //         "company": "BobCorn",
+    //         "jobPayment": "Hourly",
+    //         "payment": "Rs. 1000-2000",
+    //         "timeCommitment": "40 hours weekly",
+    //         "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
+    //         "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
+    //         "description": "This is an awesome job! you should try it!!",
+    //         "city":"Mumbai",
+    //         "jobRole":"developer"
+    //     },
 
-        {
-            "id":3,
-            "title":"efjowefjoiwefj",
-            "image":"img/resgration.png",
-            "company": "BindCity",
-            "jobPayment": "Hourly",
-            "payment": "Rs. 1000-2000",
-            "timeCommitment": "40 hours weekly",
-            "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
-            "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
-            "description": "This is an awesome job! you should try it!!",
-            "city":"Bangalore",
-            "jobRole":"developer"
-        },
+    //     {
+    //         "id":2,
+    //         "title":"efjowefjoiwefj",
+    //         "image":"img/resgration.png",
+    //         "company": "AapCot",
+    //         "jobPayment": "Hourly",
+    //         "payment": "Rs. 1000-2000",
+    //         "timeCommitment": "40 hours weekly",
+    //         "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
+    //         "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
+    //         "description": "This is an awesome job! you should try it!!",
+    //         "city":"Delhi",
+    //         "jobRole":"designer"
+    //     },
 
-        {
-            "id":4,
-            "title":"efjowefjoiwefj",
-            "image":"img/resgration.png",
-            "company": "CapLoft",
-            "jobPayment": "Hourly",
-            "payment": "Rs. 1000-2000",
-            "timeCommitment": "40 hours weekly",
-            "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
-            "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
-            "description": "This is an awesome job! you should try it!!",
-            "city":"Hyderabad",
-            "jobRole":"developer"
-        },
-        {
-            "id":5,
-            "title":"efjowefjoiwefj",
-            "image":"img/resgration.png",
-            "company": "CapLoft",
-            "jobPayment": "Hourly",
-            "payment": "Rs. 1000-2000",
-            "timeCommitment": "40 hours weekly",
-            "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
-            "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
-            "description": "This is an awesome job! you should try it!!",
-            "city":"Mangalore",
-            "jobRole":"Architect"
-        },
-        {
-            "id":6,
-            "title":"efjowefjoiwefj",
-            "image":"img/resgration.png",
-            "company": "CapLoft",
-            "jobPayment": "Hourly",
-            "payment": "Rs. 1000-2000",
-            "timeCommitment": "40 hours weekly",
-            "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
-            "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
-            "description": "This is an awesome job! you should try it!!",
-            "city":"Mysore",
-            "jobRole":"Architect"
-        },
-        {
-            "id":7,
-            "title":"efjowefjoiwefj",
-            "image":"img/resgration.png",
-            "company": "CapLoft",
-            "jobPayment": "Hourly",
-            "payment": "Rs. 1000-2000",
-            "timeCommitment": "40 hours weekly",
-            "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
-            "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
-            "description": "This is an awesome job! you should try it!!",
-            "city":"Chennai",
-            "jobRole":"developer"
-        },
-        {
-            "id":8,
-            "title":"efjowefjoiwefj",
-            "image":"img/resgration.png",
-            "company": "CapLoft",
-            "jobPayment": "Hourly",
-            "payment": "Rs. 1000-2000",
-            "timeCommitment": "40 hours weekly",
-            "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
-            "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
-            "description": "This is an awesome job! you should try it!!",
-            "city":"Latur",
-            "jobRole":"Businessman"
-        }]
+    //     {
+    //         "id":3,
+    //         "title":"efjowefjoiwefj",
+    //         "image":"img/resgration.png",
+    //         "company": "BindCity",
+    //         "jobPayment": "Hourly",
+    //         "payment": "Rs. 1000-2000",
+    //         "timeCommitment": "40 hours weekly",
+    //         "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
+    //         "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
+    //         "description": "This is an awesome job! you should try it!!",
+    //         "city":"Bangalore",
+    //         "jobRole":"developer"
+    //     },
+
+    //     {
+    //         "id":4,
+    //         "title":"efjowefjoiwefj",
+    //         "image":"img/resgration.png",
+    //         "company": "CapLoft",
+    //         "jobPayment": "Hourly",
+    //         "payment": "Rs. 1000-2000",
+    //         "timeCommitment": "40 hours weekly",
+    //         "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
+    //         "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
+    //         "description": "This is an awesome job! you should try it!!",
+    //         "city":"Hyderabad",
+    //         "jobRole":"developer"
+    //     },
+    //     {
+    //         "id":5,
+    //         "title":"efjowefjoiwefj",
+    //         "image":"img/resgration.png",
+    //         "company": "CapLoft",
+    //         "jobPayment": "Hourly",
+    //         "payment": "Rs. 1000-2000",
+    //         "timeCommitment": "40 hours weekly",
+    //         "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
+    //         "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
+    //         "description": "This is an awesome job! you should try it!!",
+    //         "city":"Mangalore",
+    //         "jobRole":"Architect"
+    //     },
+    //     {
+    //         "id":6,
+    //         "title":"efjowefjoiwefj",
+    //         "image":"img/resgration.png",
+    //         "company": "CapLoft",
+    //         "jobPayment": "Hourly",
+    //         "payment": "Rs. 1000-2000",
+    //         "timeCommitment": "40 hours weekly",
+    //         "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
+    //         "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
+    //         "description": "This is an awesome job! you should try it!!",
+    //         "city":"Mysore",
+    //         "jobRole":"Architect"
+    //     },
+    //     {
+    //         "id":7,
+    //         "title":"efjowefjoiwefj",
+    //         "image":"img/resgration.png",
+    //         "company": "CapLoft",
+    //         "jobPayment": "Hourly",
+    //         "payment": "Rs. 1000-2000",
+    //         "timeCommitment": "40 hours weekly",
+    //         "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
+    //         "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
+    //         "description": "This is an awesome job! you should try it!!",
+    //         "city":"Chennai",
+    //         "jobRole":"developer"
+    //     },
+    //     {
+    //         "id":8,
+    //         "title":"efjowefjoiwefj",
+    //         "image":"img/resgration.png",
+    //         "company": "CapLoft",
+    //         "jobPayment": "Hourly",
+    //         "payment": "Rs. 1000-2000",
+    //         "timeCommitment": "40 hours weekly",
+    //         "postingDate": "Fri Feb 19 2016 13:43:11 GMT+0530 (IST)",
+    //         "expiryDate": "Fri Feb 26 2016 13:43:11 GMT+0530 (IST)",
+    //         "description": "This is an awesome job! you should try it!!",
+    //         "city":"Latur",
+    //         "jobRole":"Businessman"
+    //     }]
   })
 
   .controller('SearchresultCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -503,46 +512,47 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    // NavigationService.getCompanyProfile(function (data) {
-    //   $scope.company = data;
-    //   console.log('company: ', $scope.company);
-    // })
-    $scope.company = {
-      "companyDetails": {
-          "email": "avicci@gmail.com",
-          "companyName": "AapCot",
-          "name": "Priyanka Kumbhar",
-          "contactNo": "8087120163",
-          "address": "Aarey Colony",
-          "experience":"As a UI Designer in wohlig technology. 4 year of exprience"
-      },
+    NavigationService.getCompanyProfile(function (data) {
+      $scope.company = data;
+      console.log('company: ', $scope.company);
+    })
 
-      "description": "Lorem ipsum dolor It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    // $scope.company = {
+    //   "companyDetails": {
+    //       "email": "avicci@gmail.com",
+    //       "companyName": "AapCot",
+    //       "name": "Priyanka Kumbhar",
+    //       "contactNo": "8087120163",
+    //       "address": "Aarey Colony",
+    //       "experience":"As a UI Designer in wohlig technology. 4 year of exprience"
+    //   },
 
-      "jobs": [{
-              "title": "program manager",
-              "description": "part time from office with skills in business, development, sales, training, education, sales, training, education, management, learning and development, 6-8 years of work experience for prepmyskills.com"
+    //   "description": "Lorem ipsum dolor It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
 
-          },
+    //   "jobs": [{
+    //           "title": "program manager",
+    //           "description": "part time from office with skills in business, development, sales, training, education, sales, training, education, management, learning and development, 6-8 years of work experience for prepmyskills.com"
 
-          {
-              "title": "program manager",
-              "description": "part time from office with skills in business, development, sales, training, education, sales, training, education, management, learning and development, 6-8 years of work experience for prepmyskills.com"
+    //       },
 
-          },
+    //       {
+    //           "title": "program manager",
+    //           "description": "part time from office with skills in business, development, sales, training, education, sales, training, education, management, learning and development, 6-8 years of work experience for prepmyskills.com"
 
-          {
-              "title": "program manager",
-              "description": "part time from office with skills in business, development, sales, training, education, sales, training, education, management, learning and development, 6-8 years of work experience for prepmyskills.com"
+    //       },
 
-          },
+    //       {
+    //           "title": "program manager",
+    //           "description": "part time from office with skills in business, development, sales, training, education, sales, training, education, management, learning and development, 6-8 years of work experience for prepmyskills.com"
 
-          {
-              "title": "program manager",
-              "description": "part time from office with skills in business, development, sales, training, education, sales, training, education, management, learning and development, 6-8 years of work experience for prepmyskills.com"
+    //       },
 
-          }
-      ]}
+    //       {
+    //           "title": "program manager",
+    //           "description": "part time from office with skills in business, development, sales, training, education, sales, training, education, management, learning and development, 6-8 years of work experience for prepmyskills.com"
+
+    //       }
+    //   ]}
   })
 
   .controller('PostjobCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -552,11 +562,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    // NavigationService.getCategoryOptions(function (data) {
-    //   $scope.categoryOptions = data;
-    //   console.log('categoryOptions: ', $scope.categoryOptions);
-    // })
-    $scope.categoryOptions = ["Design", "Websites IT Software", "Mobile", "Data Entry", "Product Sourcing", "Sales & Marketing", "Business Accounting & Legal"]
+    NavigationService.getCategoryOptions(function (data) {
+      $scope.categoryOptions = data;
+      console.log('categoryOptions: ', $scope.categoryOptions);
+    })
+
+    // $scope.categoryOptions = ["Design", "Websites IT Software", "Mobile", "Data Entry", "Product Sourcing", "Sales & Marketing", "Business Accounting & Legal"]
   })
 
   .controller('NewjobCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -588,14 +599,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.menutitle = NavigationService.makeactive("Register Lancer");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    // $scope.submitForm = function(formregistration,formValid) {
-    //   if(formValid.$Valid){
-    //     $scope.completeRegister = true;
-    //   }
-    //   else {
-    //
-    //   }
-    // };
+    
+    $scope.submitForm = function(formregistration,formValid) {
+      if(formValid.$Valid){
+        $scope.completeRegister = true;
+      }
+      else {
+    
+      }
+    };
+
     $scope.formregistration = {};
     $scope.signUpLancer = function () {
       console.log('picture: ', $scope.formregistration.picture.name);
@@ -684,7 +697,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       $scope.dataUrls = [];
       for (var i = 0; i < $files.length; i++) {
         var $file = $files[i];
-        if ($scope.fileReaderSupported && $file.type.indexOf('image') > -1) {
+        console.log('files: ', $file)
+        if ($scope.fileReaderSupported && ($file.type.indexOf('image') || $file.type.indexOf('application')) > -1) {
           var fileReader = new FileReader();
           fileReader.readAsDataURL($files[i]);
           var loadFile = function(fileReader, index) {
@@ -718,16 +732,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
             myModel: $scope.myModel
           },
           file: $scope.selectedFiles[index],
-          fileFormDataName: 'image'
+          fileFormDataName: ['image', 'application']
         });
         $scope.upload[index].then(function(response) {
           $timeout(function() {
             // cfpLoadingBar.complete();
             $scope.uploadResult.push(response.data);
-            console.log(response);
-            if (response.data.value != "") {
-                $scope.isloading = false;
-                $scope.formregistration.picture = response.data.value;
+            console.log(response.data.value);
+            if (response.data.value != "" && $scope.selectedFiles[index].type.indexOf('image')) {
+              $scope.isloading = false;
+              $scope.formregistration.picture = response.data.value;
+            }
+            else if (response.data.value != "" && $scope.selectedFiles[index].type.indexOf('application')) {
+              $scope.isloading = false;
+              $scope.formregistration.resume = response.data.value;
             }
           });
         }, function(response) {
@@ -805,23 +823,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     // TemplateService.header = "";
-    // NavigationService.getTestimonials(function (data) {
-    //   $scope.testimonials = data;
-    //   console.log('testimonials: ', $scope.testimonials);
-    // })
-    $scope.testimonials = [{
-      image: "img/search.png",
-      name: "seema yadav",
-      designation: "Manager",
-      company: "aapcot",
-      comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-    }, {
-      image: "img/search.png",
-      name: "seema yadav",
-      designation: "Manager",
-      company: "aapcot",
-      comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-    }];
+    
+    NavigationService.getTestimonials(function (data) {
+      $scope.testimonials = data;
+      console.log('testimonials: ', $scope.testimonials);
+    })
+    
+    // $scope.testimonials = [{
+    //   image: "img/search.png",
+    //   name: "seema yadav",
+    //   designation: "Manager",
+    //   company: "aapcot",
+    //   comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+    // }, {
+    //   image: "img/search.png",
+    //   name: "seema yadav",
+    //   designation: "Manager",
+    //   company: "aapcot",
+    //   comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+    // }];
   })
 
 .controller('headerctrl', function($scope, TemplateService) {
