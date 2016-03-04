@@ -19,13 +19,16 @@ $linkedin: #007bb6;
 @font-face {
   font-family: Lato;
 }
+@font-face {
+  font-family: Calibri;
+}
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 .full-width {
   width: 100%;
 }
 body {
   padding-top: 60px;
-  font-family: Micross,Arial, sans-serif;
+  font-family: Calibri,Micross,Arial, sans-serif;
   .no-scroll {
     overflow: hidden;
     .slide-menu {
