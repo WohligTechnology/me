@@ -19,16 +19,13 @@ $linkedin: #007bb6;
 @font-face {
   font-family: Lato;
 }
-@font-face {
-  font-family: Calibri;
-}
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 .full-width {
   width: 100%;
 }
 body {
-  padding-top: 60px;
-  font-family: Calibri,Micross,Arial, sans-serif;
+  padding-top: 30px;
+  font-family: Micross,Arial, sans-serif;
   .no-scroll {
     overflow: hidden;
     .slide-menu {
@@ -39,39 +36,9 @@ body {
 .no-radius {
   border-radius: 0;
 }
-
-.radio {
-  label {
-    padding-left: 0;
-  }
-  input[type="radio"] {
-    display: none;
-  }
-  input[type="radio"] + label {
-    color: #000;
-    font-size: 13px;
-  }
-  input[type="radio"] + label span {
-    display: inline-block;
-    width: 13px;
-    height: 13px;
-    margin: -1px 4px 0 0;
-    cursor: pointer;
-    border: 1px solid #0489C7;
-    border-radius: 100%;
-  }
-  input[type="radio"] + label span {
-    background-color: transparent;
-  }
-  input[type="radio"]:checked + label span {
-    background-color: #0489C7;
-  }
-  input[type="radio"] + label span,
-  input[type="radio"]:checked + label span {
-    @include transition(background-color 0.4s linear);
-  }
+.btn {
+  border-radius: 0;
 }
-
 .checkbox {
   input[type="checkbox"] {
     display: none;
@@ -165,9 +132,8 @@ nav li:hover .dropdown-menu {
   box-shadow: 1px 0 6px #ddd;
 }
 .navbar-brand img {
-  width: 180px;
+  width: 130px;
 }
-.navbar { min-height: 70px; }
 .rl {
   position: relative;
 }
@@ -208,7 +174,7 @@ a.navbar-brand {
 .get-center {
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(50%,50%);
 }
 .bold {
   font-weight: 600;
@@ -225,7 +191,6 @@ a.navbar-brand {
     color: #000;
   }
 }
-.tagline { font-size: 18px; }
 .box {
   padding: 0 20px 20px;
   .box-cont {
@@ -359,7 +324,9 @@ input.aside {
 .name-row {
   // padding-left: 160px;
   min-height: 125px;
-  .mgr { margin-right: 5px; }
+  .mgr {
+    margin-right: 5px;
+  }
   .post-made {
     li {
       display: inline-block;
@@ -412,6 +379,43 @@ input.aside {
     color: darken($base-primary, 10%);
     background: darken($brand-gray,10%);
     border-color: darken($base-primary, 10%);
+  }
+}
+.slider {
+  ol.flex-control-nav.flex-control-paging {
+    display: none;
+  }
+  .flex-direction-nav a.flex-next:before {
+    content: '\f054';
+  }
+  .flex-direction-nav a.flex-prev:before {
+    content: '\f053';
+  }
+  .flex-direction-nav a:before {
+    font-family: 'fontAwesome';
+    font-size: 25px;
+    display: inline-block;
+    content: '';
+    color: white;
+    text-shadow: none;
+    opacity: 1;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .flex-direction-nav a {
+    opacity: 1 !important;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 1px 0;
+    height: 60px;
+    text-align: center !important;
+    width: 40px;
+    margin: -45px 0 0;
+  }
+  .flex-direction-nav .flex-prev {
+    left: 0 !important;
+  }
+  .flex-direction-nav .flex-next {
+    right: 0 !important;
   }
 }
 @import "amit";

@@ -10,7 +10,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.navigation = NavigationService.getnav();
 
     $scope.mySlides = [
-      'img/landing.jpg',
+      'img/banners/1.jpg',
+      'img/banners/2.jpg',
+      'img/banners/3.jpg',
     ];
   })
   .controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
