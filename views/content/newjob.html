@@ -76,6 +76,10 @@
                     </div>
                   </div>
                 </div> -->
+                <div class="form-group">
+                  <input type="text" name="appdate" ng-model="appdate" class="form-control" placeholder="Applications Are Open Till" required>
+                  <div class="ab" ng-show="newjobform.appdate.$error.required && newjobform.appdate.$touched" role="alert">Please enter Application Date.</div>
+                </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary" ui-sref="companyprofile">Post Job</button>
                 </div>
