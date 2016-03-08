@@ -416,15 +416,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       console.log(data)
     })
 
-    $scope.showEditPD = function (value) {
-      console.log('In show edit');
-      if(value == 'showTrue') {
-        $scope.isEditPD = true;
-      }
-      else {
-        $scope.isEditPD = false;
-      }
-    }
+    // $scope.showEditPD = function (value) {
+    //   console.log('In show edit');
+    //   if(value == 'showTrue') {
+    //     $scope.isEditPD = true;
+    //   }
+    //   else {
+    //     $scope.isEditPD = false;
+    //   }
+    // }
 
     $scope.showEditEdu = function(value) {
       if(value == 'showTrue') {
