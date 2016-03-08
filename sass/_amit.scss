@@ -40,6 +40,23 @@ ul.footermenu {
     font-size: 20px;
   }
 }
+// home
+.slider-descp {
+  width: 100%;
+  color: #fff;
+  font-size: 40px;
+  text-align: center;
+  .left { margin-left: 35%; }
+}
+.black-bgblur {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0 ,0 ,0 ,0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+// home end
 // slidemenu
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
