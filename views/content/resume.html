@@ -12,15 +12,15 @@
             <div class="row">
               <div class="col-md-2">
                 <div class="resume-imgholder">
-                  <img src="img/search.png" alt="" class="m-center img-responsive">
+                  <img src="img/search.png" class="m-center img-responsive">
                 </div>
               </div>
               <div class="col-md-10">
                 <div class="row">
                   <div class="col-md-3">
                     <div class="info-name">
-                      <h4>PRACHEE SHAH</h4>
-                      <span>Graphic Designer</span>
+                      <h4>{{resume.personalDetails.name}}</h4>
+                      <span>{{resume.personalDetails.role}}</span>
                     </div>
                   </div>
                   <div class="col-md-9">
@@ -28,9 +28,8 @@
                       <span>Contact</span>
                     </div>
                     <div class="resume-detail">
-                      <span class="block "><i class="fa fa-phone blue-color icon"></i> <a href="tel:+918080808080
-                          ">+91 8080808080</a></span>
-                      <span class="block "><i class="fa fa-envelope blue-color icon"></i> <a href="mailto:email@email.com">email@email.com</a></span>
+                      <span class="block "><i class="fa fa-phone blue-color icon"></i> <a ng-href="resume.contactDetails.contactNumber">{{resume.contactDetails.contactNumber}}</a></span>
+                      <span class="block "><i class="fa fa-envelope blue-color icon"></i> <a ng-href="resume.contactDetails.email">{{resume.contactDetails.email}}</a></span>
                     </div>
                   </div>
                 </div>
@@ -41,11 +40,11 @@
                         <span>Key Skills</span>
                       </div>
                       <div class="resume-detail">
-                        <ul class="skill-list text-capitalize">
-                          <li>adobe photoshop</li>
-                          <li>adobe illustrate</li>
+                        <ul class="skill-list text-capitalize" ng-repeat="key in resume.keySkills">
+                          <li>{{key}}</li>
+                          <!-- <li>adobe illustrate</li>
                           <li>adobe indesign</li>
-                          <li>adobe flash</li>
+                          <li>adobe flash</li> -->
                         </ul>
                       </div>
                     </div>
@@ -58,8 +57,8 @@
                         <span>Education</span>
                       </div>
                       <div class="resume-detail">
-                        <span class="block">Bachelor's degree in designing</span>
-                        <span class="block">Mumbai university</span>
+                        <span class="block" ng-repeat="edu in resume.education">{{edu}}</span>
+                        <!-- <span class="block">Mumbai university</span> -->
                       </div>
                     </div>
                   </div>
@@ -71,7 +70,7 @@
                         <span>Experience</span>
                       </div>
                       <div class="resume-detail">
-                        <span>Five year of Experience in Wohlig Technology.</span>
+                        <span>{{resume.experience}}</span>
                       </div>
                     </div>
                   </div>

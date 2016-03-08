@@ -1,4 +1,4 @@
-<div class="">
+  <div class="">
   <div class="company-profiletab brand-gray-bg">
     <div class="container">
       <h3 class="company-name blue-color">My Profile</h3>
@@ -11,7 +11,7 @@
                 <div class="row">
                   <div class="col-md-3">
                     <div class="company-imgholder">
-                      <img src="img/search.png" alt="Profile Image" class="m-center img-responsive">
+                      <img src="{{displayPic|serverimage}}" alt="Profile Image" class="m-center img-responsive">
                     </div>
                   </div>
                   <div class="col-md-9">
@@ -30,20 +30,20 @@
                             <div class="profile-info">
                               <div class="pro-head">
                                 <h4 class="blue-color head-title">Personal details</h4>
-                                <span ng-hide="isEditPD">{{myProfile.personalDetails.name}}</span>
-                                <span ng-hide="isEditPD">{{myProfile.personalDetails.email}}</span>
+                                <span ng-hide="isEditPD">{{personalDetails.name}}</span>
+                                <span ng-hide="isEditPD">{{personalDetails.email}}</span>
                                 <div class="pro-add">
-                                  <span class="block" ng-hide="isEditPD">{{myProfile.personalDetails.contactNo}}</span>
-                                  <span class="block" ng-hide="isEditPD">{{myProfile.personalDetails.address}}</span>
+                                  <span class="block" ng-hide="isEditPD">{{personalDetails.contactNo}}</span>
+                                  <span class="block" ng-hide="isEditPD">{{personalDetails.address}}</span>
                                   <!-- <span class="block">Near Sadhana School</span>
                                   <span class="block">Sion (East), Mumbai</span>
                                   <span class="block">Maharashtra-420020</span> -->
                                   <div ng-show="isEditPD">
-                                    <form>
-                                      <br><label>Name: </label><input type="text" ng-model="myProfile.personalDetails.name" class="form-control">
-                                      <br><label>Email: </label><input type="text" ng-model="myProfile.personalDetails.email" class="form-control">
-                                      <br><label>Contact Number: </label><input type="text" ng-model="myProfile.personalDetails.contactNo" class="form-control">
-                                      <br><label>Address: </label><input type="text" ng-model="myProfile.personalDetails.address" class="form-control">
+                                    <form name="editPD">
+                                      <br><label>Name: </label><input type="text" ng-model="personalDetails.name" class="form-control">
+                                      <br><label>Email: </label><input type="text" ng-model="personalDetails.email" class="form-control">
+                                      <br><label>Contact Number: </label><input type="text" ng-model="personalDetails.contactNo" class="form-control">
+                                      <br><label>Address: </label><input type="text" ng-model="personalDetails.address" class="form-control">
                                       <div class="text-center">
                                       <button ng-click="showEditPD('showFalse')" class="btn btn-primary btn-default">Submit</button>
                                       </div>
@@ -69,13 +69,13 @@
                             <div class="profile-info">
                               <div class="pro-head">
                                 <h4 class="blue-color head-title">Education</h4>
-                                <span class="block" ng-repeat="edu in myProfile.education" ng-hide="isEditEdu">{{edu.examination}}, {{edu.percentage}}, {{edu.institution}}</span>
+                                <span class="block" ng-repeat="edu in education" ng-hide="isEditEdu">{{edu.examination}}, {{edu.percentage}}, {{edu.institution}}</span>
                                 <!-- <span class="block">K.J Somaiya Of Science &amp; Comm.</span> -->
                               </div>
                             </div>
                             <div ng-show="isEditEdu">
                               <form>
-                                <div ng-repeat="edu in myProfile.education">
+                                <div ng-repeat="edu in education">
                                 <br><label>Examination: </label><input type="text" ng-model="edu.examination" class="form-control">
                                 <br><label>Percentage: </label><input type="text" ng-model="edu.percentage" class="form-control">
                                 <br><label>Institution: </label><input type="text" ng-model="edu.institution" class="form-control">
@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="text-center">
                                 <button ng-click="addNewEdu()" class="btn btn-primary btn-default">Add New Education Detail</button>
-                                <button ng-click="showEditEdu('showFalse')" class="btn btn-primary btn-default">Submit</button>
+                                <button ng-click="showEditEdu('showFalse');submitEdit();" class="btn btn-primary btn-default">Submit</button>
                                 </div>
                               </form>
                             </div>
@@ -104,7 +104,7 @@
                             <div class="profile-info">
                               <div class="pro-head">
                                 <h4 class="blue-color head-title">Experience</h4>
-                                <ul ng-repeat="we in myProfile.workExperience" ng-hide="isEditExp">
+                                <ul ng-repeat="we in experience" ng-hide="isEditExp">
                                   <li>{{we.company}}</li>
                                   <li>{{we.duration}}</li>
                                   <li>{{we.responsibilities}}</li>
@@ -112,7 +112,7 @@
                                 </ul>
                                 <div ng-show="isEditExp">
                                   <form>
-                                    <div ng-repeat="we in myProfile.workExperience">
+                                    <div ng-repeat="we in experience">
                                     <br><label>Company: </label><input type="text" ng-model="we.company" class="form-control">
                                     <br><label>Duration: </label><input type="text" ng-model="we.duration" class="form-control">
                                     <br><label>Responsibilities: </label><textarea ng-model="we.responsibilities" class="form-control"></textarea>
@@ -121,7 +121,7 @@
                                     </div>
                                     <div class="text-center">
                                     <button ng-click="addNewExp()" class="btn btn-primary btn-default">Add New Experience</button>
-                                    <button ng-click="showEditExp('showFalse')" class="btn btn-primary btn-default">Submit</button>
+                                    <button ng-click="showEditExp('showFalse');submitEdit();" class="btn btn-primary btn-default">Submit</button>
                                     </div>
                                   </form>
                                 </div>

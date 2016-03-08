@@ -26,12 +26,12 @@
           </div>
         </form>
         <!-- <p class="result-text">30 Graphic Designer Profiles found !</p> -->
-        <p class="result-text bold"> {{joblist.count}} Mobile developers found! </p>
+        <p class="result-text bold"> {{count}} Mobile developers found! </p>
       </div>
       <div class="row">
         <div class="col-md-9 pr5">
           <span>
-          <div class="list white-bg" ng-repeat="data in jobNumber | filter:(cityQuery || jobQuery)" infinite-scroll='loadMore()' infinite-scroll-distance='2' infinite-scroll-listen-for-event="shouldscroll">
+          <div class="list white-bg" ng-repeat="data in joblist" infinite-scroll='loadMore()' infinite-scroll-distance='2' infinite-scroll-listen-for-event="shouldscroll">
             <div class="row">
               <div class="col-md-3">
                 <div class="left-side">
@@ -44,7 +44,7 @@
                     <div class="btn btn-inverse  mgr" ui-sref="jobdetail">View Details</div>
                     <div class="btn btn-primary">Apply Now</div>
                   </div>
-                  <h5 class="blue-color bold">{{data.company}}</h5>
+                  <h5 class="blue-color bold">{{data.company.name}}</h5>
                   <div class="job-cont">
                     <ul class="list-unstyled">
                       <li class="bold">{{data.jobPayment}}</li>

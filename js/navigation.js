@@ -1,4 +1,5 @@
-var adminurl = 'http://wohlig.io:81/callApi/flexi/json/';
+// var adminurl = 'http://192.168.0.126:1337/callApi/flexi/json/';
+var adminurl = 'http://192.168.0.126:1337/';
 var navigationservice = angular.module('navigationservice', [])
 
 .factory('NavigationService', function($http) {
@@ -54,21 +55,20 @@ var navigationservice = angular.module('navigationservice', [])
       }
       return menuname;
     },
-    signUpClient: function (formData, callback) {
+    signUpClient: function (formData, companyData, callback) {
       console.log('form data: ', formData);
       $http({
-        url: adminurl + 'createclient',
+        url: adminurl + 'user/save',
         method: 'POST',
-        withCredentials: true,
         data: {
-          "image":formData.image.name,
-          "companyName":formData.company,
+          "image":formData.image,
+          "companyData":companyData,
           "name":formData.name,
           "password":formData.password,
           "email": formData.mail,
           "contact":formData.mobile,
-          "location":formData.location,
-          "jobRole":formData.job,
+          // "location":companyData.location,
+          // "jobRole":companyData.job,
           "tc":formData.tc,
           "accessLevel":"client"
         }
@@ -77,13 +77,13 @@ var navigationservice = angular.module('navigationservice', [])
     signUpLancer: function (formData, callback) {
       console.log('form data: ', formData);
       $http({
-        url: adminurl + 'createfreelancer',
+        url: adminurl + 'user/save',
         method: 'POST',
         withCredentials: true,
         data: {
-          "accessLevel":"freelancer",
-          "picture":formData.picture.name,
-          "resume":formData.resume.name,
+          "accessLevel":"lancer",
+          "profilepic":formData.picture,
+          "resume":formData.resume,
           "name":formData.name,
           "email": formData.mail,
           "contactNo":formData.mobile,
@@ -96,26 +96,33 @@ var navigationservice = angular.module('navigationservice', [])
     },
     getCityOptions:function (callback) {
       $http({
-        url: adminurl+'getcityoptions',
+        url: adminurl+'job/findCityDrop',
         method:'POST',
-        withCredentials:true
+        data: {
+          search: ""
+        }
       }).success(callback);
     },
     getCategoryOptions:function (callback) {
       $http({
-        url: adminurl+'findallcategories',
+        url: adminurl+'job/findTypeDrop',
         method:'POST',
-        withCredentials:true
+        data: {
+          search: ""
+        }
       }).success(callback);
     },
-    findAllJobs: function (callback) {
+    findAllJobs: function (page, callback) {
+      // console.log('page: ', page)
       $http({
-        url: adminurl + 'findalljobs',
+        url: adminurl + 'job/findAllJobs',
         method: 'POST',
         withCredentials:true,
         data: {
-          "job":"designer",
-          "city":"mumbai"
+          "designation":"Software Analyst",
+          "loc":"Mumbai",
+          "pagenumber":page,
+          "pagesize":20
         }
       }).success(callback);
     },
@@ -149,9 +156,30 @@ var navigationservice = angular.module('navigationservice', [])
     },
     getMyProfilePage: function (callback) {
       $http({
-        url: adminurl+'findoneprofile',
+        url: adminurl+'user/findProfile',
+        method: 'POST'
+      }).success(callback);
+    },
+    getResume: function (callback) {
+      $http({
+        url: adminurl+'viewresume',
         method: 'POST',
         withCredentials:true
+      }).success(callback);
+    },
+    submitEdit: function (PD, Edu, Exp, DP, callback) {
+      $http({
+        url: adminurl+'user/edit',
+        method: 'POST',
+        data: {
+          "name":PD.name,
+          "email":PD.email,
+          "contactNo":PD.contactNo,
+          "address":PD.address,
+          "education":Edu,
+          "experience":Exp,
+          "profilepic":DP
+        }
       }).success(callback);
     }
   };

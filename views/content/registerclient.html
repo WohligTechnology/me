@@ -23,56 +23,41 @@
           </div> -->
           <p class="or">Or</p>
         </div>
-        <form name="registration" class="register-form">
+        <form name="registrationClient" class="register-form">
           <div class="row">
             <div class="col-md-3">
               <div class="form-group">
                 <div class="user rl" ng-controller="UploadCtrl">
-                  <input name="picture" required ng-model="formregistration.image" type="file" accept=".jpg,.png" class="form-control ab">
-                  <!-- <input type="file" class="form-control ab" ng-model="formregistration.image" accept=".jpg,.png" file-model = "formregistration.image" ng-file-select="onFileSelect($files)" onclick="this.value=null"> -->
-                  <!-- <div ng-if="formregistration.image">
+                  <!-- <input name="picture" required ng-model="formregistration.image" type="file" accept=".jpg,.png" class="form-control ab"> -->
+                  <input type="file" class="form-control ab" ng-model="registration.picture" accept=".jpg,.png" file-model = "registration.picture" ng-file-select="onFileSelect($files,1)" onclick="this.value=null">
+                  <div ng-if="registration.picture">
                     <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
-                  </div> -->
+                  </div>
                   <!-- <button ng-click = "uploadFile()">upload me</button> -->
                   <div class="profile-pic ab text-center">
                     <i class="fa fa-user"></i>
                     <p>Upload Company Logo</p>
                   </div>
                 </div>
-               <!--  <div class="uploaded-img" ng-show="formregistration.image">
-                  <img ng-src="{{formregistration.image.name|serverimage}}">
+                 <div class="uploaded-img" ng-show="registration.picture">
+                  <img ng-src="{{registration.picture|serverimage}}">
                 </div>
-                <h4 ng-if="isloading">Loading...</h4> -->
+                <h4 ng-if="isloading">Loading...</h4>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group rl">
-                <input name="name" required ng-model="formregistration.name" type="text" class="form-control input-placeholder" placeholder="Name">
+                <input name="name" required ng-model="registration.name" type="text" class="form-control input-placeholder" placeholder="Name">
                 <i class="fa fa-user input-icon ab"></i>
                 <div class="ab" ng-show="registration.name.$error.required && registration.name.$touched">
                   Please Enter Your Name.
                 </div>
               </div>
               <div class="form-group rl">
-                <input name="mail" required ng-model="formregistration.mail" type="email" class="form-control input-placeholder" placeholder="E-Mail">
+                <input name="mail" required ng-model="registration.mail" type="email" class="form-control input-placeholder" placeholder="E-Mail">
                 <i class="fa fa-envelope input-icon ab"></i>
                 <div class="ab" ng-show="registration.mail.$error.required && registration.mail.$touched">
                   Please Enter Your E-Mail.
-                </div>
-              </div>
-              <div class="form-group rl">
-                <input name="company" required ng-model="formregistration.company" type="text" class="form-control input-placeholder" placeholder="Name of the Company">
-                <i class="fa fa-building input-icon ab"></i>
-                <div class="ab" ng-show="registration.company.$error.required && registration.company.$touched">
-                  Please Enter Your Name of the Company.
-                </div>
-              </div>
-              <div class="form-group rl">
-                <input type="text" name="name" value="+91" disabled class="side">
-                <input name="mobile" required ng-model="formregistration.mobile" type="text" class="form-control input-placeholder aside" placeholder="Contact Number">
-                <i class="fa fa-mobile input-icon ab"></i>
-                <div class="ab" ng-show="registration.mobile.$error.required && registration.mobile.$touched">
-                  Please Enter Your Contact Number.
                 </div>
               </div>
               <div class="form-group rl">
@@ -83,16 +68,31 @@
                 </div>
               </div>
               <div class="form-group rl">
-                <input name="location" required ng-model="formregistration.location" type="text" class="form-control input-placeholder" placeholder="Location">
+                <input name="company" required ng-model="registration.company.name" type="text" class="form-control input-placeholder" placeholder="Name of the Company">
+                <i class="fa fa-building input-icon ab"></i>
+                <div class="ab" ng-show="registration.company.name.$error.required && registration.company.name.$touched">
+                  Please Enter Your Name of the Company.
+                </div>
+              </div>
+              <div class="form-group rl">
+                <input type="text" name="name" value="+91" disabled class="side">
+                <input name="mobile" required ng-model="registration.mobile" type="text" class="form-control input-placeholder aside" placeholder="Contact Number">
+                <i class="fa fa-mobile input-icon ab"></i>
+                <div class="ab" ng-show="registration.mobile.$error.required && registration.mobile.$touched">
+                  Please Enter Your Contact Number.
+                </div>
+              </div>
+              <div class="form-group rl">
+                <input name="location" required ng-model="registration.company.location" type="text" class="form-control input-placeholder" placeholder="Location">
                 <i class="fa fa-map-marker input-icon ab"></i>
-                <div class="ab" ng-show="registration.location.$error.required && registration.location.$touched">
+                <div class="ab" ng-show="registration.company.location.$error.required  && registration.company.location.$touched">
                   Please Enter Your Location.
                 </div>
               </div>
               <div class="form-group rl">
-                <input name="job" required ng-model="formregistration.job" type="text" class="form-control input-placeholder" placeholder="Job role">
+                <input name="job" required ng-model="registration.company.job" type="text" class="form-control input-placeholder" placeholder="Job role">
                 <i class="fa fa-user input-icon ab"></i>
-                <div class="ab" ng-show="registration.job.$error.required && registration.job.$touched">
+                <div class="ab" ng-show="registration.company.job.$error.required && registration.company.job.$touched">
                   Please Enter Your Job Role.
                 </div>
               </div>

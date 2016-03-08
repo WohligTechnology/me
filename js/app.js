@@ -178,7 +178,7 @@ firstapp.filter('serverimage', function() {
     if (input) {
       // console.log('serverimage: ', input);
       // return input;
-      return  "http://www.myfynx.com/newfynx/index.php/json/uploadImage/" + input;
+      return  adminurl+"uploadfile/resize?file=" + input;
     } else {
       return "img/logo.png";
     }
