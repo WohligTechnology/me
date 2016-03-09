@@ -39,6 +39,8 @@ body {
 .no-radius {
   border-radius: 0;
 }
+.pointer { cursor: pointer; }
+.btn-more { padding: 6px 34px; }
 
 .radio {
   label {
@@ -451,5 +453,12 @@ input.aside {
     border-color: darken($base-primary, 10%);
   }
 }
+//login
+.login-head {
+  padding: 15px;
+  border-radius: 4px;
+  margin: -15px -15px 25px -15px;
+}
+//login end
 @import "amit";
 /* Start writing sass here */

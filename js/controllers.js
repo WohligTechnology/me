@@ -686,12 +686,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
-.controller('RegisterLancerCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('RegisterLancerCtrl', function($scope, TemplateService, NavigationService, $timeout,$uibModal) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("registerlancer");
     $scope.menutitle = NavigationService.makeactive("Register Lancer");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    $scope.login = function() {
+      $uibModal.open({
+        animation: true,
+        templateUrl: "views/modal/login.html",
+        controller: "RegisterLancerCtrl"
+      })
+    };
+
+    $scope.forgotpop = function() {
+      $uibModal.open({
+        animation: true,
+        templateUrl: "views/modal/forgotpop.html",
+        controller: "RegisterLancerCtrl"
+      })
+    };
+
+
 
     $scope.submitForm = function(formregistration,formValid) {
       if(formValid.$Valid){
@@ -723,7 +741,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     ];
   })
 
-  .controller('RegisterClientCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('RegisterClientCtrl', function($scope, TemplateService, NavigationService, $timeout,$uibModal) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("registerclient");
     $scope.menutitle = NavigationService.makeactive("register Client");
@@ -748,6 +766,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
 
     //  fileUpload.uploadFileToUrl(file, uploadUrl);
     // };
+    $scope.login = function() {
+      $uibModal.open({
+        animation: true,
+        templateUrl: "views/modal/login.html",
+        controller: "RegisterClientCtrl"
+      })
+    };
+
+    $scope.forgotpop = function() {
+      $uibModal.open({
+        animation: true,
+        templateUrl: "views/modal/forgotpop.html",
+        controller: "RegisterClientCtrl"
+      })
+    };
   })
 
   .controller('UploadCtrl', function($scope, $upload, $timeout) {

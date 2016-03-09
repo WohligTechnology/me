@@ -1,0 +1,23 @@
+<div class="enter-mail">
+  <div class="brand-gray-bg login-head">
+      <h2 class="text-uppercase text-center blue-color m-clear">forgot password ?</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <form name="forgotpop" class="text-center register-form">
+        <div class="form-group">
+          <input name="forgotemail" ng-model="forgot.email" required type="email" class="form-control input-placeholder" placeholder="Email *">
+        </div>
+        <div class="" ng-show="forgotpop.forgotemail.$invalid && forgotpop.forgotemail.$touched" role="alert">
+          Please Enter Your Email Id.
+        </div>
+        <div class="form-group">
+          <button type="" class="btn btn-primary btn-more">SUBMIT</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div ng-show="forgotDone" class="email-sent relate">
+    <h3 class="m-clear brand-brown-dark get-center">Email sent sucessfully.</h3>
+</div>
