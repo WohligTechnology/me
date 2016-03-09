@@ -1,5 +1,5 @@
 // var adminurl = 'http://192.168.0.126:1337/callApi/flexi/json/';
-var adminurl = 'http://192.168.0.126:1337/';
+var adminurl = 'http://192.168.0.126:80/';
 var navigationservice = angular.module('navigationservice', [])
 
 .factory('NavigationService', function($http) {
@@ -179,6 +179,25 @@ var navigationservice = angular.module('navigationservice', [])
           "education":Edu,
           "experience":Exp,
           "profilepic":DP
+        }
+      }).success(callback);
+    },
+    login: function (login, callback) {
+      $http({
+        url: adminurl+'user/login',
+        method: 'POST',
+        data: {
+          "email":login.email,
+          "password":login.pswd
+        }
+      }).success(callback);
+    },
+    forgot: function (email, callback) {
+      $http({
+        url: adminurl+'user/forgotpassword',
+        method: 'POST',
+        data: {
+          "email":email
         }
       }).success(callback);
     }

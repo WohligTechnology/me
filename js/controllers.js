@@ -11,25 +11,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.navigation = NavigationService.getnav();
 
     $scope.mySlides = [
-      {
-        img: "img/banners/1.jpg",
-        line1: 'Time is at a premium,',
-        line2: 'so are the minds respecting it.'
-      },
-      {
-        img: "img/banners/2.jpg",
-        line1: 'Passion is the fuel,',
-        line2: 'So are the minds driven by it.'
-      },
-      {
-        img: "img/banners/3.jpg",
-        line1: 'Flexible Multi-takers are a necessity,',
-        line2: 'not an option.'
-      },
-      {
-        img: "img/banners/4.jpg",
-        line1: 'Talent returning is value returning back.'
-      }
+      'img/banners/1.jpg,'
+      'img/banners/2.jpg,'
+      'img/banners/3.jpg,'
+      'img/banners/4.jpg,'
     ];
   })
   .controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -700,7 +685,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
         controller: "RegisterLancerCtrl"
       })
     };
+    // $scope.login = {}
 
+    $scope.submitLogin = function (loginData) {
+      console.log(loginData)
+      NavigationService.login(loginData, function (data) {
+        console.log('response: ', data)
+      })
+    }
+    
     $scope.forgotpop = function() {
       $uibModal.open({
         animation: true,
@@ -709,6 +702,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       })
     };
 
+    $scope.submitEmail = function (email) {
+      console.log('forgotpop: ', email);
+      NavigationService.forgot(email, function (data) {
+        console.log('response forgot: ', data)
+      })
+    }
 
 
     $scope.submitForm = function(formregistration,formValid) {
@@ -773,6 +772,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
         controller: "RegisterClientCtrl"
       })
     };
+
+    $scope.submitLogin = function (loginData) {
+      console.log(loginData)
+      NavigationService.login(loginData, function (data) {
+        console.log('response: ', data)
+      })
+    }
 
     $scope.forgotpop = function() {
       $uibModal.open({

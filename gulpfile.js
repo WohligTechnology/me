@@ -24,7 +24,7 @@ var jsArray = [
   './bower_components/moment/moment.js',
   './bower_components/angular-moment/angular-moment.js',
 
-  //uesr's js
+  //user's js
   './js/app.js',
   './js/controllers.js',
   './js/templateservice.js',

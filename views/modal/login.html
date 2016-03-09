@@ -6,21 +6,22 @@
     <div class="col-md-offset-2 col-md-8">
       <form name="loginform" class="text-center register-form">
       <div class="form-group">
-        <input type="text" name="email" ng-model="email" class="form-control" placeholder="Email *" required>
+        <input type="text" name="email" ng-model="loginData.email" class="form-control" placeholder="Email *" required>
         <div class="ab" ng-show="loginform.email.$error.required && loginform.email.$touched">
           Please Enter Your Email.
         </div>
       </div>
       <div class="form-group">
-        <input type="password" name="pswd" ng-model="pswd" class="form-control" placeholder="Password *" required>
+        <input type="password" name="pswd" ng-model="loginData.pswd" class="form-control" placeholder="Password *" required>
         <div class="ab" ng-show="loginform.pswd.$error.required && loginform.pswd.$touched">
           Please Enter Your Password.
         </div>
       </div>
-        <h4 ng-click="forgotpop();" class="pointer">Forgot Password ?</h4>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-more">SUBMIT</button>
+          <button type="submit" class="btn btn-primary btn-more" ng-click="submitLogin(loginData)">SUBMIT</button>
+          {{loginData}}
         </div>
+        <h4 ng-click="forgotpop();" class="pointer">Forgot Password ?</h4>
       </form>
     </div>
   </div>
