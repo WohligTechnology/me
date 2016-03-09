@@ -1,0 +1,27 @@
+<div class="enter-mail">
+  <div class="brand-gray-bg login-head">
+      <h2 class="text-uppercase text-center blue-color m-clear">Login</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <form name="loginform" class="text-center register-form">
+      <div class="form-group">
+        <input type="text" name="email" ng-model="email" class="form-control" placeholder="Email *" required>
+        <div class="ab" ng-show="loginform.email.$error.required && loginform.email.$touched">
+          Please Enter Your Email.
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="password" name="pswd" ng-model="pswd" class="form-control" placeholder="Password *" required>
+        <div class="ab" ng-show="loginform.pswd.$error.required && loginform.pswd.$touched">
+          Please Enter Your Password.
+        </div>
+      </div>
+        <h4 ng-click="forgotpop();" class="pointer">Forgot Password ?</h4>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-more">SUBMIT</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
