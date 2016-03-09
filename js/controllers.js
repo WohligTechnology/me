@@ -11,9 +11,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.navigation = NavigationService.getnav();
 
     $scope.mySlides = [
-      'img/banners/1.jpg',
-      'img/banners/2.jpg',
-      'img/banners/3.jpg'
+      {
+        img: "img/banners/1.jpg",
+        line1: 'Time is at a premium,',
+        line2: 'so are the minds respecting it.'
+      },
+      {
+        img: "img/banners/2.jpg",
+        line1: 'Passion is the fuel,',
+        line2: 'So are the minds driven by it.'
+      },
+      {
+        img: "img/banners/3.jpg",
+        line1: 'Flexible Multi-takers are a necessity,',
+        line2: 'not an option.'
+      },
+      {
+        img: "img/banners/4.jpg",
+        line1: 'Talent returning is value returning back.'
+      }
     ];
   })
   .controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -66,12 +82,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //   }];
     // $scope.jobNumber = {}
     // $scope.jobNumber.pageNumber = 1;
-    // $scope.jobNumber.data = [] 
+    // $scope.jobNumber.data = []
     $scope.getJobs = function (page) {
       NavigationService.findAllJobs(page, function (data) {
         $scope.joblist = data.data;
         $scope.count = data.total;
-      });  
+      });
     }
     var page = 1;
     // NavigationService.findAllJobs(page, function (data) {
@@ -170,7 +186,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
-  
+
   .controller('SearchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("search");
@@ -223,7 +239,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //         "city": "Delhi"
     //     }
     // ]
-    
+
     $scope.pageOfJobs = []
     NavigationService.getAllFreelancers(function (data) {
       $scope.jobs = data;
@@ -291,7 +307,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
           flag = _.findIndex($scope.cityOptions, function(o) {
             console.log(o);
             console.log(value.state);
-            return o == value.state; 
+            return o == value.state;
           });
           // console.log(flag);
           if(flag == -1) {
@@ -299,8 +315,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
           }
         }
         if(value.city) {
-          flag2 = _.findIndex($scope.cityOptions, function(o) { 
-            return o == value.city; 
+          flag2 = _.findIndex($scope.cityOptions, function(o) {
+            return o == value.city;
           });
           console.log('flag 2', flag2)
           if(flag2 == -1) {
@@ -318,7 +334,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
         flag = _.findIndex($scope.categoryOptions, function(o) {
           console.log(o);
           console.log(value.designation);
-          return o == value.designation; 
+          return o == value.designation;
         });
         // console.log(flag);
         if(flag == -1) {
@@ -385,14 +401,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       $scope.displayPic = data.profilepic;
       $scope.personalDetails= {"name": data.name, "email": data.email, "contactNo": data.contactNo, "address": data.location}
       if(!data.education) {
-        $scope.education = [{examination: "", percentage: "", institution: ""}]  
+        $scope.education = [{examination: "", percentage: "", institution: ""}]
       }
       else if(data.education) {
        $scope.education = data.education;
       }
 
       if(!data.experience) {
-        $scope.experience = [{company:"", duration:"", responsibilities:"", designation: ""}]  
+        $scope.experience = [{company:"", duration:"", responsibilities:"", designation: ""}]
       }
       else if(data.experience) {
        $scope.experience = data.experience;
@@ -400,15 +416,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       console.log(data)
     })
 
-    $scope.showEditPD = function (value) {
-      console.log('In show edit');
-      if(value == 'showTrue') {
-        $scope.isEditPD = true;
-      }
-      else {
-        $scope.isEditPD = false;
-      }
-    }
+    // $scope.showEditPD = function (value) {
+    //   console.log('In show edit');
+    //   if(value == 'showTrue') {
+    //     $scope.isEditPD = true;
+    //   }
+    //   else {
+    //     $scope.isEditPD = false;
+    //   }
+    // }
 
     $scope.showEditEdu = function(value) {
       if(value == 'showTrue') {
@@ -676,13 +692,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.menutitle = NavigationService.makeactive("Register Lancer");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    
+
     $scope.submitForm = function(formregistration,formValid) {
       if(formValid.$Valid){
         $scope.completeRegister = true;
       }
       else {
-    
+
       }
     };
 
@@ -717,7 +733,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.registration = {};
     $scope.companyDetails = {};
     $scope.signUpClient = function () {
-      $scope.companyDetails = $scope.registration.company; 
+      $scope.companyDetails = $scope.registration.company;
       console.log($scope.companyDetails)
       NavigationService.signUpClient($scope.registration, $scope.companyDetails, function (data) {
         console.log(data);
@@ -902,12 +918,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     // TemplateService.header = "";
-    
+
     NavigationService.getTestimonials(function (data) {
       $scope.testimonials = data;
       console.log('testimonials: ', $scope.testimonials);
     })
-    
+
     // $scope.testimonials = [{
     //   image: "img/search.png",
     //   name: "seema yadav",

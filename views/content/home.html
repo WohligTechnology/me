@@ -1,8 +1,15 @@
 <div class="">
   <div class="slider">
-    <flex-slider flex-slide="s in mySlides">
+    <flex-slider class="carousel" animation="fade" flex-slide="slide in mySlides track by $index" control-nav="false">
       <li>
-        <img ng-src="{{s}}">
+        <div class="rl">
+          <img ng-src="{{slide.img}}">
+          <div class="black-bgblur"></div>
+          <div class="slider-descp ab get-center">
+            <p class="m-clear">{{slide.line1}}</p>
+            <p class="m-clear left">{{slide.line2}}</p>
+          </div>
+        </div>
       </li>
     </flex-slider>
   </div>
@@ -15,7 +22,7 @@
 
               <div class="home-head">
                 <div class="col-xs-5">
-                  <a ui-sref="registerlancer"> <img src="img/computer.jpg" alt=""></a>
+                  <a ui-sref="registerlancer"> <img src="img/com<navctrl>Time is at a premium,</navctrl>premium,</navctr>emium,</navc>mium,</nav>ium,</na>>
                 </div>
                 <div class="col-xs-7 ">
                   <a ui-sref="registerlancer">
