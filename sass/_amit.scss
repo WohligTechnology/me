@@ -44,8 +44,13 @@ ul.footermenu {
 .slider-descp {
   width: 100%;
   color: #fff;
-  font-size: 40px;
+  font-size: 35px;
   text-align: center;
+  p { margin: 0; }
+  span {
+    color: $brand-primary;
+    font-size: 50px;
+   }
   .left { margin-left: 35%; }
 }
 .black-bgblur {
