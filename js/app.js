@@ -24,6 +24,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     templateUrl: "views/template.html",
     controller: 'LandingCtrl'
   })
+  .state('forgotpassword', {
+    url: "/forgotpassword",
+    templateUrl: "views/template.html",
+    controller: 'ForgotPasswordCtrl'
+  })
 
   .state('about', {
     url: "/about",

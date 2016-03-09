@@ -41,6 +41,11 @@ body {
 }
 .pointer { cursor: pointer; }
 .btn-more { padding: 6px 34px; }
+a:focus,
+:hover {
+  outline: none;
+  text-decoration: none;
+}
 
 .radio {
   label {
@@ -387,15 +392,6 @@ footer {
   top: 50%;
   transform: translate(-50%,-50%)!important;
 }
-input.side {
-  position: absolute;
-  width: 40px;
-  padding-left: 8px;
-  font-weight: 600;
-}
-input.aside {
-  padding-left: 50px;
-}
 .left-side {
   // height: 100px;
   // width: 140px;
@@ -469,5 +465,9 @@ input.aside {
   margin: -15px -15px 25px -15px;
 }
 //login end
+
+// forgot
+.forgot-main { margin: 40px 0 20px; }
+// end forgot
 @import "amit";
 /* Start writing sass here */

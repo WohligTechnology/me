@@ -84,7 +84,7 @@ ul.footermenu {
 }
 .slide-out {
   position: fixed;
-  top: 50px;
+  top: 75px;
   bottom: 0;
   right: 0;
   @include transform(translateX(300px));
@@ -92,7 +92,7 @@ ul.footermenu {
 }
 .slide-in {
   position: fixed;
-  top: 50px;
+  top: 75px;
   bottom: 0;
   right: 0;
   @include transform(translateX(0px));
@@ -136,6 +136,7 @@ ul.footermenu {
   margin-bottom: 30px;
   input {
     min-height: 40px;
+    padding: 6px 26px 6px 12px;
     border-radius: 6px;
     border-color: transparent;
     background-color: $brand-gray;
@@ -152,6 +153,15 @@ ul.footermenu {
   .form-group {
     margin-bottom: 25px;
   }
+}
+input.side {
+  position: absolute;
+  width: 40px;
+  padding: 0 0 0 8px;
+  font-weight: 600;
+}
+input.aside {
+  padding-left: 50px;
 }
 .input-icon {
   top: 10px;
