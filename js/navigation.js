@@ -70,7 +70,7 @@ var navigationservice = angular.module('navigationservice', [])
           // "location":companyData.location,
           // "jobRole":companyData.job,
           "tc":formData.tc,
-          "accessLevel":"client"
+          "accesslevel":"client"
         }
       }).success(callback);
     },
@@ -81,7 +81,7 @@ var navigationservice = angular.module('navigationservice', [])
         method: 'POST',
         withCredentials: true,
         data: {
-          "accessLevel":"lancer",
+          "accesslevel":"lancer",
           "profilepic":formData.picture,
           "resume":formData.resume,
           "name":formData.name,
@@ -199,6 +199,26 @@ var navigationservice = angular.module('navigationservice', [])
         data: {
           "email":email
         }
+      }).success(callback);
+    },
+    postNewJob: function (newJob, callback) {
+      $http({
+        url: adminurl+'job/saveJob',
+        method: 'POST',
+        data: {
+          "designation": newJob.designation,
+          "department": newJob.department,
+          "description": newJob.description,
+          "reporting": newJob.reporting,
+          "experience": newJob.experience,
+          "appdate": newJob.appdate
+        }
+      }).success(callback);
+    },
+    session: function (callback) {
+      $http({
+        url: adminurl+'user/profile',
+        method: 'POST'
       }).success(callback);
     }
   };

@@ -3,7 +3,7 @@ window.uploadUrl = "http://192.168.0.126:1337/uploadfile/upload";
 angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'angularFileUpload', 'angularMoment'])
 
 
-.controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("home");
     $scope.menutitle = NavigationService.makeactive("Home");
@@ -11,12 +11,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.navigation = NavigationService.getnav();
 
     $scope.mySlides = [
-      'img/banners/1.jpg,'
-      'img/banners/2.jpg,'
-      'img/banners/3.jpg,'
-      'img/banners/4.jpg,'
+      'img/banners/1.jpg',
+      'img/banners/2.jpg',
+      'img/banners/3.jpg',
+      'img/banners/4.jpg'
     ];
   })
+
+  .controller('ForgotPasswordCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("forgotpassword");
+    $scope.menutitle = NavigationService.makeactive("Forgot Password");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+  }) 
+
   .controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("aboutus");
@@ -401,15 +410,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       console.log(data)
     })
 
-    // $scope.showEditPD = function (value) {
-    //   console.log('In show edit');
-    //   if(value == 'showTrue') {
-    //     $scope.isEditPD = true;
-    //   }
-    //   else {
-    //     $scope.isEditPD = false;
-    //   }
-    // }
+    $scope.showEditPD = function (value) {
+      console.log('In show edit');
+      if(value == 'showTrue') {
+        $scope.isEditPD = true;
+      }
+      else {
+        $scope.isEditPD = false;
+      }
+    }
 
     $scope.showEditEdu = function(value) {
       if(value == 'showTrue') {
@@ -650,6 +659,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.menutitle = NavigationService.makeactive("New Job");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    
+    $scope.newJob = function (jobData) {
+      NavigationService.session(function (data) {
+        console.log('session: ', data)
+        if(data) {
+          NavigationService.postNewJob(jobData, function (data) {
+            console.log('response new job: ', data)
+          })
+        }
+      })
+
+    }
+
   })
 
   .controller('ResumeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -671,7 +693,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
-.controller('RegisterLancerCtrl', function($scope, TemplateService, NavigationService, $timeout,$uibModal) {
+.controller('RegisterLancerCtrl', function($scope, TemplateService, NavigationService, $timeout,$uibModal, $state) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("registerlancer");
     $scope.menutitle = NavigationService.makeactive("Register Lancer");
@@ -691,7 +713,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       console.log(loginData)
       NavigationService.login(loginData, function (data) {
         console.log('response: ', data)
+        // $uibModal.dismiss('cancel')
+        $state.go('profile')
       })
+      
     }
     
     $scope.forgotpop = function() {
