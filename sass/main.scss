@@ -27,7 +27,7 @@ $linkedin: #007bb6;
   width: 100%;
 }
 body {
-  padding-top: 60px;
+  padding-top: 70px;
   font-family: Calibri,Micross,Arial, sans-serif;
   .no-scroll {
     overflow: hidden;
@@ -104,8 +104,15 @@ body {
 }
 .slider {
   ol.flex-control-nav.flex-control-paging {
-    display: none;
+    bottom: 10px;
+    z-index: 2;
   }
+  .flex-control-paging li a {
+    border-radius: 0;
+    background-color: rgba(255,255,255,0.9);
+    &:hover { background-color: $brand-primary; }
+  }
+  .flex-control-paging li a.flex-active { background-color: $brand-primary; }
   .flex-direction-nav a.flex-next:before {
     content: '\f054';
   }
@@ -204,7 +211,8 @@ nav li:hover .dropdown-menu {
   box-shadow: 1px 0 6px #ddd;
 }
 .navbar-brand img {
-  width: 180px;
+  width: auto;
+  height: 75px;
 }
 .navbar { min-height: 70px; }
 .rl {
@@ -242,7 +250,8 @@ a:hover {
   text-decoration: none;
 }
 a.navbar-brand {
-  padding-top: 0;
+  padding: 0;
+  height: auto;
 }
 .get-center {
   top: 50%;
