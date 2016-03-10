@@ -31,7 +31,7 @@ var navigationservice = angular.module('navigationservice', [])
     name: "My Community (Coming Soon)",
     classis: "active",
     icon: "fa-commenting-o",
-    link: ""
+    link: "home"
   },
   {
     name: "About Us",

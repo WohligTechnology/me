@@ -66,14 +66,22 @@ ul.footermenu {
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
+  border-left: 3px solid #fff;
+  background-color: #0670A2;;
   color: #fff;
-  background-color: transparent;
 }
 .navbar-default .navbar-nav > li > a {
+  border-left: 3px solid transparent;
   color: #fff;
+  @include transition(all 300ms linear);
   i {
     margin-right: 15px;
     font-size: 16px;
+  }
+  &:hover {
+    border-left: 3px solid #fff;
+    background-color:#0670A2;
+    @include transition(all 300ms linear);
   }
 }
 .get-slidemenu {

@@ -24,10 +24,10 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     templateUrl: "views/template.html",
     controller: 'LandingCtrl'
   })
-  .state('forgotpassword', {
-    url: "/forgotpassword",
+  .state('changepassword', {
+    url: "/changepassword",
     templateUrl: "views/template.html",
-    controller: 'ForgotPasswordCtrl'
+    controller: 'ChangePasswordCtrl'
   })
 
   .state('about', {
