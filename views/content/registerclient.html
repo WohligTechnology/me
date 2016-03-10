@@ -6,7 +6,7 @@
     <div class="white-bg">
       <div class="container">
         <div class="already text-center">
-          <h4>Already have and account ? <a href="" class="blue-color" ng-click="login();">Login</a></h4>
+          <h4>Already have and account ?<a href="" class="blue-color" ng-click="login();">Login</a></h4>
           <!-- <div class="social-btn">
             <button class="btn btn-facebook">
           <h4>Already have an account? <a href="" class="blue-color">Login</a></h4>
@@ -29,8 +29,8 @@
               <div class="form-group">
                 <div class="user rl" ng-controller="UploadCtrl">
                   <!-- <input name="picture" required ng-model="formregistration.image" type="file" accept=".jpg,.png" class="form-control ab"> -->
-                  <input type="file" class="form-control ab" ng-model="registration.picture" accept=".jpg,.png" file-model = "registration.picture" ng-file-select="onFileSelect($files,1)" onclick="this.value=null">
-                  <div ng-if="registration.picture">
+                  <input type="file" class="form-control ab" ng-model="registration.company.picture" accept=".jpg,.png" file-model = "registration.company.picture" ng-file-select="onFileSelect($files,1)" onclick="this.value=null">
+                  <div ng-if="registration.company.picture">
                     <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
                   </div>
                   <!-- <button ng-click = "uploadFile()">upload me</button> -->
@@ -39,17 +39,17 @@
                     <p>Upload Company Logo</p>
                   </div>
                 </div>
-                 <div class="uploaded-img" ng-show="registration.picture">
-                  <img ng-src="{{registration.picture|serverimage}}">
+                 <div class="uploaded-img" ng-show="registration.company.picture">
+                  <img ng-src="{{registration.company.picture|serverimage}}">
                 </div>
                 <h4 ng-if="isloading">Loading...</h4>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group rl">
-                <input name="name" required ng-model="registration.name" type="text" class="form-control input-placeholder" placeholder="Name">
+                <input name="name" ng-model="registration.name" type="text" class="form-control input-placeholder" placeholder="Name">
                 <i class="fa fa-user input-icon ab"></i>
-                <div class="ab" ng-show="registration.name.$error.required && registration.name.$touched">
+                <div class="ab" ng-show="registration.name.$touched">
                   Please Enter Your Name.
                 </div>
               </div>
@@ -69,43 +69,43 @@
               </div>
               <div class="form-group rl">
                 <input type="text" name="name" value="+91" disabled class="side">
-                <input name="mobile" required ng-model="registration.mobile" type="text" class="form-control input-placeholder aside" placeholder="Contact Number">
+                <input name="mobile" ng-model="registration.mobile" type="text" class="form-control input-placeholder aside" placeholder="Contact Number">
                 <i class="fa fa-mobile input-icon ab"></i>
-                <div class="ab" ng-show="registration.mobile.$error.required && registration.mobile.$touched">
+                <div class="ab" ng-show="registration.mobile.$touched">
                   Please Enter Your Contact Number.
                 </div>
               </div>
               <div class="form-group rl">
-                <input name="company" required ng-model="registration.company.name" type="text" class="form-control input-placeholder" placeholder="Company Name">
+                <input name="company" ng-model="registration.company.name" type="text" class="form-control input-placeholder" placeholder="Company Name">
                 <i class="fa fa-building input-icon ab"></i>
-                <div class="ab" ng-show="registration.company.name.$error.required && registration.company.name.$touched">
+                <div class="ab" ng-show="registration.company.name.$touched">
                   Please Enter Your Company Name.
                 </div>
               </div>
               <div class="form-group rl">
-                <input name="companyadd" required ng-model="registration.companyadd.name" type="text" class="form-control input-placeholder" placeholder="Company Address">
+                <input name="companyadd" ng-model="registration.company.address" type="text" class="form-control input-placeholder" placeholder="Company Address">
                 <i class="fa fa-map-marker input-icon ab"></i>
-                <div class="ab" ng-show="registration.companyadd.name.$error.required && registration.companyadd.name.$touched">
+                <div class="ab" ng-show="registration.company.address.$touched">
                   Please Enter Your Company Address.
                 </div>
               </div>
               <div class="form-group rl">
-                <input name="companyweb" required ng-model="registration.companyweb.name" type="text" class="form-control input-placeholder" placeholder="Company Website">
-                <i class="fa fa- input-icon ab"></i>
-                <div class="ab" ng-show="registration.companyweb.name.$error.required && registration.companyweb.name.$touched">
+                <input name="companyweb" ng-model="registration.company.website" type="text" class="form-control input-placeholder" placeholder="Company Website">
+                <i class="fa fa-globe input-icon ab"></i>
+                <div class="ab" ng-show="registration.company.website.$touched">
                   Please Enter Your Company Website.
                 </div>
               </div>
               <div class="form-group">
                 <div class="checkbox">
-                  <input type="checkbox" class="form-control" id="check" required ng-model="formregistration.tc">
+                  <input type="checkbox" class="form-control" id="check" required ng-model="registration.tc">
                   <label for="check"><span></span> I Accept The Terms And Conditions And Privacy Policy Of The Website.</label>
                 </div>
               </div>
             </div>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary signup" ui-sref="postjob" ng-click="signUpClient()">Sign up</button>
+            <button type="submit" class="btn btn-primary signup" ng-click="signUpClient(registration, registrationClient)">Sign up</button>
           </div>
         </form>
         <!-- <div class="text-center" ng-hide="completeRegister">

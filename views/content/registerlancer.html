@@ -31,7 +31,7 @@
               <div class="form-group">
                 <div class="user rl" ng-controller="UploadCtrl">
                   <!-- <input name="picture" required ng-model="formregistration.picture" type="file" accept=".jpg,.png" class="form-control ab"> -->
-                    <input type="file" name="picture" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" required ng-model="formregistration.picture" accept=".jpg,.png" class="form-control ab">
+                    <input type="file" name="picture" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-model="formregistration.picture" accept=".jpg,.png" class="form-control ab">
                     <div ng-if="formregistration.picture">
                       <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
                     </div>
@@ -59,52 +59,52 @@
                 </ul> -->
                 <!-- {{formregistration.picture}} -->
                 <!-- <span ng-show="formregistration.picture">Upload Successful</span> -->
-                <div class="" ng-show="registration.picture.$error.picture && registration.picture.$touched">
+                <div class="" ng-show="formregistration.picture.$error.picture && formregistration.picture.$touched">
                   Please Upload Your Picture.
                 </div>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group rl">
-                <input name="name" required ng-model="formregistration.name" type="text" class="form-control input-placeholder" placeholder="Name">
+                <input name="name" ng-model="formregistration.name" type="text" class="form-control input-placeholder" placeholder="Name">
                 <i class="fa fa-user input-icon ab"></i>
-                <div class="ab" ng-show="registration.name.$error.required && registration.name.$touched">
+                <div class="ab" ng-show="formregistration.name.$touched">
                   Please Enter Your Name.
                 </div>
               </div>
               <div class="form-group rl">
                 <input name="mail" required ng-model="formregistration.mail" type="email" class="form-control input-placeholder" placeholder="E-Mail">
                 <i class="fa fa-envelope input-icon ab"></i>
-                <div class="ab" ng-show="registration.mail.$error.required && registration.mail.$touched">
+                <div class="ab" ng-show="formregistration.mail.$error.required && formregistration.mail.$touched">
                   Please Enter Your E-Mail.
-                </div>
-              </div>
-              <div class="form-group rl">
-                <input type="text" name="name" value="+91" disabled class="side" >
-                <input name="mobile" required ng-model="formregistration.mobile" type="text" class="form-control input-placeholder aside" placeholder="Contact Number">
-                <i class="fa fa-mobile input-icon ab"></i>
-                <div class="ab" ng-show="registration.mobile.$error.required && registration.mobile.$touched">
-                  Please Enter Your Contact Number.
                 </div>
               </div>
               <div class="form-group rl">
                 <input name="password" required ng-model="formregistration.password" type="password" class="form-control input-placeholder" placeholder="Password">
                 <i class="fa fa-lock input-icon ab"></i>
-                <div class="ab" ng-show="registration.password.$error.required && registration.password.$touched">
+                <div class="ab" ng-show="formregistration.password.$error.required && formregistration.password.$touched">
                   Please Enter Your Password.
                 </div>
               </div>
               <div class="form-group rl">
-                <input name="location" required ng-model="formregistration.location" type="text" class="form-control input-placeholder" placeholder="Location">
+                <input type="text" name="name" value="+91" disabled class="side" >
+                <input name="mobile" ng-model="formregistration.mobile" type="text" class="form-control input-placeholder aside" placeholder="Contact Number">
+                <i class="fa fa-mobile input-icon ab"></i>
+                <div class="ab" ng-show="formregistration.mobile.$touched">
+                  Please Enter Your Contact Number.
+                </div>
+              </div>
+              <div class="form-group rl">
+                <input name="location" ng-model="formregistration.location" type="text" class="form-control input-placeholder" placeholder="Location">
                 <i class="fa fa-map-marker input-icon ab"></i>
-                <div class="ab" ng-show="registration.location.$error.required && registration.location.$touched">
+                <div class="ab" ng-show="formregistration.location.$touched">
                   Please Enter Your Location.
                 </div>
               </div>
               <div class="form-group rl">
-                <textarea name="job" required ng-model="formregistration.job" type="text" class="form-control input-placeholder" placeholder="About Me"></textarea>
+                <textarea name="job" ng-model="formregistration.job" type="text" class="form-control input-placeholder" placeholder="About Me"></textarea>
                 <i class="fa fa-pencil-square-o input-icon ab"></i>
-                <div class="ab" ng-show="registration.job.$error.required && registration.job.$touched">
+                <div class="ab" ng-show="formregistration.job.$touched">
                   Please Enter Your Detail.
                 </div>
               </div>
@@ -112,7 +112,7 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <div class="radio">
-                      <input required  type="radio" name="worktime" class="" id="time">
+                      <input  type="radio" name="worktime" class="" id="time">
                       <label for="time"><span></span> Full Time </label>
                     </div>
                   </div>
@@ -120,7 +120,7 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <div class="radio">
-                      <input required  type="radio" name="worktime" class="" id="work">
+                      <input  type="radio" name="worktime" class="" id="work">
                       <label for="work"><span></span> Part Time </label>
                     </div>
                   </div>
@@ -130,7 +130,7 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <div class="radio">
-                      <input required  type="radio" name="workwish" class="" id="home">
+                      <input type="radio" name="workwish" class="" id="home">
                       <label for="home"><span></span> Work From Home </label>
                     </div>
                   </div>
@@ -138,7 +138,7 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <div class="radio">
-                      <input required  type="radio" name="workwish" class="" id="off">
+                      <input type="radio" name="workwish" class="" id="off">
                       <label for="off"><span></span> Work From Office </label>
                     </div>
                   </div>
@@ -147,7 +147,7 @@
               <label>Please Upload Your Resume</label>
               <div class="form-group rl" ng-controller="UploadCtrl">
                 <!-- <input name="upload" required ng-model="formregistration.resume" type="file" class="form-control input-placeholder" placeholder="Please Upload Resume" file-model = "formregistration.resume" accept=".docx,.pdf"> -->
-                <input type="file" name="upload" ng-file-select="onFileSelect($files,2)" onclick="this.value=null" required ng-model="formregistration.resume" accept=".pdf, .docx" class="form-control">
+                <input type="file" name="upload" ng-file-select="onFileSelect($files,2)" onclick="this.value=null" ng-model="formregistration.resume" accept=".pdf, .docx" class="form-control">
                 <div ng-if="formregistration.resume">
                   <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
                 </div>
@@ -155,7 +155,7 @@
                 <label>{{formregistration.filename}}</label>
                 <!-- <img ng-src="{{formregistration.resume.name|serverimage}}" style="height:200px;"> -->
                 <i class="fa fa-file input-icon ab"></i>
-                <div class="ab" ng-show="registration.upload.$error.required && registration.upload.$touched">
+                <div class="ab" ng-show="formregistration.upload.$touched">
                   Please Upload Your Resume.
                 </div>
               </div>
@@ -165,13 +165,15 @@
                   <input name="tc" required ng-model="formregistration.tc" type="checkbox" class="form-control" id="check">
                   <label for="check"><span></span> I Accept The Terms And Conditions And Privacy Policy Of The Website. </label>
                 </div>
-                <div class="" ng-show="registration.tc.$error.required && registration.tc.$touched"></div>
+                <div class="" ng-show="formregistration.tc.$error.required && formregistration.tc.$touched"></div>
               </div>
             </div>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary signup" ng-click="signUpLancer()" ui-sref="searchcategory">Sign up</button>
+            <button type="submit" class="btn btn-primary signup" ng-click="signUpLancer(formregistration,registration)" ui-sref="searchcategory">Sign up</button>
+            <!-- <div ng-if="!"></div> -->
           </div>
+          {{registration}}
         </form>
         <!-- <div class="text-center" ng-hide="completeRegister">
           <h4>Welcome To FlexiLancer</h4>

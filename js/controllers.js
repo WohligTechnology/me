@@ -1,5 +1,5 @@
 // window.uploadUrl = "http://www.myfynx.com/newfynx/index.php/json/uploadImage";
-window.uploadUrl = "http://192.168.0.126:1337/uploadfile/upload";
+window.uploadUrl = "http://192.168.0.126:80/uploadfile/upload";
 angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'angularFileUpload', 'angularMoment'])
 
 
@@ -18,10 +18,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     ];
   })
 
-  .controller('ForgotPasswordCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('ChangePasswordCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
-    $scope.template = TemplateService.changecontent("forgotpassword");
-    $scope.menutitle = NavigationService.makeactive("Forgot Password");
+    $scope.template = TemplateService.changecontent("changepassword");
+    $scope.menutitle = NavigationService.makeactive("Change Password");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   }) 
@@ -29,12 +29,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
   .controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("aboutus");
-    $scope.menutitle = NavigationService.makeactive("About");
+    $scope.menutitle = NavigationService.makeactive("About Us");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
     $scope.mySlides = [
-      'img/landing.jpg',
+      'img/banners/1.jpg',
     ];
   })
   .controller('JobListingCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -591,7 +591,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
   .controller('CompanyProfileCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("company-profile");
-    $scope.menutitle = NavigationService.makeactive("Company Profile");
+    $scope.menutitle = NavigationService.makeactive("My Profile");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
@@ -693,28 +693,39 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
-.controller('RegisterLancerCtrl', function($scope, TemplateService, NavigationService, $timeout,$uibModal, $state) {
+.controller('RegisterLancerCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("registerlancer");
     $scope.menutitle = NavigationService.makeactive("Register Lancer");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.register = "Here it is!"
 
     $scope.login = function() {
       $uibModal.open({
         animation: true,
         templateUrl: "views/modal/login.html",
-        controller: "RegisterLancerCtrl"
+        controller: "RegisterLancerCtrl",
+        //  scope: $scope
       })
     };
     // $scope.login = {}
-
     $scope.submitLogin = function (loginData) {
       console.log(loginData)
       NavigationService.login(loginData, function (data) {
         console.log('response: ', data)
+        // $scope.wrongCredentials = false;
+        if(data.value == false) {
+          console.log('In the if statement')
+          $scope.wrongCredentials = true;
+        }
         // $uibModal.dismiss('cancel')
-        $state.go('profile')
+        else {
+          console.log('In the else statement')
+          $scope.wrongCredentials = false;
+          // $uibModal.dismiss();
+          $state.go('profile')
+        }
       })
       
     }
@@ -735,23 +746,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     }
 
 
-    $scope.submitForm = function(formregistration,formValid) {
-      if(formValid.$Valid){
+    
+    // $scope.submitForm = function(formregistration,formValid) {
+      
+    // };
+
+    // $scope.formregistration = {};
+    $scope.signUpLancer = function (formregistration,formValid) {
+      console.log('picture: ', formregistration.picture);
+      console.log('resume: ', formregistration.resume);
+      if(formValid.$valid){
         $scope.completeRegister = true;
+        NavigationService.signUpLancer(formregistration, function (data) {
+          console.log('registerlancer response: ', data);
+        })
       }
       else {
 
       }
-    };
-
-    $scope.formregistration = {};
-    $scope.signUpLancer = function () {
-      console.log('picture: ', $scope.formregistration.picture.name);
-      console.log('resume: ', $scope.formregistration.resume.name);
-
-      NavigationService.signUpLancer($scope.formregistration, function (data) {
-        console.log(data);
-      })
     }
 
     // $scope.uploader = new FileItem();
@@ -765,22 +777,38 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     ];
   })
 
-  .controller('RegisterClientCtrl', function($scope, TemplateService, NavigationService, $timeout,$uibModal) {
+  .controller('RegisterClientCtrl', function($state, $scope, TemplateService, NavigationService, $timeout,$uibModal) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("registerclient");
     $scope.menutitle = NavigationService.makeactive("register Client");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    $scope.registration = {};
-    $scope.companyDetails = {};
-    $scope.signUpClient = function () {
-      $scope.companyDetails = $scope.registration.company;
-      console.log($scope.companyDetails)
-      NavigationService.signUpClient($scope.registration, $scope.companyDetails, function (data) {
-        console.log(data);
-      })
+    // $scope.registration = {};
+    // $scope.companyDetails = {};
+    $scope.signUpClient = function (formData, formValid) {
+      companyDetails = formData.company;
+      console.log(companyDetails)
+      if(formValid.$valid){
+        NavigationService.signUpClient(formData, companyDetails, function (data) {
+          console.log(data);
+          if(data.value == true) {
+            $state.go('postjob')
+          }
+          else {
+            console.log('Error: ', data.comment)
+          }
+        })
+      }
     }
+
+    $scope.login = function() {
+      $uibModal. open({
+        animation: true,
+        templateUrl: "views/modal/login.html",
+        controller: "RegisterClientCtrl"
+      })
+    };
 
     // $scope.uploadFile = function(){
     //  var file = $scope.formregistration.image;
@@ -790,20 +818,38 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
 
     //  fileUpload.uploadFileToUrl(file, uploadUrl);
     // };
-    $scope.login = function() {
-      $uibModal.open({
-        animation: true,
-        templateUrl: "views/modal/login.html",
-        controller: "RegisterClientCtrl"
-      })
-    };
-
     $scope.submitLogin = function (loginData) {
       console.log(loginData)
       NavigationService.login(loginData, function (data) {
         console.log('response: ', data)
+        // $scope.wrongCredentials = false;
+        if(data.value == false) {
+          console.log('In the if statement')
+          $scope.wrongCredentials = true;
+        }
+        // $uibModal.dismiss('cancel')
+        else {
+          console.log('In the else statement')
+          // $scope.modal.dismiss('cancel');
+          NavigationService.session(function (data) {
+            console.log('session response: ', data)
+            if(data.accesslevel == "client") {
+              console.log('In the if statement!!!')
+              $scope.wrongCredentials = false;
+              $state.go('company-profile')
+            }
+          })
+          
+        }
       })
     }
+
+    // $scope.submitLogin = function (loginData) {
+    //   console.log(loginData)
+    //   NavigationService.login(loginData, function (data) {
+    //     console.log('response: ', data)
+    //   })
+    // }
 
     $scope.forgotpop = function() {
       $uibModal.open({
@@ -898,7 +944,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
           $timeout(function() {
             // cfpLoadingBar.complete();
             $scope.uploadResult.push(response.data);
-            console.log(response.data.value);
+            console.log(response.data);
             if(whichone ==1){
               $scope.formregistration.picture=response.data.files[0].fd;
               $scope.registration.picture=response.data.files[0].fd;

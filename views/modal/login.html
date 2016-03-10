@@ -1,7 +1,8 @@
-<div class="enter-mail">
+<div class="enter-mail" >
   <div class="brand-gray-bg login-head">
       <h2 class="text-uppercase text-center blue-color m-clear">Login</h2>
   </div>
+  <div ng-if="wrongCredentials">Incorrect Username or Password</div>
   <div class="row">
     <div class="col-md-offset-2 col-md-8">
       <form name="loginform" class="text-center register-form">
@@ -18,8 +19,10 @@
         </div>
       </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-more" ng-click="submitLogin(loginData);$close()">SUBMIT</button>
+          <button type="submit" class="btn btn-primary btn-more" ng-click="submitLogin(loginData);">SUBMIT</button>
+          <div ng-if="wrongCredentials == false" ng-bind="$close()"></div>
           {{loginData}}
+          {{register}}
         </div>
         <h4 ng-click="forgotpop();" class="pointer">Forgot Password ?</h4>
       </form>
