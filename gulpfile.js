@@ -23,6 +23,7 @@ var jsArray = [
   './lib/fileupload/upload.js',
   './bower_components/moment/moment.js',
   './bower_components/angular-moment/angular-moment.js',
+  './bower_components/jStorage/jstorage.min.js',
 
   //user's js
   './js/app.js',

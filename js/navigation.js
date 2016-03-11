@@ -55,18 +55,18 @@ var navigationservice = angular.module('navigationservice', [])
       }
       return menuname;
     },
-    signUpClient: function (formData, companyData, callback) {
+    signUpClient: function (formData, callback) {
       console.log('form data: ', formData);
       $http({
         url: adminurl + 'user/save',
         method: 'POST',
         data: {
           "image":formData.image,
-          "companyData":companyData,
+          "company":formData.company,
           "name":formData.name,
           "password":formData.password,
           "email": formData.mail,
-          "contact":formData.mobile,
+          "contactNo":formData.mobile,
           // "location":companyData.location,
           // "jobRole":companyData.job,
           "tc":formData.tc,
@@ -112,15 +112,14 @@ var navigationservice = angular.module('navigationservice', [])
         }
       }).success(callback);
     },
-    findAllJobs: function (page, callback) {
+    findAllJobs: function (data, page, callback) {
       // console.log('page: ', page)
       $http({
         url: adminurl + 'job/findAllJobs',
         method: 'POST',
-        withCredentials:true,
         data: {
-          "designation":"Software Analyst",
-          "loc":"Mumbai",
+          "designation":data.category,
+          "loc":data.city,
           "pagenumber":page,
           "pagesize":20
         }
@@ -147,11 +146,13 @@ var navigationservice = angular.module('navigationservice', [])
         withCredentials:true
       }).success(callback);
     },
-    getEachJobDetail: function (callback) {
+    getEachJobDetail: function (id, callback) {
       $http({
-        url: adminurl+'findonejob',
+        url: adminurl+'user/findCompanyProfile',
         method:'POST',
-        withCredentials:true
+        data: {
+          "_id":id
+        }
       }).success(callback);
     },
     getMyProfilePage: function (callback) {
@@ -179,6 +180,18 @@ var navigationservice = angular.module('navigationservice', [])
           "education":Edu,
           "experience":Exp,
           "profilepic":DP
+        }
+      }).success(callback);
+    },
+    submitEditClient: function (data, callback) {
+      $http({
+        url: adminurl+'user/edit',
+        method: 'POST',
+        data: {
+          "name":data.name,
+          "email":data.email,
+          "contactNo":data.contactNo,
+          "company":data.company
         }
       }).success(callback);
     },
@@ -211,13 +224,31 @@ var navigationservice = angular.module('navigationservice', [])
           "description": newJob.description,
           "reporting": newJob.reporting,
           "experience": newJob.experience,
-          "appdate": newJob.appdate
+          "appdate": newJob.appdate,
+          "city": newJob.city,
+          "state": newJob.state
         }
       }).success(callback);
     },
     session: function (callback) {
       $http({
         url: adminurl+'user/profile',
+        method: 'POST'
+      }).success(callback);
+    },
+    changePassword: function (data, callback) {
+      $http({
+        url: adminurl+'user/changepassword',
+        method: 'POST',
+        data: {
+          'password': data.old,
+          'editpassword': data.new
+        }
+      }).success(callback);
+    },
+    getJob: function (callback) {
+      $http({
+        url: adminurl+'user/getCompanyProfile',
         method: 'POST'
       }).success(callback);
     }

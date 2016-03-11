@@ -24,6 +24,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.menutitle = NavigationService.makeactive("Change Password");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.submitPassword = function (formData) {
+      if(formData.new != formData.confirm) {
+        $scope.notSame = true;
+      }
+      else {
+        NavigationService.changePassword(formData, function (data) {
+          console.log('changed: ', data)
+        })
+      }
+    }
   }) 
 
   .controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -77,20 +87,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     // $scope.jobNumber = {}
     // $scope.jobNumber.pageNumber = 1;
     // $scope.jobNumber.data = []
-    $scope.getJobs = function (page) {
-      NavigationService.findAllJobs(page, function (data) {
+    $scope.getJobs = function (data, page) {
+      NavigationService.findAllJobs(data, page, function (data) {
         $scope.joblist = data.data;
         $scope.count = data.total;
       });
     }
-    var page = 1;
+    // var page = 1;
     // NavigationService.findAllJobs(page, function (data) {
     //   $scope.joblist = data.data;
     //   // console.log('joblist: ', $scope.joblist);
     //   // $scope.jobNumber[0] = $scope.joblist.data[0];
     //   // $scope.jobNumber[1] = $scope.joblist.data[1];
     // });
-    $scope.getJobs(page);
+    // $scope.getJobs(page);
+    var data = $.jStorage.get('searchJobs');
+    $scope.joblist = data.data;
+    $scope.count = data.total; 
+
+    // $scope.getDetails = function (id) {
+    //   NavigationService.getEachJobDetail(id, function (data) {
+    //     // body...
+    //   })
+    // }
+
     $scope.loadMore = function () {
       if($scope.joblist.pagenumber < $scope.joblist.totalpages) {
         // var last = $scope.joblist.totalpages;
@@ -140,7 +160,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //   },
     // ];
   })
-  .controller('JobDetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('JobDetailCtrl', function($stateParams, $scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("job-detail");
     $scope.menutitle = NavigationService.makeactive("Job Listing");
@@ -163,10 +183,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //   "image":"img/joblist.jpg"
     // }
 
-    NavigationService.getEachJobDetail(function (data) {
-      $scope.jobDetail = data;
-      console.log('job detail: ', $scope.jobDetail);
-    });
+    // NavigationService.getEachJobDetail(id, function (data) {
+    //   $scope.jobDetail = data;
+    //   console.log('job detail: ', $scope.jobDetail);
+    // });
+
+    // $scope.getDetails = function (id) {
+    //   NavigationService.getEachJobDetail(id, function (data) {
+    //     // body...
+    //   })
+    // }
 
     $scope.mySlides = [
       'img/landing.jpg',
@@ -285,7 +311,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //   },
     // ];
   })
-  .controller('SearchcategoryCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('SearchcategoryCtrl', function($state, $scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("search-category");
     $scope.menutitle = NavigationService.makeactive("Search Category");
@@ -338,6 +364,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       })
       console.log('categoryOptions: ', $scope.categoryOptions);
     })
+
+    $scope.getJobs = function () {
+      console.log('dropdown data: ', data)
+      NavigationService.findAllJobs(data, 1, function (data) {
+        // $scope.joblist = data.data;
+        // $scope.count = data.total;
+        console.log('jobs data: ', data)
+        if(data) {
+          $.jStorage.set('searchJobs', data);
+          $state.go('joblisting')
+        }
+      });
+    }
+
+    var data ={};
+    $scope.showCitySelect = function (city) {
+      console.log('testing city: ', city)
+      data.city = city
+    }
+
+    $scope.showCategorySelect = function (category) {
+      console.log('testing category: ', category)
+      data.category = category
+    }
   })
   .controller('RegistrationCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -410,6 +460,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       console.log(data)
     })
 
+    $scope.submitPD = function (value) {
+      console.log('personal details1: ', value);
+      NavigationService.submitEdit(value, $scope.education, $scope.experience, $scope.displayPic, function (data) {
+        console.log('personal details: ', data);
+      })
+    }
+
+    $scope.submitEdu = function (value) {
+      console.log('education: ', value);
+      NavigationService.submitEdit($scope.personalDetails, value, $scope.experience, $scope.displayPic, function (data) {
+        console.log('education response: ', data);
+      })
+    }
+
+    $scope.submitExp = function (value) {
+      console.log('experience: ', value);
+      NavigationService.submitEdit($scope.personalDetails, $scope.education, value, $scope.displayPic, function (data) {
+        console.log('experience response: ', data);
+      })
+    }
+
     $scope.showEditPD = function (value) {
       console.log('In show edit');
       if(value == 'showTrue') {
@@ -448,13 +519,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       $scope.experience.push(exp);
     }
 
-    $scope.submitEdit = function () {
-      NavigationService.submitEdit($scope.personalDetails, $scope.education, $scope.experience, $scope.displayPic, function (data) {
-          if(data.value) {
-            console.log('Submitted Successfully!')
-          }
-      })
-    }
+    // $scope.submitEdit = function () {
+    //   NavigationService.submitEdit($scope.personalDetails, $scope.education, $scope.experience, $scope.displayPic, function (data) {
+    //       if(data.value) {
+    //         console.log('Submitted Successfully!')
+    //       }
+    //   })
+    // }
 
     // NavigationService.findAllJobs(function (data) {
     //   $scope.notifications = data;
@@ -588,17 +659,71 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.navigation = NavigationService.getnav();
   })
 
-  .controller('CompanyProfileCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('CompanyProfileCtrl', function($state, $scope,  TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("company-profile");
     $scope.menutitle = NavigationService.makeactive("My Profile");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    NavigationService.getCompanyProfile(function (data) {
+    $scope.company = {};
+    NavigationService.getMyProfilePage(function (data) {
       $scope.company = data;
       console.log('company: ', $scope.company);
     })
+
+    // jobIds = $scope.company.job;
+    // $scope.jobs = []
+    // for(var i=0; i<jobIds.length(); i++) {
+      
+    // }
+
+    NavigationService.getJob(function (data) {
+      $scope.jobs = data.company.job;
+    })
+
+    $scope.job = function () {
+      NavigationService.session(function (data) {
+        console.log('data: ', data)
+        if(data && data.accesslevel == 'client') {
+          $state.go('newjob')    
+        }
+        else {
+          console.log('Please Log in First')
+        }
+      })
+    }
+
+    $scope.EditCD = function (value) {
+      if(value == 'showTrue') {
+        $scope.isEditCD = true;
+      }
+      else {
+       $scope.isEditCD = false;
+      }
+    }
+
+    $scope.EditDescription = function (value) {
+      if(value == 'showTrue') {
+        $scope.isEditDescription = true;
+      }
+      else {
+       $scope.isEditDescription = false;
+      }
+    }
+    
+    $scope.submitCD = function (formData, formValid) {
+      if(formValid.$valid) {
+        NavigationService.submitEditClient(formData, function (data) {
+          console.log('response edit client: ', data)
+          if(data.value) {
+            console.log('In the if statement')
+            $scope.isEditCD = false;
+            $scope.isEditDescription = false;
+          }
+        })
+      }
+    }
 
     // $scope.company = {
     //   "companyDetails": {
@@ -660,18 +785,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     
-    $scope.newJob = function (jobData) {
+    $scope.newJob = function (formValid, jobData) {
       NavigationService.session(function (data) {
         console.log('session: ', data)
-        if(data) {
+        if(data && formValid.$valid) {
           NavigationService.postNewJob(jobData, function (data) {
             console.log('response new job: ', data)
           })
         }
       })
-
     }
-
   })
 
   .controller('ResumeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -720,14 +843,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
           $scope.wrongCredentials = true;
         }
         // $uibModal.dismiss('cancel')
-        else {
-          console.log('In the else statement')
-          $scope.wrongCredentials = false;
-          // $uibModal.dismiss();
-          $state.go('profile')
+        else { 
+          NavigationService.session(function (data) {
+            if(data.accesslevel == 'lancer'){
+              console.log('In the else statement')
+              $scope.wrongCredentials = false;
+              // $uibModal.dismiss();
+              $state.go('searchcategory')
+            }
+          })
         }
       })
-      
     }
     
     $scope.forgotpop = function() {
@@ -742,6 +868,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       console.log('forgotpop: ', email);
       NavigationService.forgot(email, function (data) {
         console.log('response forgot: ', data)
+        if(data.value == true) {
+          $scope.success = true;
+          $uibModal.open({
+            animation: true,
+            templateUrl: "views/modal/login.html",
+            controller: "RegisterLancerCtrl"
+          })
+        }
       })
     }
 
@@ -759,6 +893,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
         $scope.completeRegister = true;
         NavigationService.signUpLancer(formregistration, function (data) {
           console.log('registerlancer response: ', data);
+          if(data.value) {
+            $state.go('searchcategory')
+          }
         })
       }
       else {
@@ -787,10 +924,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     // $scope.registration = {};
     // $scope.companyDetails = {};
     $scope.signUpClient = function (formData, formValid) {
-      companyDetails = formData.company;
-      console.log(companyDetails)
+      // companyDetails = formData.company;
+      // console.log(companyDetails)
       if(formValid.$valid){
-        NavigationService.signUpClient(formData, companyDetails, function (data) {
+        NavigationService.signUpClient(formData, function (data) {
           console.log(data);
           if(data.value == true) {
             $state.go('postjob')
@@ -836,7 +973,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
             if(data.accesslevel == "client") {
               console.log('In the if statement!!!')
               $scope.wrongCredentials = false;
-              $state.go('company-profile')
+              $state.go('postjob')
             }
           })
           

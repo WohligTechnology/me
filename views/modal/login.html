@@ -21,10 +21,10 @@
         <div class="form-group">
           <button type="submit" class="btn btn-primary btn-more" ng-click="submitLogin(loginData);">SUBMIT</button>
           <div ng-if="wrongCredentials == false" ng-bind="$close()"></div>
-          {{loginData}}
-          {{register}}
+          <!-- {{loginData}}
+          {{register}} -->
         </div>
-        <h4 ng-click="forgotpop();" class="pointer">Forgot Password ?</h4>
+        <h4 ng-click="forgotpop();$close();" class="pointer">Forgot Password ?</h4>
       </form>
     </div>
   </div>

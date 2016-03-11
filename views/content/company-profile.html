@@ -1,7 +1,7 @@
 <div class="">
   <div class="company-profiletab brand-gray-bg">
     <div class="container">
-      <h3 class="company-name blue-color">{{company.companyDetails.companyName}} Company Profile</h3>
+      <h3 class="company-name blue-color">{{company.company.companyName}} Company Profile</h3>
       <uib-tabset>
         <uib-tab>
           <uib-tab-heading><span>About Company</span></uib-tab-heading>
@@ -25,19 +25,46 @@
                           </div>
                           <div class="col-md-10">
                             <div class="edit-btn pull-right">
-                              <img src="img/pencil.jpg" alt="" class="img-responsive">
+                              <img src="img/pencil.jpg" alt="" class="img-responsive" ng-click="EditCD('showTrue')">
                             </div>
                             <div class="profile-info">
                               <div class="pro-head">
                                 <h4 class="blue-color head-title">Company details: </h4>
-                                <span>{{company.companyDetails.name}}</span>
-                                <span>{{company.companyDetails.email}}</span>
-                                <div class="pro-add">
-                                  <span class="block">{{company.companyDetails.contactNo}}</span>
-                                  <span class="block">{{company.companyDetails.address}}</span>
-                                  <!-- <span class="block">Near Sadhana School</span>
-                                  <span class="block">Sion (East), Mumbai</span>
-                                  <span class="block">Maharashtra-420020</span> -->
+                                <div ng-hide="isEditCD">
+                                  <span>{{company.name}}</span>
+                                  <span>{{company.email}}</span>
+                                  <div class="pro-add">
+                                    <!-- {{company}} -->
+                                    <span class="block">{{company.contactNo}}</span>
+                                    <span class="block">{{company.company.website}}</span>
+                                    <span class="block">{{company.company.address}}</span>
+                                    <!-- <span class="block">Near Sadhana School</span>
+                                    <span class="block">Sion (East), Mumbai</span>
+                                    <span class="block">Maharashtra-420020</span> -->
+                                  </div>
+                                </div>
+                                <div ng-show="isEditCD">
+                                  <form name="editCD">
+                                    <div class="form-group">
+                                      <label>Name: </label><input type="text" ng-model="company.name" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                      <label>Email: </label><input type="text" ng-model="company.email" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                      <label>Contact Number: </label><input type="text" ng-model="company.contactNo" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                      <label>Website: </label><input type="text" ng-model="company.company.website" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                      <label>Address: </label><input type="text" ng-model="company.company.address" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                    <button ng-click="submitCD(company, editCD)" class="btn btn-primary btn-default">Submit</button>
+                                    <button ng-click="EditCD('showFalse')" class="btn btn-primary btn-default">Cancel</button>
+                                    </div>
+                                  </form>
                                 </div>
                               </div>
                             </div>
@@ -73,19 +100,33 @@
                           </div>
                           <div class="col-md-10">
                             <div class="edit-btn pull-right">
-                              <img src="img/pencil.jpg" alt="" class="img-responsive">
+                              <img src="img/pencil.jpg" alt="" class="img-responsive" ng-click="EditDescription('showTrue')">
                             </div>
                             <div class="profile-info">
                               <div class="pro-head">
-                                <h4 class="blue-color head-title">Description</h4>
-                                <span>{{company.description}}</span>
+                                <div ng-hide="isEditDescription">
+                                  <h4 class="blue-color head-title">Description</h4>
+                                  <span>{{company.company.description}}</span>
+                                </div>
+                                <div ng-show="isEditDescription">
+                                  <form name="editDescription">
+                                    <div class="form-group">
+                                      <label>Description: </label>
+                                        <textarea type="text" ng-model="company.company.description" class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                    <button ng-click="submitCD(company, editDescription)" class="btn btn-primary btn-default">Submit</button>
+                                    <button ng-click="EditDescription('showFalse')" class="btn btn-primary btn-default">Cancel</button>
+                                    </div>
+                                  </form>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                       <div class="post-jb">
-                        <button class="btn btn-primary" ui-sref="newjob">Post Job</button>
+                        <button class="btn btn-primary" ng-click="job()">Post Job</button>
                       </div>
                     </div>
                   </div>
@@ -95,7 +136,7 @@
                 <div class="lady-img">
                   <img src="img/right.jpg" class="img-responsive">
                 </div>
-              </div>
+              </div>             
             </div>
           </div>
         </uib-tab>
@@ -111,14 +152,17 @@
                     </div>
                   </div>
                   <div class="col-md-9">
-                    <div class="job-list-main" ng-repeat="job in company.jobs">
+                    <div class="job-list-main" ng-repeat="job in jobs">
                       <div class="edit-btn pull-right">
                         <i class="fa fa-pencil"></i>
                         <i class="fa fa-trash"></i>
                       </div>
-                      <h4 class="blue-color job-title text-uppercase m-clear">{{job.title}}</h4>
+                      <h4 class="blue-color job-title text-uppercase m-clear">{{job.department}}</h4>
                       <div class="job-detail">
                         <p class="text-justify">{{job.description}}</p>
+                        <p class="text-justify">{{job.designation}}</p>
+                        <p class="text-justify">{{job.city}}</p>
+                        <p class="text-justify">{{job.state}}</p>
                       </div>
                     </div>
                   </div>

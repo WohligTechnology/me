@@ -11,8 +11,8 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="search-input custom-select text-center">
-                  <select class="form-control">
-                    <option>Job Skills/Company</option>
+                  <select class="form-control" ng-model="categorySelect" ng-change="showCategorySelect(categorySelect)">
+                    <option value="">Job Skills/Company</option>
                     <option ng-repeat="category in categoryOptions">{{category}}</option>
                   </select>
                   <span class="job-select"></span>
@@ -20,8 +20,8 @@
               </div>
               <div class="col-md-6">
                 <div class="search-input custom-select text-center">
-                  <select class="form-control">
-                    <option>City/State</option>
+                  <select class="form-control" ng-model="citySelect" ng-change="showCitySelect(citySelect)">
+                    <option value="">City/State</option>
                     <option ng-repeat="city in cityOptions">{{city}}</option>
                   </select>
                   <span class="job-select"></span>
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="text-center">
-          <button class="btn btn-primary search-btn" ui-sref="joblisting">Search Job</button>
+          <button class="btn btn-primary search-btn" ng-click="getJobs()">Search Job</button>
         </div>
       </div>
     </div>

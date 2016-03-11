@@ -30,11 +30,13 @@
                             <div class="profile-info">
                               <div class="pro-head">
                                 <h4 class="blue-color head-title">Personal details</h4>
-                                <span ng-hide="isEditPD">{{personalDetails.name}}</span>
-                                <span ng-hide="isEditPD">{{personalDetails.email}}</span>
                                 <div class="pro-add">
-                                  <span class="block" ng-hide="isEditPD">{{personalDetails.contactNo}}</span>
-                                  <span class="block" ng-hide="isEditPD">{{personalDetails.address}}</span>
+                                  <div ng-hide="isEditPD">
+                                    <span class="block">{{personalDetails.name}}</span>
+                                    <span class="block">{{personalDetails.email}}</span>
+                                    <span class="block">{{personalDetails.contactNo}}</span>
+                                    <span class="block">{{personalDetails.address}}</span>
+                                  </div>
                                   <!-- <span class="block">Near Sadhana School</span>
                                   <span class="block">Sion (East), Mumbai</span>
                                   <span class="block">Maharashtra-420020</span> -->
@@ -53,7 +55,7 @@
                                         <label>Address: </label><input type="text" ng-model="personalDetails.address" class="form-control">
                                       </div>
                                       <div class="form-group">
-                                      <button ng-click="showEditPD('showFalse')" class="btn btn-primary btn-default">Submit</button>
+                                      <button ng-click="showEditPD('showFalse');submitPD(personalDetails);" class="btn btn-primary btn-default">Submit</button>
                                       <button ng-click="showEditPD('showFalse')" class="btn btn-primary btn-default">Cancel</button>
                                       </div>
                                     </form>
@@ -97,7 +99,7 @@
                                 </div>
                                 <div class="form-group">
                                 <button ng-click="addNewEdu()" class="btn btn-primary btn-default">Add New Education Detail</button>
-                                <button ng-click="showEditEdu('showFalse');submitEdit();" class="btn btn-primary btn-default">Submit</button>
+                                <button ng-click="showEditEdu('showFalse');submitEdu(education);" class="btn btn-primary btn-default">Submit</button>
                                 </div>
                               </form>
                             </div>
@@ -143,7 +145,7 @@
                                     </div>
                                     <div class="form-group">
                                     <button ng-click="addNewExp()" class="btn btn-primary btn-default">Add New Experience</button>
-                                    <button ng-click="showEditExp('showFalse');submitEdit();" class="btn btn-primary btn-default">Submit</button>
+                                    <button ng-click="showEditExp('showFalse');submitExp(experience);" class="btn btn-primary btn-default">Submit</button>
                                     </div>
                                   </form>
                                 </div>
