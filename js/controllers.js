@@ -1,6 +1,6 @@
 // window.uploadUrl = "http://www.myfynx.com/newfynx/index.php/json/uploadImage";
 window.uploadUrl = "http://130.211.164.166/uploadfile/upload";
-window.uploadUrl = "http://192.168.0.126:80/uploadfile/upload";
+// window.uploadUrl = "http://192.168.0.126:80/uploadfile/upload";
 angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'angularFileUpload', 'angularMoment'])
 
 
@@ -836,17 +836,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     // $scope.login = {}
     $scope.submitLogin = function (loginData) {
       console.log(loginData)
+      loginData.accesslevel="lancer";
       NavigationService.login(loginData, function (data) {
         console.log('response: ', data)
         // $scope.wrongCredentials = false;
         if(data.value == false) {
           console.log('In the if statement')
+          $scope.wrongCredentials = true;
         }
         // $uibModal.dismiss('cancel')
         else { 
           NavigationService.session(function (data) {
             if(data.accesslevel == 'lancer'){
               console.log('In the else statement')
+              $scope.wrongCredentials = false;
               // $uibModal.dismiss();
               $state.go('searchcategory')
             }
@@ -955,7 +958,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //  fileUpload.uploadFileToUrl(file, uploadUrl);
     // };
     $scope.submitLogin = function (loginData) {
-      console.log(loginData)
+      loginData.accesslevel="client";
+      console.log(loginData);
       NavigationService.login(loginData, function (data) {
         console.log('response: ', data)
         // $scope.wrongCredentials = false;
@@ -968,10 +972,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
           console.log('In the else statement')
           // $scope.modal.dismiss('cancel');
           NavigationService.session(function (data) {
-            console.log('session response: ', data);
-            console.log('In the if statement!!!');
+            console.log('session response: ', data)
+            if(data.accesslevel == "client") {
+              console.log('In the if statement!!!')
               $scope.wrongCredentials = false;
-              $state.go('postjob');
+              $state.go('postjob')
+            }
           })
           
         }
