@@ -42,11 +42,11 @@
                     <div class="pull-right">
                       <div class="btn btn-primary ">Apply Now</div>
                     </div>
-                    <h5 class="blue-color">{{jobDetail.company}} <span>({{jobDetail.roleRequired}})</span></h5>
-                    <p>{{jobDetail.city}}</p>
+                    <h5 class="blue-color">{{jobDetail.company.name}} <span>({{job.designation}})</span></h5>
+                    <p>{{job.city}}</p>
                     <ul class="list-unstyled bottom-ul ab post-made">
-                      <li>{{jobDetail.postingDate}}</li>
-                      <li>expires {{jobDetail.expiryDate}}</li>
+                      <li class="bold" am-time-ago="data.company.job.reporting">Posting Date: </li>
+                      <li>expires {{job.appdate | amDateFormat:'MMMM Do YYYY'}}</li>
                     </ul>
                   </div>
                 </div>
@@ -55,19 +55,19 @@
             <div class="box">
               <div class="box-cont brand-gray-bg">
                 <h5 class="bold">About Company</h5>
-                <p>{{jobDetail.companyDescription}}</p>
+                <p>{{jobDetail.company.description}}</p>
               </div>
               <div class="box-cont">
                 <h5 class="bold">Job Details</h5>
-                <p>{{jobDetail.jobDescription}}</p>
+                <p>{{job.description}}</p>
               </div>
-              <div class="box-cont">
+              <!-- <div class="box-cont">
                 <h5 class="bold">Responsibility</h5>
                 <p class="blue-color">{{jobDetail.jobResponsibilities}}</p>
-              </div>
+              </div> -->
               <div class="box-cont">
                 <ul class="list-unstyled inline-make">
-                  <li>
+                  <!-- <li>
                     <span class="head">Salary</span>
                     <span class="sub-title">{{jobDetail.payment}}</span>
                   </li>
@@ -75,9 +75,9 @@
                     <span class="head">Exposure</span>
                     <span class="sub-title">{{jobDetail.exposure}}</span>
                   </li>
-                  <li>
+                  <li> -->
                     <span class="head">Role</span>
-                    <span class="sub-title">{{jobDetail.roleRequired}}</span>
+                    <span class="sub-title">{{job.designation}}</span>
                   </li>
                 </ul>
               </div>

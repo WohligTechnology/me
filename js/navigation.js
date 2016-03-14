@@ -1,6 +1,6 @@
 // var adminurl = 'http://192.168.0.126:1337/callApi/flexi/json/';
 var adminurl = 'http://130.211.164.166/';
-// var adminurl = 'http://vignesh.com/';
+var adminurl = 'http://vignesh.com/';
 var navigationservice = angular.module('navigationservice', [])
 
 .factory('NavigationService', function ($http) {
@@ -18,8 +18,15 @@ var navigationservice = angular.module('navigationservice', [])
         name: "My Profile",
         classis: "active",
         icon: "fa-user",
-        link: "companyprofile"
-    }, {
+        link: "profile"
+    },
+    // {
+    //     name: "My Profile",
+    //     classis: "active",
+    //     icon: "fa-user",
+    //     link: "profile"
+    // },
+    {
         name: "Success Stories",
         classis: "active",
         icon: "fa-briefcase",
@@ -141,12 +148,12 @@ var navigationservice = angular.module('navigationservice', [])
         withCredentials:true
       }).success(callback);
     },
-    getEachJobDetail: function (id, callback) {
+    getEachJobDetail: function (job, callback) {
       $http({
         url: adminurl+'user/findCompanyProfile',
         method:'POST',
         data: {
-          "_id":id
+          "_id":job._id
         }
       }).success(callback);
     },
@@ -170,7 +177,7 @@ var navigationservice = angular.module('navigationservice', [])
           "name":PD.name,
           "email":PD.email,
           "contactNo":PD.contactNo,
-          "address":PD.address,
+          "location":PD.location,
           "education":Edu,
           "experience":Exp,
           "profilepic":DP
@@ -246,6 +253,32 @@ var navigationservice = angular.module('navigationservice', [])
         url: adminurl+'user/getCompanyProfile',
         method: 'POST'
       }).success(callback);
+    },
+    jobApply: function (id, callback) {
+      $http({
+        url: adminurl+'user/applyForJob',
+        method: 'POST',
+        data: {
+          'job': id
+        }
+      }).success(callback);
     }
   };
+  // function whatLink() {
+  //   session(function (data) {
+  //     session = data;
+  //     console.log(session);
+  //   })
+  //
+  // //   session.then(function () {
+  // //     if(session.$$state.value.data.accesslevel == "client") {
+  // //         console.log(session)
+  // //         return "companyprofile";
+  // //     }
+  // //     else if (session.$$state.value.data.accesslevel == "lancer") {
+  // //       return "profile";
+  // //     }
+  // //   })
+  // //
+  // }
 });
