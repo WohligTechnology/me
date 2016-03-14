@@ -220,11 +220,11 @@ firstapp.service('fileUpload', ['$http', function ($http) {
    })
 
    .success(function(){
-    console.log('upload success')
-    console.log('uploaded to: ', uploadUrl)
+    console.log('upload success');
+    console.log('uploaded to: ', uploadUrl);
    })
 
    .error(function(){
    });
-  }
+ };
 }]);

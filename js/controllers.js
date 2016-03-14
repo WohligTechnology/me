@@ -41,10 +41,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       }
       else {
         NavigationService.changePassword(formData, function (data) {
-          console.log('changed: ', data)
-        })
+          console.log('changed: ', data);
+        });
       }
-    }
+    };
   })
 
   .controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -103,7 +103,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
         $scope.joblist = data.data;
         $scope.count = data.total;
       });
-    }
+    };
     // var page = 1;
     // NavigationService.findAllJobs(page, function (data) {
     //   $scope.joblist = data.data;
@@ -115,7 +115,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     var data = $.jStorage.get('searchJobs');
     $scope.joblist = data.data;
     $scope.count = data.total;
-    console.log('job data: ', data.data)
+    console.log('job data: ', data.data);
 
     // $scope.getDetails = function (id) {
     //   NavigationService.getEachJobDetail(id, function (data) {
@@ -126,17 +126,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.loadMore = function () {
       if($scope.joblist.pagenumber < $scope.joblist.totalpages) {
         // var last = $scope.joblist.totalpages;
-        console.log('joblist length: ', $scope.joblist.data.length)
-        console.log('last: ', last)
-        console.log('jobNumber: ', $scope.jobNumber)
+        console.log('joblist length: ', $scope.joblist.data.length);
+        console.log('last: ', last);
+        console.log('jobNumber: ', $scope.jobNumber);
         // for (var i = 1; i <= 2; i++) {
             // console.log('in the if statement')
             ++$scope.joblist.pagenumber;
-            $scope.getJobs($scope.joblist.pagenumber)
+            $scope.getJobs($scope.joblist.pagenumber);
           // }
         // console.log('job number: ', $scope.jobNumber)
       }
-    }
+    };
 
     $scope.mySlides = [
       'img/landing.jpg',
@@ -146,8 +146,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       console.log('in the applyForJob function: ', id);
       NavigationService.jobApply(id, function (data) {
         console.log('apply for job: ', data);
-      })
-    }
+      });
+    };
 
     // $scope.joblist = [
     //   {
@@ -201,10 +201,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //   "jobResponsibilities": "You are going to have alot of responsibilities!!",
     //   "image":"img/joblist.jpg"
     // }
-    console.log('stateParams: ', $stateParams.job)
+    console.log('stateParams: ', $stateParams.job);
     NavigationService.getEachJobDetail($stateParams.job, function (data) {
       $scope.jobDetail = data;
-      $scope.job = $stateParams.job
+      $scope.job = $stateParams.job;
       console.log('job detail: ', $scope.jobDetail);
     });
 
@@ -237,7 +237,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.jobs = {
     "count": 30,
     "lastPage": 3
-    }
+  };
 
     // $scope.pageOfJobs = [{
     //         "image": "img/search.png",
@@ -280,7 +280,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //     }
     // ]
 
-    $scope.pageOfJobs = []
+    $scope.pageOfJobs = [];
     NavigationService.getAllFreelancers(function (data) {
       $scope.jobs = data;
       console.log('all freelancers: ', $scope.jobs);
@@ -300,9 +300,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
         for (var i = 0; i < 2; i++) {
           $scope.pageOfJobs.push($scope.jobs.data[last + i]);
         }
-        console.log('job number: ', $scope.pageOfJobs)
+        console.log('job number: ', $scope.pageOfJobs);
       }
-    }
+    };
 
     // $scope.jobs = [
     //   {
@@ -351,25 +351,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
           });
           // console.log(flag);
           if(flag == -1) {
-            $scope.cityOptions.push(value.state)
+            $scope.cityOptions.push(value.state);
           }
         }
         if(value.city) {
           flag2 = _.findIndex($scope.cityOptions, function(o) {
             return o == value.city;
           });
-          console.log('flag 2', flag2)
+          console.log('flag 2', flag2);
           if(flag2 == -1) {
-            $scope.cityOptions.push(value.city)
+            $scope.cityOptions.push(value.city);
           }
         }
       console.log('cityOptions: ', $scope.cityOptions);
       });
-    })
+    });
 
     NavigationService.getCategoryOptions(function (data) {
       // $scope.categoryOptions = data;
-      $scope.categoryOptions = []
+      $scope.categoryOptions = [];
       _.each(data, function (value) {
         flag = _.findIndex($scope.categoryOptions, function(o) {
           console.log(o);
@@ -378,36 +378,36 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
         });
         // console.log(flag);
         if(flag == -1) {
-          $scope.categoryOptions.push(value.designation)
+          $scope.categoryOptions.push(value.designation);
         }
         // $scope.categoryOptions.push(value.designation)
-      })
+      });
       console.log('categoryOptions: ', $scope.categoryOptions);
-    })
+    });
 
     $scope.getJobs = function () {
-      console.log('dropdown data: ', data)
+      console.log('dropdown data: ', data);
       NavigationService.findAllJobs(data, 1, function (data) {
         // $scope.joblist = data.data;
         // $scope.count = data.total;
-        console.log('jobs data: ', data)
+        console.log('jobs data: ', data);
         if(data) {
           $.jStorage.set('searchJobs', data);
-          $state.go('joblisting')
+          $state.go('joblisting');
         }
       });
-    }
+    };
 
     var data ={};
     $scope.showCitySelect = function (city) {
-      console.log('testing city: ', city)
-      data.city = city
-    }
+      console.log('testing city: ', city);
+      data.city = city;
+    };
 
     $scope.showCategorySelect = function (category) {
-      console.log('testing category: ', category)
-      data.category = category
-    }
+      console.log('testing category: ', category);
+      data.category = category;
+    };
   })
   .controller('RegistrationCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -456,31 +456,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //           "designation": "Developer"
     //       }
     //   ]}
-    $scope.education = []
-    $scope.experience = []
-    $scope.displayPic = ""
-    $scope.personalDetails = {}
+    $scope.education = [];
+    $scope.experience = [];
+    $scope.displayPic = "";
+    $scope.personalDetails = {};
     NavigationService.getMyProfilePage(function (data) {
       // $scope.myProfile = data;
-      console.log('access level: ', data)
+      console.log('access level: ', data);
       $scope.data = data;
       if(data.accesslevel == 'lancer') {
         $scope.displayPic = data.profilepic;
-        $scope.personalDetails= {"name": data.name, "email": data.email, "contactNo": data.contactNo, "location": data.location}
+        $scope.personalDetails= {"name": data.name, "email": data.email, "contactNo": data.contactNo, "location": data.location};
         if(!data.education) {
-          $scope.education = [{examination: "", percentage: "", institution: ""}]
+          $scope.education = [{examination: "", percentage: "", institution: ""}];
         }
         else if(data.education) {
          $scope.education = data.education;
-         console.log('education:', $scope.education)
+         console.log('education:', $scope.education);
         }
 
         if(!data.experience) {
-          $scope.experience = [{company:"", duration:"", responsibilities:"", designation: ""}]
+          $scope.experience = [{company:"", duration:"", responsibilities:"", designation: ""}];
         }
         else if(data.experience) {
          $scope.experience = data.experience;
-         console.log('experience:', $scope.experience)
+         console.log('experience:', $scope.experience);
         }
       }
       else if(data.accesslevel){
@@ -488,29 +488,29 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
         // $scope.data = data;
         console.log('company: ', $scope.company);
       }
-      console.log(data)
-    })
+      console.log(data);
+    });
 
     $scope.submitPD = function (value) {
       console.log('personal details1: ', value);
       NavigationService.submitEdit(value, $scope.education, $scope.experience, $scope.displayPic, function (data) {
         console.log('personal details: ', data);
-      })
-    }
+      });
+    };
 
     $scope.submitEdu = function (value) {
       console.log('education: ', value);
       NavigationService.submitEdit($scope.personalDetails, value, $scope.experience, $scope.displayPic, function (data) {
         console.log('education response: ', data);
-      })
-    }
+      });
+    };
 
     $scope.submitExp = function (value) {
       console.log('experience: ', value);
       NavigationService.submitEdit($scope.personalDetails, $scope.education, value, $scope.displayPic, function (data) {
         console.log('experience response: ', data);
-      })
-    }
+      });
+    };
 
     $scope.toggle = function (value) {
       if(value) {
@@ -519,7 +519,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       else {
         $scope.isEditPD = true;
       }
-    }
+    };
 
     $scope.showEditPD = function (value) {
       console.log('In show edit');
@@ -529,7 +529,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       else {
         $scope.isEditPD = false;
       }
-    }
+    };
 
     $scope.showEditEdu = function(value) {
       if(value == 'showTrue') {
@@ -538,12 +538,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       else {
         $scope.isEditEdu = false;
       }
-    }
+    };
 
     $scope.addNewEdu = function() {
-      edu = {examination: "", percentage: "", institution: ""}
+      edu = {examination: "", percentage: "", institution: ""};
       $scope.education.push(edu);
-    }
+    };
 
     $scope.showEditExp = function(value) {
       if(value == 'showTrue') {
@@ -552,12 +552,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       else {
         $scope.isEditExp = false;
       }
-    }
+    };
 
     $scope.addNewExp = function() {
-      exp = {company:"", duration:"", responsibilities:"", designation: ""}
+      exp = {company:"", duration:"", responsibilities:"", designation: ""};
       $scope.experience.push(exp);
-    }
+    };
 
     // Company Profile
     $scope.company = {};
@@ -567,19 +567,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
 
     NavigationService.getJob(function (data) {
       $scope.jobs = data.company.job;
-    })
+    });
 
     $scope.job = function () {
       NavigationService.session(function (data) {
-        console.log('data: ', data)
+        console.log('data: ', data);
         if(data && data.accesslevel == 'client') {
-          $state.go('newjob')
+          $state.go('newjob');
         }
         else {
-          console.log('Please Log in First')
+          console.log('Please Log in First');
         }
-      })
-    }
+      });
+    };
 
     $scope.EditCD = function (value) {
       if(value == 'showTrue') {
@@ -588,7 +588,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       else {
        $scope.isEditCD = false;
       }
-    }
+    };
 
     $scope.EditDescription = function (value) {
       if(value == 'showTrue') {
@@ -597,20 +597,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       else {
        $scope.isEditDescription = false;
       }
-    }
+    };
 
     $scope.submitCD = function (formData, formValid) {
       if(formValid.$valid) {
         NavigationService.submitEditClient(formData, function (data) {
-          console.log('response edit client: ', data)
+          console.log('response edit client: ', data);
           if(data.value) {
-            console.log('In the if statement')
+            console.log('In the if statement');
             $scope.isEditCD = false;
             $scope.isEditDescription = false;
           }
-        })
+        });
       }
-    }
+    };
     // $scope.submitEdit = function () {
     //   NavigationService.submitEdit($scope.personalDetails, $scope.education, $scope.experience, $scope.displayPic, function (data) {
     //       if(data.value) {
@@ -762,7 +762,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     NavigationService.getMyProfilePage(function (data) {
       $scope.company = data;
       console.log('company: ', $scope.company);
-    })
+    });
 
     // jobIds = $scope.company.job;
     // $scope.jobs = []
@@ -772,19 +772,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
 
     NavigationService.getJob(function (data) {
       $scope.jobs = data.company.job;
-    })
+    });
 
     $scope.job = function () {
       NavigationService.session(function (data) {
-        console.log('data: ', data)
+        console.log('data: ', data);
         if(data && data.accesslevel == 'client') {
-          $state.go('newjob')
+          $state.go('newjob');
         }
         else {
-          console.log('Please Log in First')
+          console.log('Please Log in First');
         }
-      })
-    }
+      });
+    };
 
     $scope.EditCD = function (value) {
       if(value == 'showTrue') {
@@ -793,7 +793,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       else {
        $scope.isEditCD = false;
       }
-    }
+    };
 
     $scope.EditDescription = function (value) {
       if(value == 'showTrue') {
@@ -802,20 +802,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       else {
        $scope.isEditDescription = false;
       }
-    }
+    };
 
     $scope.submitCD = function (formData, formValid) {
       if(formValid.$valid) {
         NavigationService.submitEditClient(formData, function (data) {
-          console.log('response edit client: ', data)
+          console.log('response edit client: ', data);
           if(data.value) {
-            console.log('In the if statement')
+            console.log('In the if statement');
             $scope.isEditCD = false;
             $scope.isEditDescription = false;
           }
-        })
+        });
       }
-    }
+    };
 
     // $scope.company = {
     //   "companyDetails": {
@@ -865,7 +865,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     NavigationService.getCategoryOptions(function (data) {
       $scope.categoryOptions = data;
       console.log('categoryOptions: ', $scope.categoryOptions);
-    })
+    });
 
     // $scope.categoryOptions = ["Design", "Websites IT Software", "Mobile", "Data Entry", "Product Sourcing", "Sales & Marketing", "Business Accounting & Legal"]
   })
@@ -879,14 +879,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
 
     $scope.newJob = function (formValid, jobData) {
       NavigationService.session(function (data) {
-        console.log('session: ', data)
+        console.log('session: ', data);
         if(data && formValid.$valid) {
           NavigationService.postNewJob(jobData, function (data) {
-            console.log('response new job: ', data)
-          })
+            console.log('response new job: ', data);
+          });
         }
-      })
-    }
+      });
+    };
   })
 
   .controller('ResumeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -898,7 +898,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     NavigationService.getResume(function (data) {
       $scope.resume = data;
       console.log('Resume: ', $scope.resume);
-    })
+    });
   })
 
   .controller('Commmunity', function($scope, TemplateService, NavigationService, $timeout) {
@@ -914,7 +914,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.menutitle = NavigationService.makeactive("Register Lancer");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    $scope.register = "Here it is!"
+    $scope.register = "Here it is!";
 
     $scope.login = function() {
       $uibModal.open({
@@ -922,56 +922,56 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
         templateUrl: "views/modal/login.html",
         controller: "RegisterLancerCtrl",
         //  scope: $scope
-      })
+      });
     };
     // $scope.login = {}
     $scope.submitLogin = function (loginData) {
-      console.log(loginData)
+      console.log(loginData);
       loginData.accesslevel="lancer";
       NavigationService.login(loginData, function (data) {
-        console.log('response: ', data)
+        console.log('response: ', data);
         // $scope.wrongCredentials = false;
-        if(data.value == false) {
-          console.log('In the if statement')
+        if(data.value === false) {
+          console.log('In the if statement');
           $scope.wrongCredentials = true;
         }
         // $uibModal.dismiss('cancel')
         else {
           NavigationService.session(function (data) {
             if(data.accesslevel == 'lancer'){
-              console.log('In the else statement')
+              console.log('In the else statement');
               $scope.wrongCredentials = false;
               // $uibModal.dismiss();
-              $scope.navigation.splice(1,1)
-              $state.go('searchcategory')
+              $scope.navigation.splice(1,1);
+              $state.go('searchcategory');
             }
-          })
+          });
         }
-      })
-    }
+      });
+    };
 
     $scope.forgotpop = function() {
       $uibModal.open({
         animation: true,
         templateUrl: "views/modal/forgotpop.html",
         controller: "RegisterLancerCtrl"
-      })
+      });
     };
 
     $scope.submitEmail = function (email) {
       console.log('forgotpop: ', email);
       NavigationService.forgot(email, function (data) {
-        console.log('response forgot: ', data)
-        if(data.value == true) {
+        console.log('response forgot: ', data);
+        if(data.value === true) {
           $scope.success = true;
           $uibModal.open({
             animation: true,
             templateUrl: "views/modal/login.html",
             controller: "RegisterLancerCtrl"
-          })
+          });
         }
-      })
-    }
+      });
+    };
 
 
 
@@ -988,14 +988,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
         NavigationService.signUpLancer(formregistration, function (data) {
           console.log('registerlancer response: ', data);
           if(data.value) {
-            $state.go('searchcategory')
+            $state.go('searchcategory');
           }
-        })
+        });
       }
       else {
 
       }
-    }
+    };
 
     // $scope.uploader = new FileItem();
 
@@ -1023,22 +1023,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       if(formValid.$valid){
         NavigationService.signUpClient(formData, function (data) {
           console.log(data);
-          if(data.value == true) {
-            $state.go('postjob')
+          if(data.value === true) {
+            $state.go('postjob');
           }
           else {
-            console.log('Error: ', data.comment)
+            console.log('Error: ', data.comment);
           }
-        })
+        });
       }
-    }
+    };
 
     $scope.login = function() {
       $uibModal. open({
         animation: true,
         templateUrl: "views/modal/login.html",
         controller: "RegisterClientCtrl"
-      })
+      });
     };
 
     // $scope.uploadFile = function(){
@@ -1053,29 +1053,29 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       loginData.accesslevel="client";
       console.log(loginData);
       NavigationService.login(loginData, function (data) {
-        console.log('response: ', data)
+        console.log('response: ', data);
         // $scope.wrongCredentials = false;
-        if(data.value == false) {
-          console.log('In the if statement')
+        if(data.value === false) {
+          console.log('In the if statement');
           $scope.wrongCredentials = true;
         }
         // $uibModal.dismiss('cancel')
         else {
-          console.log('In the else statement')
+          console.log('In the else statement');
           // $scope.modal.dismiss('cancel');
           NavigationService.session(function (data) {
-            console.log('session response: ', data)
+            console.log('session response: ', data);
             if(data.accesslevel == "client") {
-              console.log('In the if statement!!!')
+              console.log('In the if statement!!!');
               $scope.wrongCredentials = false;
-              $scope.navigation.splice(1,1)
-              $state.go('postjob')
+              $scope.navigation.splice(1,1);
+              $state.go('postjob');
             }
-          })
+          });
 
         }
-      })
-    }
+      });
+    };
 
     // $scope.submitLogin = function (loginData) {
     //   console.log(loginData)
@@ -1089,7 +1089,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
         animation: true,
         templateUrl: "views/modal/forgotpop.html",
         controller: "RegisterClientCtrl"
-      })
+      });
     };
   })
 
@@ -1098,15 +1098,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     var uploadres = [];
     //imageupload
     var imagejstupld = "";
-    $scope.usingFlash = FileAPI && FileAPI.upload != null;
-    $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false);
+    $scope.usingFlash = FileAPI && FileAPI.upload !== null;
+    $scope.fileReaderSupported = window.FileReader !== null && (window.FileAPI === null || FileAPI.html5 !== false);
     $scope.uploadRightAway = true;
     $scope.changeAngularVersion = function() {
       window.location.hash = $scope.angularVersion;
       window.location.reload(true);
     };
     $scope.hasUploader = function(index) {
-      return $scope.upload[index] != null;
+      return $scope.upload[index] !== null;
     };
     $scope.abort = function(index) {
       $scope.upload[index].abort();
@@ -1125,7 +1125,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       console.log($files);
       if ($scope.upload && $scope.upload.length > 0) {
         for (var i = 0; i < $scope.upload.length; i++) {
-          if ($scope.upload[i] != null) {
+          if ($scope.upload[i] !== null) {
             $scope.upload[i].abort();
           }
         }
@@ -1134,23 +1134,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       $scope.uploadResult = uploadres;
       $scope.selectedFiles = $files;
       $scope.dataUrls = [];
-      for (var i = 0; i < $files.length; i++) {
-        var $file = $files[i];
-        console.log('files: ', $file)
+      for (var j = 0; j < $files.length; j++) {
+        var $file = $files[j];
+        console.log('files: ', $file);
         if ($scope.fileReaderSupported && ($file.type.indexOf('image') || $file.type.indexOf('application')) > -1) {
           var fileReader = new FileReader();
-          fileReader.readAsDataURL($files[i]);
+          fileReader.readAsDataURL($files[j]);
           var loadFile = function(fileReader, index) {
             fileReader.onload = function(e) {
               $timeout(function() {
                 $scope.dataUrls[index] = e.target.result;
               });
-            }
-          }(fileReader, i);
+            };
+          }(fileReader, j);
         }
-        $scope.progress[i] = -1;
+        $scope.progress[j] = -1;
         if ($scope.uploadRightAway) {
-          $scope.start(i,whichone);
+          $scope.start(j,whichone);
         }
       }
     };
@@ -1208,7 +1208,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
           }, function(evt) {
             $scope.progress[index] = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
           });
-        }
+        };
         fileReader.readAsArrayBuffer($scope.selectedFiles[index]);
       }
     };
@@ -1265,7 +1265,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     NavigationService.getTestimonials(function (data) {
       $scope.testimonials = data;
       console.log('testimonials: ', $scope.testimonials);
-    })
+    });
 
     // $scope.testimonials = [{
     //   image: "img/search.png",
@@ -1285,13 +1285,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
 .controller('headerctrl', function($scope, TemplateService) {
   $scope.template = TemplateService;
 
-  $scope.slideclass = "slide-out"
+  $scope.slideclass = "slide-out";
   $scope.slidemenu = function() {
     if($scope.slideclass == "slide-out")
     $scope.slideclass = "slide-in";
     else
-    $scope.slideclass = "slide-out"
-  }
+    $scope.slideclass = "slide-out";
+  };
 
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $(window).scrollTop(0);
