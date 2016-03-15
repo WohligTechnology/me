@@ -73,6 +73,7 @@ ul.footermenu {
 .navbar-default .navbar-nav > li > a {
   border-left: 3px solid transparent;
   color: #fff;
+  font-size: 16px;
   @include transition(all 300ms linear);
   i {
     margin-right: 15px;
@@ -82,6 +83,7 @@ ul.footermenu {
     border-left: 3px solid #fff;
     background-color:#0670A2;
     @include transition(all 300ms linear);
+    color: #fff;
   }
 }
 .get-slidemenu {
@@ -107,9 +109,8 @@ ul.footermenu {
   @include transition(all 300ms linear);
 }
 .backsidemenu {
-  padding: 20px 10px;
+  padding: 23px 10px;
   border: none;
-  float: right;
   background-color: transparent;
   &:focus { outline: none; }
   .icon-bar {
@@ -221,6 +222,42 @@ i.fa-mobile.input-icon {
   padding: 8px 50px;
 }
 // end of register client and lancer
+// header
+  .profile {
+    padding: 23px 15px;
+    position: relative;
+    vertical-align: top;
+    &:hover {
+      .submenu { display: block; }
+    }
+  }
+  .name { font-size: 21px; }
+  .submenu {
+    display: none;
+    width: 180px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 75px;
+    left: 0;
+    background-color: $base-primary;
+    li { list-style-type: none; }
+    i { margin-right: 10px; }
+    a {
+      border-left: 3px solid transparent;
+      padding: 10px;
+      color: #fff;
+      display: block;
+      font-size: 16px;
+      @include transition(all 300ms linear);
+      &:hover {
+        border-left: 3px solid #fff;
+        background-color: #0670A2;
+        @include transition(all 300ms linear);
+      }
+     }
+  }
+// header  end
 // success stories
 .heading { padding: 10px 0 0; }
 .successstory-slider {
@@ -376,6 +413,22 @@ i.fa-mobile.input-icon {
 // end job list
 
 // company job  - profile page
+.company-imgholder {
+  @include square(180px);
+  overflow: hidden;
+  position: relative;
+  &:hover img {
+    @include square(100%);
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+  }
+  img {
+    max-height: 100%;
+    max-width: 100%;
+    @extend .ab;
+    @extend .get-center;
+  }
+}
 .company-profiletab {
   .nav-tabs {
     border: none;
