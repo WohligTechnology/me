@@ -1,5 +1,6 @@
 // var adminurl = 'http://192.168.0.126:1337/callApi/flexi/json/';
 var adminurl = 'http://130.211.164.166/';
+var adminurl = 'http://192.168.0.126:80/';
 
 var navigationservice = angular.module('navigationservice', [])
 
@@ -57,25 +58,25 @@ var navigationservice = angular.module('navigationservice', [])
             }
             return menuname;
         },
-    signUpClient: function (formData, callback) {
-      console.log('form data: ', formData);
-      $http({
-        url: adminurl + 'user/save',
-        method: 'POST',
-        data: {
-          "image":formData.image,
-          "company":formData.company,
-          "name":formData.name,
-          "password":formData.password,
-          "email": formData.mail,
-          "contactNo":formData.mobile,
-          // "location":companyData.location,
-          // "jobRole":companyData.job,
-          "tc":formData.tc,
-          "accesslevel":"client"
-        }
-      }).success(callback);
-    },
+        signUpClient: function (formData, callback) {
+          console.log('form data: ', formData);
+          $http({
+            url: adminurl + 'user/save',
+            method: 'POST',
+            data: {
+              "image":formData.image,
+              "company":formData.company,
+              "name":formData.name,
+              "password":formData.password,
+              "email": formData.mail,
+              "contactNo":formData.mobile,
+              // "location":companyData.location,
+              // "jobRole":companyData.job,
+              "tc":formData.tc,
+              "accesslevel":"client"
+            }
+          }).success(callback);
+        },
     signUpLancer: function (formData, callback) {
       console.log('form data: ', formData);
       $http({

@@ -44,7 +44,7 @@
                     <p>Upload Picture</p>
                   </div>
                   <h4 ng-if="isloading">Loading...</h4>
-                  <div class="uploaded-img">
+                  <div class="uploaded-img" ng-if="noPhoto">
                     <img ng-src="{{formregistration.picture|serverimage}}">
                   </div>
                 </div>

@@ -26,7 +26,7 @@
                           <div class="col-md-10">
                             <div class="edit-btn pull-right">
                               <!-- <button type="button" ng-value="editPersonal"  ng-model="editPersonal" aria-label="Toggle ngHide"> -->
-                                <img ng-src="img/pencil.jpg" class="img-responsive" ng-click="showEditPD('showTrue');toggle(isEditPD);">
+                                <img ng-src="img/pencil.jpg" class="img-responsive" ng-click="togglePD(isEditPD)">
                                 <!-- {{editPersonal}}</button> -->
                             </div>
                             <div class="profile-info">
@@ -78,7 +78,7 @@
                           </div>
                           <div class="col-md-10">
                             <div class="edit-btn pull-right">
-                              <img src="img/pencil.jpg" class="img-responsive" ng-click="showEditEdu('showTrue')">
+                              <img src="img/pencil.jpg" class="img-responsive" ng-click="toggleEdu(isEditEdu)">
                             </div>
                             <div class="profile-info">
                               <div class="pro-head">
@@ -118,7 +118,7 @@
                           </div>
                           <div class="col-md-10">
                             <div class="edit-btn pull-right">
-                              <img src="img/pencil.jpg" alt="" class="img-responsive" ng-click="showEditExp('showTrue')">
+                              <img src="img/pencil.jpg" alt="" class="img-responsive" ng-click="toggleExp(isEditExp)">
                             </div>
                             <div class="profile-info">
                               <div class="pro-head">
@@ -234,7 +234,7 @@
                 <div class="row">
                   <div class="col-md-3">
                     <div class="company-imgholder">
-                      <img src="img/house.jpg" alt="Company Image" class="img-responsive">
+                      <img src="{{company.image|serverimage}}" alt="Company Image" class="img-responsive">
                     </div>
                   </div>
                   <div class="col-md-9">
@@ -248,7 +248,7 @@
                           </div>
                           <div class="col-md-10">
                             <div class="edit-btn pull-right">
-                              <img src="img/pencil.jpg" alt="" class="img-responsive" ng-click="EditCD('showTrue')">
+                              <img src="img/pencil.jpg" alt="" class="img-responsive" ng-click="toggleCD(isEditCD)">
                             </div>
                             <div class="profile-info">
                               <div class="pro-head">
@@ -323,7 +323,7 @@
                           </div>
                           <div class="col-md-10">
                             <div class="edit-btn pull-right">
-                              <img src="img/pencil.jpg" alt="" class="img-responsive" ng-click="EditDescription('showTrue')">
+                              <img src="img/pencil.jpg" alt="" class="img-responsive" ng-click="toggleDescription(isEditDescription)">
                             </div>
                             <div class="profile-info">
                               <div class="pro-head">

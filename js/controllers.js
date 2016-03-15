@@ -123,8 +123,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //   })
     // }
 
+    $scope.search = function (data, page) {
+      NavigationService.findAllJobs(data, page, function (data) {
+        $scope.joblist = data.data;
+        $scope.count = data.total;
+      });
+    }
+    
     $scope.loadMore = function () {
-      if($scope.joblist.pagenumber < $scope.joblist.totalpages) {
+      if($scope.joblist.pagenumber < $scope.joblist.totalpages && $scope.joblist.pagenumber) {
         // var last = $scope.joblist.totalpages;
         console.log('joblist length: ', $scope.joblist.data.length);
         console.log('last: ', last);
@@ -512,7 +519,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       });
     };
 
-    $scope.toggle = function (value) {
+    $scope.togglePD = function (value) {
       if(value) {
         $scope.isEditPD = false;
       }
@@ -521,6 +528,42 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       }
     };
 
+    $scope.toggleEdu = function (value) {
+      if(value) {
+        $scope.isEditEdu= false;
+      }
+      else {
+        $scope.isEditEdu = true;
+      }
+    };
+
+    $scope.toggleExp = function (value) {
+      if(value) {
+        $scope.isEditExp = false;
+      }
+      else {
+        $scope.isEditExp = true;
+      }
+    };
+
+    $scope.toggleCD = function (value) {
+      if(value) {
+        $scope.isEditCD = false;
+      }
+      else {
+        $scope.isEditCD = true;
+      }
+    };
+
+    $scope.toggleDescription = function (value) {
+      if(value) {
+        $scope.isEditDescription = false;
+      }
+      else {
+        $scope.isEditDescription = true;
+      }
+    };
+    
     $scope.showEditPD = function (value) {
       console.log('In show edit');
       if(value == 'showTrue') {
@@ -1120,6 +1163,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
 
     $scope.onFileSelect = function($files,whichone) {
       $scope.isloading = true;
+      $scope.noPhoto = false;
       $scope.selectedFiles = [];
       $scope.progress = [];
       console.log($files);
@@ -1177,10 +1221,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
           $timeout(function() {
             // cfpLoadingBar.complete();
             $scope.uploadResult.push(response.data);
-            console.log(response.data);
+            console.log('upload response: ', response.data);
+            if(response.data) {
+              $scope.isloading = false;
+              $scope.noPhoto =true;
+              console.log('is loading: ', $scope.isloading)
+              console.log('noPhoto: ', $scope.noPhoto)
+              // if(response.data.files) {
+              //   $scope.noPhoto
+              // }
+            }
+            // else {
+
+            // }
             if(whichone ==1){
-              $scope.formregistration.picture=response.data.files[0].fd;
-              $scope.registration.picture=response.data.files[0].fd;
+              console.log('image access: ', $scope.imageAccess)
+              if($scope.imageAccess == 'lancer') {
+                $scope.formregistration.picture=response.data.files[0].fd;
+              }
+              else if($scope.imageAccess == 'client'){
+                $scope.registration.image=response.data.files[0].fd;
+              }
             }else{
               $scope.formregistration.resume=response.data.files[0].fd;
               $scope.formregistration.filename=response.data.files[0].filename;

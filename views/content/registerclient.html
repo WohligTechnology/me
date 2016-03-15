@@ -29,8 +29,8 @@
               <div class="form-group">
                 <div class="user rl" ng-controller="UploadCtrl">
                   <!-- <input name="picture" required ng-model="formregistration.image" type="file" accept=".jpg,.png" class="form-control ab"> -->
-                  <input type="file" class="form-control ab" ng-model="registration.company.picture" accept=".jpg,.png" file-model = "registration.company.picture" ng-file-select="onFileSelect($files,1)" onclick="this.value=null">
-                  <div ng-if="registration.company.picture">
+                  <input type="file" class="form-control ab" ng-model="registration.image" accept=".jpg,.png" file-model = "registration.image" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-init="imageAccess='client'">
+                  <div ng-if="registration.image">
                     <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
                   </div>
                   <!-- <button ng-click = "uploadFile()">upload me</button> -->
@@ -38,11 +38,11 @@
                     <i class="fa fa-user"></i>
                     <p>Upload Company Logo</p>
                   </div>
+                  <h4 ng-if="isloading">Loading...</h4>
+                  <div class="uploaded-img" ng-if="noPhoto">
+                    <img ng-src="{{registration.image|serverimage}}">
+                  </div>
                 </div>
-                 <div class="uploaded-img" ng-show="registration.company.picture">
-                  <img ng-src="{{registration.company.picture|serverimage}}">
-                </div>
-                <h4 ng-if="isloading">Loading...</h4>
               </div>
             </div>
             <div class="col-md-6">

@@ -8,7 +8,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon white-bg no-radius"><i class="fa fa-search"></i></span>
-                  <input type="text" class="form-control no-radius" placeholder="Graphic Designer" ng-model="jobQuery">
+                  <input type="text" class="form-control no-radius" placeholder="Graphic Designer" ng-model="search.category">
                 </div>
               </div>
             </div>
@@ -16,12 +16,12 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon white-bg no-radius"><i class="fa fa-map-marker"></i></span>
-                  <input type="text" class="form-control no-radius" placeholder="Mumbai" ng-model="cityQuery">
+                  <input type="text" class="form-control no-radius" placeholder="Mumbai" ng-model="search.city">
                 </div>
               </div>
             </div>
             <div class="col-md-3">
-              <button class="btn btn-primary">Search Jobs</button>
+              <button class="btn btn-primary" ng-click="search(search, 1)">Search Jobs</button>
             </div>
           </div>
         </form>
