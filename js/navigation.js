@@ -15,12 +15,13 @@ var navigationservice = angular.module('navigationservice', [])
         classis: "active",
         icon: "fa-key",
         link: "registerlancer"
-    }, {
-        name: "My Profile",
-        classis: "active",
-        icon: "fa-user",
-        link: "profile"
-    },
+    }, 
+    // {
+    //     name: "My Profile",
+    //     classis: "active",
+    //     icon: "fa-user",
+    //     link: "profile"
+    // },
     // {
     //     name: "My Profile",
     //     classis: "active",
@@ -263,6 +264,12 @@ var navigationservice = angular.module('navigationservice', [])
           'job': id
         }
       }).success(callback);
+    },
+    logout: function (callback) {
+      $http({
+          url: adminurl+'user/logout',
+          method: 'POST'
+        }).success(callback);
     }
   };
   // function whatLink() {

@@ -6,11 +6,11 @@
           <a class="navbar-brand" href="#/home"><img src="img/logo.png" alt="logo" width=""> </a>
         </div>
         <div class="pull-right">
-          <div class="profile inline-block">
-            <a href="" class="name block">Bhramanand</a>
+          <div class="profile inline-block" ng-if="isSession">
+            <a href="" class="name block">{{profile.name}}</a>
               <ul class="submenu">
-                <li><a href=""><i class="fa fa-user"></i>My Profile</a></li>
-                <li><a href=""><i class="fa fa-sign-out"></i>Logout</a></li>
+                <li><a ui-sref="profile"><i class="fa fa-user"></i>My Profile</a></li>
+                <li><a ng-click="logout()"><i class="fa fa-sign-out"></i>Logout</a></li>
               </ul>
           </div>
           <button type="button" name="button" class="backsidemenu inline-block" ng-click="slidemenu();">

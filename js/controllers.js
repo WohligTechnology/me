@@ -128,8 +128,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
         $scope.joblist = data.data;
         $scope.count = data.total;
       });
-    }
-    
+    };
+
     $scope.loadMore = function () {
       if($scope.joblist.pagenumber < $scope.joblist.totalpages && $scope.joblist.pagenumber) {
         // var last = $scope.joblist.totalpages;
@@ -563,7 +563,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
         $scope.isEditDescription = true;
       }
     };
-    
+
     $scope.showEditPD = function (value) {
       console.log('In show edit');
       if(value == 'showTrue') {
@@ -1225,8 +1225,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
             if(response.data) {
               $scope.isloading = false;
               $scope.noPhoto =true;
-              console.log('is loading: ', $scope.isloading)
-              console.log('noPhoto: ', $scope.noPhoto)
+              console.log('is loading: ', $scope.isloading);
+              console.log('noPhoto: ', $scope.noPhoto);
               // if(response.data.files) {
               //   $scope.noPhoto
               // }
@@ -1235,7 +1235,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
 
             // }
             if(whichone ==1){
-              console.log('image access: ', $scope.imageAccess)
+              console.log('image access: ', $scope.imageAccess);
               if($scope.imageAccess == 'lancer') {
                 $scope.formregistration.picture=response.data.files[0].fd;
               }
@@ -1343,9 +1343,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     // }];
   })
 
-.controller('headerctrl', function($scope, TemplateService) {
+.controller('headerctrl', function($scope, TemplateService, NavigationService) {
   $scope.template = TemplateService;
-
+  $scope.navigation = NavigationService.getnav();
+  $scope.isSession = false;
+  console.log('session variable: ', $scope.isSession)
+  NavigationService.session(function (data) {
+    console.log('session data: ', data)
+    if(data.name) {
+      $scope.isSession = true;
+      $scope.profile = data;
+    }
+  })
+  console.log('session variable2: ', $scope.isSession)
   $scope.slideclass = "slide-out";
   $scope.slidemenu = function() {
     if($scope.slideclass == "slide-out")
@@ -1353,6 +1363,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     else
     $scope.slideclass = "slide-out";
   };
+
+  $scope.logout = function () {
+    NavigationService.logout(function (data) {
+      console.log('logout response: ', data)
+      if(data.value) {
+        $scope.isSession = false;
+        $scope.navigation.splice(1,0,{name: "Register/Sign in", 
+        classis: "active", 
+        icon: "fa-key", 
+        link: "registerlancer"});
+      }
+    })
+  }
 
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $(window).scrollTop(0);
