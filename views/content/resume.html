@@ -72,7 +72,7 @@
                         <span>Education</span>
                       </div>
                       <div class="resume-detail">
-                        <span class="block" ng-repeat="edu in resume.education">{{edu}}</span>
+                        <span class="block" ng-repeat="edu in resume.education" ng-if="resume.education > 0">{{edu}}</span>
                         <!-- <span class="block">Mumbai university</span> -->
                       </div>
                     </div>
@@ -85,7 +85,7 @@
                         <span>Experience</span>
                       </div>
                       <div class="resume-detail">
-                        <span class="block" ng-repeat="exp in resume.experience">{{exp}}</span>
+                        <span class="block" ng-repeat="exp in resume.experience" ng-if="resume.experience > 0">{{exp}}</span>
                       </div>
                     </div>
                   </div>

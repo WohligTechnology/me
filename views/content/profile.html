@@ -97,7 +97,7 @@
                             <div class="profile-info">
                               <div class="pro-head">
                                 <h4 class="blue-color head-title">Education</h4>
-                                <span class="block" ng-repeat="edu in education" ng-hide="isEditEdu">{{edu.examination}}, {{edu.percentage}}, {{edu.institution}}</span>
+                                <span class="block" ng-repeat="edu in education" ng-hide="isEditEdu" ng-if="education.length > 0">{{edu.examination}}, {{edu.percentage}}, {{edu.institution}}</span>
                                 <!-- <span class="block">K.J Somaiya Of Science &amp; Comm.</span> -->
                               </div>
                             </div>
@@ -137,7 +137,7 @@
                             <div class="profile-info">
                               <div class="pro-head">
                                 <h4 class="blue-color head-title">Experience</h4>
-                                <ul ng-repeat="we in experience" ng-hide="isEditExp">
+                                <ul ng-repeat="we in experience" ng-hide="isEditExp" ng-if="experience.length > 0">
                                   <li>{{we.company}}</li>
                                   <li>{{we.duration}}</li>
                                   <li>{{we.responsibilities}}</li>
