@@ -676,6 +676,9 @@ footer {
 .mt0{
   margin-top:0!important;
 }
+.info-name h4 {
+    text-transform: capitalize;
+}
 // loader end
 @import "amit";
 /* Start writing sass here */
