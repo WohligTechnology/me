@@ -16,15 +16,15 @@
                 </div>
               </div>
               <div class="col-md-10">
-               <div class="resume-info mt0">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="info-name">
-                      <h4>{{resume.name}}</h4>
-                      <span>{{resume.jobRole}}</span>
+                <div class="resume-info mt0">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="info-name">
+                        <h4>{{resume.name}}</h4>
+                        <span>{{resume.jobRole}}</span>
+                      </div>
                     </div>
-                  </div>
-<!--                   <div class="col-md-9">
+                    <!--                   <div class="col-md-9">
                     <div class="resume-heading">
                       <span>Contact</span>
                     </div>
@@ -33,22 +33,22 @@
                       <span class="block "><i class="fa fa-envelope blue-color icon"></i> <a ng-href="resume.contactDetails.email">{{resume.email}}</a></span>
                     </div>
                   </div> -->
-                </div>
+                  </div>
                 </div>
                 <div class="resume-info">
                   <div class="row">
-                  <div class="col-md-12">
-                    <div class="resume-heading">
-                      <span>Contact</span>
-                    </div>
-                    <div class="resume-detail">
-                      <span class="block "><i class="fa fa-phone blue-color icon"></i> <a ng-href="resume.contactDetails.contactNumber">{{resume.contactNo}}</a></span>
-                      <span class="block "><i class="fa fa-envelope blue-color icon"></i> <a ng-href="resume.contactDetails.email">{{resume.email}}</a></span>
+                    <div class="col-md-12">
+                      <div class="resume-heading">
+                        <span>Contact</span>
+                      </div>
+                      <div class="resume-detail">
+                        <span class="block "><i class="fa fa-phone blue-color icon"></i> <a ng-href="resume.contactDetails.contactNumber">{{resume.contactNo}}</a></span>
+                        <span class="block "><i class="fa fa-envelope blue-color icon"></i> <a ng-href="resume.contactDetails.email">{{resume.email}}</a></span>
+                      </div>
                     </div>
                   </div>
                 </div>
-                </div>
-                <div class="resume-info">
+                <!-- <div class="resume-info">
                   <div class="row">
                     <div class="col-md-12">
                       <div class="resume-heading">
@@ -57,14 +57,11 @@
                       <div class="resume-detail">
                         <ul class="skill-list text-capitalize" ng-repeat="key in resume.keySkills">
                           <li>{{key}}</li>
-                          <!-- <li>adobe illustrate</li>
-                          <li>adobe indesign</li>
-                          <li>adobe flash</li> -->
                         </ul>
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <div class="resume-info">
                   <div class="row">
                     <div class="col-md-12">
@@ -72,7 +69,19 @@
                         <span>Education</span>
                       </div>
                       <div class="resume-detail">
-                        <span class="block" ng-repeat="edu in resume.education">{{edu}}</span>
+                        <!-- <span class="block" ng-repeat="edu in resume.education">{{edu}}</span> -->
+                        <table class="table">
+                          <tr>
+                            <th>Examination</th>
+                            <th>Percentage</th>
+                            <th>Institution</th>
+                          </tr>
+                          <tr ng-repeat="edu in resume.education">
+                            <td>{{edu.examination}}</td>
+                            <td>{{edu.percentage}}</td>
+                            <td>{{edu.institution}}</td>
+                          </tr>
+                        </table>
                         <!-- <span class="block">Mumbai university</span> -->
                       </div>
                     </div>
@@ -85,7 +94,21 @@
                         <span>Experience</span>
                       </div>
                       <div class="resume-detail">
-                        <span class="block" ng-repeat="exp in resume.experience">{{exp}}</span>
+                        <!-- <span class="block" ng-repeat="exp in resume.experience">{{exp}}</span> -->
+                        <table class="table">
+                          <tr>
+                            <th>Company</th>
+                            <th>Duration</th>
+                            <th>Responsibilities</th>
+                            <th>Designation</th>
+                          </tr>
+                          <tr ng-repeat="exp in resume.experience">
+                            <td>{{exp.company}}</td>
+                            <td>{{exp.duration}}</td>
+                            <td>{{exp.responsibilities}}</td>
+                            <td>{{exp.designation}}</td>
+                          </tr>
+                        </table>
                       </div>
                     </div>
                   </div>
