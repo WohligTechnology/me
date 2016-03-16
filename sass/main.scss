@@ -411,6 +411,7 @@ footer {
     li {
       display: inline-block;
       padding: 0 5px;
+      text-transform:capitalize;
     }
     li + li {
       border-left: 1px solid #ddd;
@@ -438,6 +439,7 @@ footer {
   margin-bottom: 5px;
   li {
     display: inline-block;
+    text-transform:capitalized;
   }
   li+li {
     border-left: 1px solid #000;
@@ -667,6 +669,12 @@ footer {
     @extend .get-center;
     z-index: 10;
   }
+}
+.dirty{
+  color:red;
+}
+.mt0{
+  margin-top:0!important;
 }
 // loader end
 @import "amit";

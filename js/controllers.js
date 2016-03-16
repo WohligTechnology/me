@@ -660,7 +660,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     // })
 
     NavigationService.getJob(function (data) {
-      $scope.jobs = data.company.job;
+      // $scope.jobs = data.company.job;
     });
 
     $scope.job = function () {

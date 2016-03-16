@@ -12,7 +12,7 @@
                   <div class="col-md-3">
                     <div class="company-imgholder">
                       <div ng-controller="UploadCtrl">
-                      <img src="{{profilepic|serverimage}}" alt="Profile Image" class="m-center img-responsive">
+                      <img ng-src="{{profilepic|serverimage}}" alt="Profile Image" class="m-center img-responsive">
                       <div class="edit-profile pointer">
                         <input type="file" class="form-control ab" ng-model="profilepic" accept=".jpg,.png" file-model = "profilepic" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-init="imageAccess='editLancer'">
                         <div ng-if="done">
@@ -48,6 +48,7 @@
                                 <div class="pro-add">
                                   <!-- {{editPersonal}} -->
                                   <div ng-hide="isEditPD">
+                                    <!-- {{profilepic}} -->
                                     <span class="block">{{personalDetails.name}}</span>
                                     <span class="block">{{personalDetails.email}}</span>
                                     <span class="block">{{personalDetails.contactNo}}</span>
@@ -170,9 +171,9 @@
                           </div>
                         </div>
                       </div>
-                      <div class="read-more">
+              <!--         <div class="read-more">
                         <button class="btn btn-primary">Read More</button>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>

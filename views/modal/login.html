@@ -2,9 +2,9 @@
   <div class="brand-gray-bg login-head">
       <h2 class="text-uppercase text-center blue-color m-clear">Login</h2>
   </div>
-  <div ng-if="wrongCredentials">Incorrect Username or Password</div>
   <div class="row">
     <div class="col-md-offset-2 col-md-8">
+     <p ng-if="wrongCredentials" class="dirty">Incorrect Username or Password</p>
       <form name="loginform" class="text-center register-form">
       <div class="form-group">
         <input type="text" name="email" ng-model="loginData.email" class="form-control" placeholder="Email *" required>

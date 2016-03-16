@@ -297,6 +297,11 @@ var navigationservice = angular.module('navigationservice', [])
         }
       })
     }
+    // setInterview: function (argument) {
+    //   $http({
+    //     url: adminurl+
+    //   })
+    // }
   };
   // function whatLink() {
   //   session(function (data) {

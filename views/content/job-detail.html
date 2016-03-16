@@ -3,7 +3,8 @@
     <div class="container">
       <div class="search-job">
         <form action="" class="form-inline">
-          <div class="row">
+        <!-- do afterwards -->
+  <!--         <div class="row">
             <div class="col-md-3">
               <div class="form-group">
                 <div class="input-group">
@@ -23,7 +24,8 @@
             <div class="col-md-3">
               <button class="btn btn-primary ">Search Jobs</button>
             </div>
-          </div>
+          </div> -->
+          <!-- end -->
         </form>
         <p class="result-text bold"> 1000 Mobile developers found!</p>
       </div>
@@ -34,7 +36,7 @@
               <div class="row">
                 <div class="col-md-3">
                   <div class="left-side">
-                    <img src="img/resgration.png" alt="">
+                    <img src="{{jobDetail.image|serverimage}}" alt="">
                   </div>
                 </div>
                 <div class="col-md-9">
@@ -86,7 +88,7 @@
         </div>
         <div class="col-md-3 rl5">
           <div class="right-side">
-            <img src="{{jobDetail.image}}" alt="">
+            <img src="img/right.jpg" alt="" class="img-responsive">
             <!-- <div class="detail-cont">
               Want to Apply? Please Sign in Register to apply.
               <button type="button" name="button" class="btn btn-primary btn-lg no-radius">Registration</button>
