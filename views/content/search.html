@@ -29,11 +29,11 @@
     </div>
     <div class="row">
       <div class="col-md-9">
-        <div class="search-prsn white-bg" ng-repeat="list in pageOfJobs | filter:(cityQuery || jobRoleQuery)" infinite-scroll="loadMoreTwo()" infinite-scroll-distance='2' infinite-scroll-listen-for-event="shouldscroll">
+        <div class="search-prsn white-bg" ng-repeat="list in jobs | filter:(cityQuery || jobRoleQuery)" infinite-scroll="loadMoreTwo()" infinite-scroll-distance='2' infinite-scroll-listen-for-event="shouldscroll">
           <div class="row">
             <div class="col-md-2">
               <div class="pro-img">
-                <img ng-src="{{list.image}}">
+                <img ng-src="{{list.profilepic|serverimage}}">
               </div>
             </div>
             <div class="col-md-5">
@@ -42,15 +42,15 @@
                   <h4>{{list.name}}</h4>
                 </div>
                 <div class="user-exp">
-                  <p>{{list.role}} <span>({{list.experience}} year(s) experience)</span>
-                    <br>{{list.city}}
+                  <p>{{list.jobRole}} <span>({{experience}} year(s) experience)</span>
+                    <br>{{list.location}}
                   </p>
                 </div>
               </div>
             </div>
             <div class="col-md-5">
               <div class="view-btn">
-                <button class="btn btn-primary">View Profile</button>
+                <button class="btn btn-primary" ui-sref="resume({data: list})">View Profile</button>
                 <button class="btn btn-primary">Shortlist</button>
                 <button class="btn btn-primary">Set Interview</button>
               </div>

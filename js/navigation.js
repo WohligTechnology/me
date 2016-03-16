@@ -1,6 +1,6 @@
 // var adminurl = 'http://192.168.0.126:1337/callApi/flexi/json/';
-var adminurl = 'http://130.211.164.166/';
-// var adminurl = 'http://192.168.0.126:80/';
+// var adminurl = 'http://130.211.164.166/';
+var adminurl = 'http://192.168.0.126:80/';
 
 var navigationservice = angular.module('navigationservice', [])
 
@@ -129,11 +129,14 @@ var navigationservice = angular.module('navigationservice', [])
         }
       }).success(callback);
     },
-    getAllFreelancers: function (callback) {
+    getAllFreelancers: function (data, page, callback) {
       $http({
-        url: adminurl+'findallfreelancers',
+        url: adminurl+'user/viewApplied',
         method:'POST',
-        withCredentials:true
+        data: {
+          'job': data
+        }
+        // withCredentials:true
       }).success(callback);
     },
     getCompanyProfile: function (callback) {
@@ -168,7 +171,10 @@ var navigationservice = angular.module('navigationservice', [])
     getResume: function (callback) {
       $http({
         url: adminurl+'viewresume',
-        method: 'POST'
+        method: 'POST',
+        params: {
+          data: data
+        }
       }).success(callback);
     },
     submitEdit: function (PD, Edu, Exp, DP, callback) {
@@ -257,12 +263,13 @@ var navigationservice = angular.module('navigationservice', [])
         method: 'POST'
       }).success(callback);
     },
-    jobApply: function (id, callback) {
+    jobApply: function (data, callback) {
       $http({
         url: adminurl+'user/applyForJob',
         method: 'POST',
         data: {
-          'job': id
+          'jobname': data.designation,
+          'job': data._id
         }
       }).success(callback);
     },

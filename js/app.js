@@ -58,7 +58,10 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   .state('resume', {
     url: "/resume",
     templateUrl: "views/template.html",
-    controller: 'ResumeCtrl'
+    controller: 'ResumeCtrl',
+    params: {
+      data: '1'
+    }
   })
   .state('community', {
     url: "/community",

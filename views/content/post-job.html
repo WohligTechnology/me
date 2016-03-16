@@ -5,9 +5,9 @@
         <div class="row">
           <div class="col-md-offset-4 col-md-4">
             <div class="search-input custom-select text-center">
-              <select class="form-control">
-                <option>Select Category</option>
-                <option ng-repeat="category in categoryOptions">{{category}}</option>
+              <select class="form-control" ng-model="selectJob" ng-change="getValue(selectJob)">
+                <option value="">Select Category</option>
+                <option ng-repeat="category in categoryOptions" value="{{category._id}}">{{category.designation}}</option>
               </select>
               <span class="job-select"></span>
             </div>

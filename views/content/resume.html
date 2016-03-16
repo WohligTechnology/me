@@ -12,15 +12,15 @@
             <div class="row">
               <div class="col-md-2">
                 <div class="resume-imgholder">
-                  <img src="img/search.png" class="m-center img-responsive">
+                  <img ng-src="{{resume.profilepic|serverimage}}" class="m-center img-responsive">
                 </div>
               </div>
               <div class="col-md-10">
                 <div class="row">
                   <div class="col-md-3">
                     <div class="info-name">
-                      <h4>{{resume.personalDetails.name}}</h4>
-                      <span>{{resume.personalDetails.role}}</span>
+                      <h4>{{resume.name}}</h4>
+                      <span>{{resume.jobRole}}</span>
                     </div>
                   </div>
                   <div class="col-md-9">
@@ -28,8 +28,8 @@
                       <span>Contact</span>
                     </div>
                     <div class="resume-detail">
-                      <span class="block "><i class="fa fa-phone blue-color icon"></i> <a ng-href="resume.contactDetails.contactNumber">{{resume.contactDetails.contactNumber}}</a></span>
-                      <span class="block "><i class="fa fa-envelope blue-color icon"></i> <a ng-href="resume.contactDetails.email">{{resume.contactDetails.email}}</a></span>
+                      <span class="block "><i class="fa fa-phone blue-color icon"></i> <a ng-href="resume.contactDetails.contactNumber">{{resume.contactNo}}</a></span>
+                      <span class="block "><i class="fa fa-envelope blue-color icon"></i> <a ng-href="resume.contactDetails.email">{{resume.email}}</a></span>
                     </div>
                   </div>
                 </div>
@@ -70,7 +70,7 @@
                         <span>Experience</span>
                       </div>
                       <div class="resume-detail">
-                        <span>{{resume.experience}}</span>
+                        <span class="block" ng-repeat="exp in resume.experience">{{exp}}</span>
                       </div>
                     </div>
                   </div>

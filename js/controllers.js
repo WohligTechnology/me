@@ -1,6 +1,6 @@
 // window.uploadUrl = "http://www.myfynx.com/newfynx/index.php/json/uploadImage";
-window.uploadUrl = "http://130.211.164.166/uploadfile/upload";
-// window.uploadUrl = "http://192.168.0.126:80/uploadfile/upload";
+// window.uploadUrl = "http://130.211.164.166/uploadfile/upload";
+window.uploadUrl = "http://192.168.0.126:80/uploadfile/upload";
 angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'angularFileUpload', 'angularMoment'])
 
 
@@ -149,9 +149,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       'img/landing.jpg',
     ];
 
-    $scope.applyForJob = function (id) {
-      console.log('in the applyForJob function: ', id);
-      NavigationService.jobApply(id, function (data) {
+    $scope.applyForJob = function (job) {
+      console.log('in the applyForJob function: ', job);
+      NavigationService.jobApply(job, function (data) {
         console.log('apply for job: ', data);
       });
     };
@@ -241,10 +241,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    $scope.jobs = {
-    "count": 30,
-    "lastPage": 3
-  };
+    // $scope.jobs = {
+    // "count": 30,
+    // "lastPage": 3
+    // };
 
     // $scope.pageOfJobs = [{
     //         "image": "img/search.png",
@@ -286,29 +286,39 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //         "city": "Delhi"
     //     }
     // ]
-
-    $scope.pageOfJobs = [];
-    NavigationService.getAllFreelancers(function (data) {
+    var page = 1;
+    $scope.experience = 0;
+    // $scope.pageOfJobs = [];
+    var data = $.jStorage.get('jobCategory');
+    NavigationService.getAllFreelancers(data, page, function (data) {
       $scope.jobs = data;
       console.log('all freelancers: ', $scope.jobs);
-      $scope.pageOfJobs[0] = $scope.jobs.data[0];
-      $scope.pageOfJobs[1] = $scope.jobs.data[1];
-      console.log('all freelancers2: ', $scope.pageOfJobs);
+      for(var l=0; l<data.length; l++){
+        console.log('data: ', data[l])
+        for(var k=0; k<data[l].experience.length; k++) {
+          console.log('experience: ', data[l].experience[k])
+          $scope.experience += data[l].experience[k].duration;
+        }
+        console.log('experience: ', $scope.experience);
+      }
+      // $scope.pageOfJobs[0] = $scope.jobs.data[0];
+      // $scope.pageOfJobs[1] = $scope.jobs.data[1];
+      // console.log('all freelancers2: ', $scope.pageOfJobs);
     });
-
+    $scope.pageOfJobs = 1;
     $scope.loadMoreTwo = function () {
       // console.log('In the load more two function')
       // console.log('jobs length: ', $scope.jobs.data.length)
-      if($scope.pageOfJobs.length < $scope.jobs.data.length-1)
-      {
-        console.log('all freelancers1: ', $scope.pageOfJobs);
-        var last = $scope.pageOfJobs.length;
-        console.log('last: ', last);
-        for (var i = 0; i < 2; i++) {
-          $scope.pageOfJobs.push($scope.jobs.data[last + i]);
-        }
-        console.log('job number: ', $scope.pageOfJobs);
-      }
+      // if($scope.pageOfJobs.length < $scope.jobs.data.length)
+      // {
+      //   console.log('all freelancers1: ', $scope.pageOfJobs);
+      //   var last = $scope.pageOfJobs.length;
+      //   console.log('last: ', last);
+      //   for (var i = 0; i < 2; i++) {
+      //     $scope.pageOfJobs.push($scope.jobs.data[last + i]);
+      //   }
+      //   console.log('job number: ', $scope.pageOfJobs);
+      // }
     };
 
     // $scope.jobs = [
@@ -957,6 +967,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       console.log('categoryOptions: ', $scope.categoryOptions);
     });
 
+    $scope.getValue = function (value) {
+      console.log('selected value: ', value)
+      $.jStorage.set('jobCategory', value);
+    }
+    
     // $scope.categoryOptions = ["Design", "Websites IT Software", "Mobile", "Data Entry", "Product Sourcing", "Sales & Marketing", "Business Accounting & Legal"]
   })
 
@@ -979,16 +994,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     };
   })
 
-  .controller('ResumeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('ResumeCtrl', function($stateParams, $scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("resume");
     $scope.menutitle = NavigationService.makeactive("Resume");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    NavigationService.getResume(function (data) {
-      $scope.resume = data;
-      console.log('Resume: ', $scope.resume);
-    });
+    $scope.resume = $stateParams.data;
+    console.log('Resume: ', $scope.resume);
+    // NavigationService.getResume($stateParams.data, function (data) {
+    //   $scope.resume = data;
+    //   console.log('Resume: ', $scope.resume);
+    // });
   })
 
   .controller('Commmunity', function($scope, TemplateService, NavigationService, $timeout) {
@@ -1399,10 +1416,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     // }];
   })
 
-.controller('headerctrl', function($scope, TemplateService, NavigationService) {
+.controller('headerctrl', function($scope, $state, TemplateService, NavigationService) {
   $scope.template = TemplateService;
   $scope.navigation = NavigationService.getnav();
-  $scope.isSession = false;
+  // $scope.isSession = true;
   console.log('session variable: ', $scope.isSession);
   NavigationService.session(function (data) {
     console.log('session data: ', data);
@@ -1425,16 +1442,37 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       console.log('logout response: ', data);
       if(data.value) {
         $scope.isSession = false;
-        $scope.navigation.splice(1,0,{name: "Register/Sign in",
-        classis: "active",
-        icon: "fa-key",
-        link: "registerlancer"});
+        var flag = $scope.navigation.link.indexOf('registerlancer')
+        if(flag !== -1) {
+          $scope.navigation.splice(1,0,{name: "Register/Sign in",
+            classis: "active",
+            icon: "fa-key",
+            link: "registerlancer"});
+        }  
       }
     });
   };
 
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $(window).scrollTop(0);
+    // console.log('state changed!!')
+    // console.log('event: ', event)
+    // console.log('toState: ', toState.name)
+    // console.log('toParams: ', toParams)
+    // console.log('fromState: ', fromState)
+    // console.log('fromParams: ', fromParams)
+    if($scope.isSession == false) {
+      if(toState.name !== 'home') {
+        if(toState.name !== 'searchcategory'){
+         if(toState.name !== 'registerlancer') {
+          if(toState.name !== 'registerclient') {
+            alert('Please sign up or login first');
+            $state.go('home');      
+          }
+         }
+        }
+      }  
+    }
   });
 
 })
