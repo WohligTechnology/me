@@ -1,11 +1,12 @@
 // window.uploadUrl = "http://www.myfynx.com/newfynx/index.php/json/uploadImage";
 // window.uploadUrl = "http://130.211.164.166/uploadfile/upload";
 window.uploadUrl = "http://192.168.0.126:80/uploadfile/upload";
-angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'angularFileUpload', 'angularMoment'])
+angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'angularFileUpload', 'angularMoment','cfp.loadingBar'])
 
 
-  .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout,cfpLoadingBar) {
     //Used to name the .html file
+    cfpLoadingBar.start();
     $scope.template = TemplateService.changecontent("home");
     $scope.menutitle = NavigationService.makeactive("Home");
     TemplateService.title = $scope.menutitle;
@@ -971,7 +972,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       console.log('selected value: ', value)
       $.jStorage.set('jobCategory', value);
     }
-    
+
     // $scope.categoryOptions = ["Design", "Websites IT Software", "Mobile", "Data Entry", "Product Sourcing", "Sales & Marketing", "Business Accounting & Legal"]
   })
 
@@ -1448,7 +1449,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
             classis: "active",
             icon: "fa-key",
             link: "registerlancer"});
-        }  
+        }
       }
     });
   };
@@ -1467,11 +1468,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
          if(toState.name !== 'registerlancer') {
           if(toState.name !== 'registerclient') {
             alert('Please sign up or login first');
-            $state.go('home');      
+            $state.go('home');
           }
          }
         }
-      }  
+      }
     }
   });
 
