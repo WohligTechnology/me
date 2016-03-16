@@ -1,6 +1,6 @@
 // var adminurl = 'http://192.168.0.126:1337/callApi/flexi/json/';
 var adminurl = 'http://130.211.164.166/';
-var adminurl = 'http://192.168.0.126:80/';
+// var adminurl = 'http://192.168.0.126:80/';
 
 var navigationservice = angular.module('navigationservice', [])
 
@@ -15,7 +15,7 @@ var navigationservice = angular.module('navigationservice', [])
         classis: "active",
         icon: "fa-key",
         link: "registerlancer"
-    }, 
+    },
     // {
     //     name: "My Profile",
     //     classis: "active",
@@ -194,7 +194,8 @@ var navigationservice = angular.module('navigationservice', [])
           "name":data.name,
           "email":data.email,
           "contactNo":data.contactNo,
-          "company":data.company
+          "company":data.company,
+          "image":data.image
         }
       }).success(callback);
     },

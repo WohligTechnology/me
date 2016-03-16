@@ -11,10 +11,19 @@
                 <div class="row">
                   <div class="col-md-3">
                     <div class="company-imgholder">
-                      <img src="{{displayPic|serverimage}}" alt="Profile Image" class="m-center img-responsive">
+                      <div ng-controller="UploadCtrl">
+                      <img src="{{profilepic|serverimage}}" alt="Profile Image" class="m-center img-responsive">
                       <div class="edit-profile pointer">
+                        <input type="file" class="form-control ab" ng-model="profilepic" accept=".jpg,.png" file-model = "profilepic" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-init="imageAccess='editLancer'">
+                        <div ng-if="done">
+                          <div ng-init="submitDP(profilepic)"></div>
+                        </div>
+                        <div ng-if="profilepic">
+                          <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
+                        </div>
                         <i class="fa fa-camera block text-center"></i>
                         <span class="text-center block">Edit Profile Picture</span>
+                      </div>
                       </div>
                     </div>
                   </div>
@@ -238,7 +247,23 @@
                 <div class="row">
                   <div class="col-md-3">
                     <div class="company-imgholder">
-                      <img src="{{company.image|serverimage}}" alt="Company Image" class="img-responsive">
+                      <div ng-controller="UploadCtrl">
+                      <form name="uploadForm">
+                      <img src="{{company.image|serverimage}}" alt="Profile Image" class="m-center img-responsive">
+                      <div class="edit-profile pointer">
+                        <input type="file" class="form-control ab" ng-model="company.image" accept=".jpg,.png" file-model = "company.image" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-init="imageAccess = 'editClient'">
+                        <div ng-if="done">
+                          <div ng-init="submitLogo(company, uploadForm)"></div>
+                        </div>
+                        <div ng-if="company.image">
+                          <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
+                        </div>
+                        <i class="fa fa-camera block text-center"></i>
+                        <span class="text-center block">Edit Profile Picture</span>
+                      </div>
+                      </form>
+                      </div>
+                      <!-- <img src="{{company.image|serverimage}}" alt="Company Image" class="img-responsive"> -->
                     </div>
                   </div>
                   <div class="col-md-9">
@@ -258,10 +283,12 @@
                               <div class="pro-head">
                                 <h4 class="blue-color head-title">Company details: </h4>
                                 <div ng-hide="isEditCD">
+                                  <!-- {{company}} -->
                                   <span>{{company.name}}</span>
                                   <span>{{company.email}}</span>
                                   <div class="pro-add">
                                     <!-- {{company}} -->
+                                    <!-- <span class="block">{{company}}</span> -->
                                     <span class="block">{{company.contactNo}}</span>
                                     <span class="block">{{company.company.website}}</span>
                                     <span class="block">{{company.company.address}}</span>

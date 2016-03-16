@@ -1,6 +1,6 @@
 // window.uploadUrl = "http://www.myfynx.com/newfynx/index.php/json/uploadImage";
 window.uploadUrl = "http://130.211.164.166/uploadfile/upload";
-window.uploadUrl = "http://192.168.0.126:80/uploadfile/upload";
+// window.uploadUrl = "http://192.168.0.126:80/uploadfile/upload";
 angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'angularFileUpload', 'angularMoment'])
 
 
@@ -472,7 +472,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       console.log('access level: ', data);
       $scope.data = data;
       if(data.accesslevel == 'lancer') {
-        $scope.displayPic = data.profilepic;
+        $scope.profilepic = data.profilepic;
         $scope.personalDetails= {"name": data.name, "email": data.email, "contactNo": data.contactNo, "location": data.location};
         if(!data.education) {
           $scope.education = [{examination: "", percentage: "", institution: ""}];
@@ -500,24 +500,57 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
 
     $scope.submitPD = function (value) {
       console.log('personal details1: ', value);
-      NavigationService.submitEdit(value, $scope.education, $scope.experience, $scope.displayPic, function (data) {
+      NavigationService.submitEdit(value, $scope.education, $scope.experience, $scope.profilepic, function (data) {
         console.log('personal details: ', data);
       });
     };
 
+    $scope.submitDP = function (value) {
+      console.log('In the submitPD');
+      console.log('displayPic1: ', value);
+      // globalfunction.onFileSelect($files, function(image) {
+        // if (whichone == 1) {
+        //   $scope.vendors.logourl = image;
+        //   if (uploadtype == 'single') {
+        //       $scope.displayPic = image[0];
+        //   }
+        // }
+        // else if (whichone == 2) {
+        //   $scope.vendors.bannerurl = image;
+        //   if (uploadtype == 'single') {
+        //       $scope.displayPic = image[0];
+        //   }
+        // }
+        NavigationService.submitEdit($scope.personalDetails, $scope.education, $scope.experience,
+          value, function (data) {
+          console.log('displayPic: ', data);
+        });
+      // }
+
+
+    };
+
     $scope.submitEdu = function (value) {
       console.log('education: ', value);
-      NavigationService.submitEdit($scope.personalDetails, value, $scope.experience, $scope.displayPic, function (data) {
+      NavigationService.submitEdit($scope.personalDetails, value,
+        $scope.experience, $scope.profilepic, function (data) {
         console.log('education response: ', data);
       });
     };
 
     $scope.submitExp = function (value) {
       console.log('experience: ', value);
-      NavigationService.submitEdit($scope.personalDetails, $scope.education, value, $scope.displayPic, function (data) {
+      NavigationService.submitEdit($scope.personalDetails, $scope.education, value, $scope.profilepic, function (data) {
         console.log('experience response: ', data);
       });
     };
+
+    // $scope.submitExp = function (value) {
+    //   console.log('experience: ', value);
+    //   NavigationService.submitEdit($scope.personalDetails, $scope.education, value, $scope.displayPic, function (data) {
+    //     console.log('experience response: ', data);
+    //   });
+    // };
 
     $scope.togglePD = function (value) {
       if(value) {
@@ -653,6 +686,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
           }
         });
       }
+    };
+
+    $scope.submitLogo = function (value, formValid) {
+      // if(formValid.$valid) {
+        console.log('uploader: ', value);
+        NavigationService.submitEditClient(value, function (data) {
+          console.log('response edit client: ', data);
+          if(data.value) {
+            console.log('In the if statement');
+            $scope.isEditCD = false;
+            $scope.isEditDescription = false;
+          }
+        });
+      // }
     };
     // $scope.submitEdit = function () {
     //   NavigationService.submitEdit($scope.personalDetails, $scope.education, $scope.experience, $scope.displayPic, function (data) {
@@ -1161,9 +1208,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       //   console.log('successfully uploaded!')
       // });
 
-    $scope.onFileSelect = function($files,whichone) {
+    $scope.onFileSelect = function($files, whichone, callback) {
       $scope.isloading = true;
       $scope.noPhoto = false;
+      // $scope.imageAccess = false;
       $scope.selectedFiles = [];
       $scope.progress = [];
       console.log($files);
@@ -1241,6 +1289,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
               }
               else if($scope.imageAccess == 'client'){
                 $scope.registration.image=response.data.files[0].fd;
+              }
+              else if($scope.imageAccess == 'editLancer'){
+                $scope.profilepic=response.data.files[0].fd;
+                $scope.done = true;
+              }
+              else if($scope.imageAccess == 'editClient'){
+                $scope.company.image=response.data.files[0].fd;
+                $scope.done = true;
               }
             }else{
               $scope.formregistration.resume=response.data.files[0].fd;
@@ -1347,15 +1403,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
   $scope.template = TemplateService;
   $scope.navigation = NavigationService.getnav();
   $scope.isSession = false;
-  console.log('session variable: ', $scope.isSession)
+  console.log('session variable: ', $scope.isSession);
   NavigationService.session(function (data) {
-    console.log('session data: ', data)
+    console.log('session data: ', data);
     if(data.name) {
       $scope.isSession = true;
       $scope.profile = data;
     }
-  })
-  console.log('session variable2: ', $scope.isSession)
+  });
+  console.log('session variable2: ', $scope.isSession);
   $scope.slideclass = "slide-out";
   $scope.slidemenu = function() {
     if($scope.slideclass == "slide-out")
@@ -1366,16 +1422,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
 
   $scope.logout = function () {
     NavigationService.logout(function (data) {
-      console.log('logout response: ', data)
+      console.log('logout response: ', data);
       if(data.value) {
         $scope.isSession = false;
-        $scope.navigation.splice(1,0,{name: "Register/Sign in", 
-        classis: "active", 
-        icon: "fa-key", 
+        $scope.navigation.splice(1,0,{name: "Register/Sign in",
+        classis: "active",
+        icon: "fa-key",
         link: "registerlancer"});
       }
-    })
-  }
+    });
+  };
 
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $(window).scrollTop(0);
