@@ -8,6 +8,7 @@ var jsArray = [
   './bower_components/wowjs/dist/wow.min.js',
   './bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
   './bower_components/lodash/lodash.min.js',
+  './bower_components/angular-loading-bar/build/loading-bar.min.js',
   './bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js',
   './bower_components/angular-sanitize/angular-sanitize.min.js',
   './bower_components/angular-animate/angular-animate.min.js',
