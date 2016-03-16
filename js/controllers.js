@@ -1,12 +1,12 @@
 // window.uploadUrl = "http://www.myfynx.com/newfynx/index.php/json/uploadImage";
 // window.uploadUrl = "http://130.211.164.166/uploadfile/upload";
 window.uploadUrl = "http://192.168.0.126:80/uploadfile/upload";
-angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'angularFileUpload', 'angularMoment','cfp.loadingBar'])
+angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'angularFileUpload', 'angularMoment','angular-loading-bar'])
 
 
   .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout,cfpLoadingBar) {
     //Used to name the .html file
-    cfpLoadingBar.start();
+    // cfpLoadingBar.start();
     $scope.template = TemplateService.changecontent("home");
     $scope.menutitle = NavigationService.makeactive("Home");
     TemplateService.title = $scope.menutitle;
