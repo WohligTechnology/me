@@ -7,7 +7,7 @@
             <div class="search-input custom-select text-center">
               <select class="form-control" ng-model="selectJob" ng-change="getValue(selectJob)">
                 <option value="">Select Category</option>
-                <option ng-repeat="category in categoryOptions" value="{{category._id}}">{{category.designation}}</option>
+                <option ng-repeat="category in categoryOptions" value="{{category}}">{{category.designation}}</option>
               </select>
               <span class="job-select"></span>
             </div>

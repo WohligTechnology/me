@@ -289,7 +289,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     var page = 1;
     $scope.experience = 0;
     // $scope.pageOfJobs = [];
-    var data = $.jStorage.get('jobCategory');
+    $scope.job = $.jStorage.get('jobCategory');
+    console.log('job info: ', $scope.job);
+    var data = $scope.job;
     NavigationService.getAllFreelancers(data, page, function (data) {
       $scope.jobs = data;
       console.log('all freelancers: ', $scope.jobs);
@@ -321,6 +323,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       // }
     };
 
+    $scope.shortlist = function (lancer, job) {
+      NavigationService.getShortlist(lancer, job, function (data) {
+        console.log('shortlist response: ', data);
+      })
+    }
     // $scope.jobs = [
     //   {
     //     img: "img/search.png",

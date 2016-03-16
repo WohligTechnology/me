@@ -130,11 +130,15 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
     getAllFreelancers: function (data, page, callback) {
+      var job = JSON.parse(data);
+      console.log(JSON.parse(data));
+      console.log(job);
       $http({
         url: adminurl+'user/viewApplied',
         method:'POST',
         data: {
-          'job': data
+          'job': job._id,
+          'jobname': job.designation
         }
         // withCredentials:true
       }).success(callback);
@@ -278,6 +282,20 @@ var navigationservice = angular.module('navigationservice', [])
           url: adminurl+'user/logout',
           method: 'POST'
         }).success(callback);
+    },
+    getShortlist: function (lancer, job, callback) {
+      console.log('lancer: ', lancer)
+      var job = JSON.parse(job)
+      console.log('job: ', job)
+      $http({
+        url: adminurl+'user/shortlistForJob',
+        method: 'POST',
+        data: {
+          'jobname':job.designation,
+          'job': job._id,
+          '_id':lancer._id
+        }
+      })
     }
   };
   // function whatLink() {
