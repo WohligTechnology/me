@@ -4,7 +4,7 @@
       <div class="search-job">
         <form action="" class="form-inline">
         <!-- do afterwards -->
-  <!--         <div class="row">
+          <div class="row">
             <div class="col-md-3">
               <div class="form-group">
                 <div class="input-group">
@@ -24,7 +24,7 @@
             <div class="col-md-3">
               <button class="btn btn-primary ">Search Jobs</button>
             </div>
-          </div> -->
+          </div>
           <!-- end -->
         </form>
         <p class="result-text bold"> 1000 Mobile developers found!</p>
@@ -42,7 +42,7 @@
                 <div class="col-md-9">
                   <div class="name-row">
                     <div class="pull-right">
-                      <div class="btn btn-primary ">Apply Now</div>
+                      <div class="btn btn-primary " ng-click="openpop()">Apply Now</div>
                     </div>
                     <h5 class="blue-color">{{jobDetail.company.name}} <span>({{jobDetail.company.job.designation}})</span></h5>
                     <p>{{jobDetail.company.job.city}}</p>
