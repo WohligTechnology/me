@@ -1,6 +1,6 @@
 // window.uploadUrl = "http://www.myfynx.com/newfynx/index.php/json/uploadImage";
 // window.uploadUrl = "http://130.211.164.166/uploadfile/upload";
-window.uploadUrl = "http://vignesh.com/uploadfile/upload";
+window.uploadUrl = "http://vignesh.com:81/uploadfile/upload";
 angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'angularFileUpload', 'angularMoment','angular-loading-bar','ngImgCrop'])
 
 
@@ -125,30 +125,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //   })
     // }
 
-    $scope.search = function (searchForm, page) {
-      searchForm.city = _.startCase(searchForm.city);
-      searchForm.category = _.startCase(searchForm.category);
-      console.log('search data: ', searchForm);
-      NavigationService.findAllJobs(searchForm, page, function (data) {
+    $scope.search = function (data, page) {
+      NavigationService.findAllJobs(data, page, function (data) {
         $scope.joblist = data.data;
         $scope.count = data.total;
       });
     };
-    $scope.joblist.pagenumber = 1;
-    // $scope.loadMore = function () {
-    //   if($scope.joblist.pagenumber < $scope.joblist.totalpages && $scope.joblist.pagenumber) {
-    //     // var last = $scope.joblist.totalpages;
-    //     console.log('joblist length: ', $scope.joblist.data.length);
-    //     console.log('last: ', last);
-    //     console.log('jobNumber: ', $scope.jobNumber);
-    //     // for (var i = 1; i <= 2; i++) {
-    //         // console.log('in the if statement')
-    //         ++$scope.joblist.pagenumber;
-    //         $scope.getJobs($scope.joblist.pagenumber);
-    //       // }
-    //     // console.log('job number: ', $scope.jobNumber)
-    //   }
-    // };
+
+    $scope.loadMore = function () {
+      if($scope.joblist.pagenumber < $scope.joblist.totalpages && $scope.joblist.pagenumber) {
+        // var last = $scope.joblist.totalpages;
+        console.log('joblist length: ', $scope.joblist.data.length);
+        console.log('last: ', last);
+        console.log('jobNumber: ', $scope.jobNumber);
+        // for (var i = 1; i <= 2; i++) {
+            // console.log('in the if statement')
+            ++$scope.joblist.pagenumber;
+            $scope.getJobs($scope.joblist.pagenumber);
+          // }
+        // console.log('job number: ', $scope.jobNumber)
+      }
+    };
 
     $scope.mySlides = [
       'img/landing.jpg',
@@ -1511,11 +1508,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       // var flag4 = $scope.navigation[4].link.indexOf('postjob');
       if(flag4 === 1 && flag1 === 0) {
         console.log('in if statement4')
-        $scope.navigation.splice(4,1);
+        $scope.navigation.splice(3,1);
       }
 
       else if(flag4 === 1 && flag1 === 1) {
-        $scope.navigation.splice(3,1);
+        $scope.navigation.splice(4,1);
       }
     }
   });

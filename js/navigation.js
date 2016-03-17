@@ -1,6 +1,6 @@
 // var adminurl = 'http://192.168.0.126:1337/callApi/flexi/json/';
 // var adminurl = 'http://130.211.164.166/';
-var adminurl = 'http://192.168.0.126:80/';
+var adminurl = 'http://vignesh.com:81/';
 
 var navigationservice = angular.module('navigationservice', [])
 
