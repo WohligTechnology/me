@@ -10,20 +10,23 @@
               <div class="col-md-9">
                 <div class="row">
                   <div class="col-md-3">
+                    <div class="cropArea">
+                      <img-crop image="myImage" result-image="myCroppedImage" area-type="{square}"></img-crop>
+                    </div>
                     <div class="company-imgholder">
                       <div ng-controller="UploadCtrl">
-                      <img ng-src="{{profilepic|serverimage}}" alt="Profile Image" class="m-center img-responsive">
-                      <div class="edit-profile pointer">
-                        <input type="file" class="form-control ab" ng-model="profilepic" accept=".jpg,.png" file-model = "profilepic" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-init="imageAccess='editLancer'">
-                        <div ng-if="done">
-                          <div ng-init="submitDP(profilepic)"></div>
+                        <img ng-src="{{profilepic|serverimage}}" alt="Profile Image" class="m-center img-responsive">
+                        <div class="edit-profile pointer">
+                          <input type="file" class="form-control ab" ng-model="profilepic" accept=".jpg,.png" file-model="profilepic" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-init="imageAccess='editLancer'">
+                          <div ng-if="done">
+                            <div ng-init="submitDP(profilepic)"></div>
+                          </div>
+                          <div ng-if="profilepic">
+                            <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
+                          </div>
+                          <i class="fa fa-camera block text-center"></i>
+                          <span class="text-center block">Edit Profile Picture</span>
                         </div>
-                        <div ng-if="profilepic">
-                          <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
-                        </div>
-                        <i class="fa fa-camera block text-center"></i>
-                        <span class="text-center block">Edit Profile Picture</span>
-                      </div>
                       </div>
                     </div>
                   </div>
@@ -39,8 +42,8 @@
                           <div class="col-md-10">
                             <div class="edit-btn pull-right">
                               <!-- <button type="button" ng-value="editPersonal"  ng-model="editPersonal" aria-label="Toggle ngHide"> -->
-                                <img ng-src="img/pencil.jpg" class="img-responsive" ng-click="togglePD(isEditPD)">
-                                <!-- {{editPersonal}}</button> -->
+                              <img ng-src="img/pencil.jpg" class="img-responsive" ng-click="togglePD(isEditPD)">
+                              <!-- {{editPersonal}}</button> -->
                             </div>
                             <div class="profile-info">
                               <div class="pro-head">
@@ -60,20 +63,24 @@
                                   <div ng-show="isEditPD">
                                     <form name="editPD">
                                       <div class="form-group">
-                                        <label>Name: </label><input type="text" ng-model="personalDetails.name" class="form-control">
+                                        <label>Name: </label>
+                                        <input type="text" ng-model="personalDetails.name" class="form-control">
                                       </div>
                                       <div class="form-group">
-                                        <label>Email: </label><input type="text" ng-model="personalDetails.email" class="form-control">
+                                        <label>Email: </label>
+                                        <input type="text" ng-model="personalDetails.email" class="form-control">
                                       </div>
                                       <div class="form-group">
-                                        <label>Contact Number: </label><input type="text" ng-model="personalDetails.contactNo" class="form-control">
+                                        <label>Contact Number: </label>
+                                        <input type="text" ng-model="personalDetails.contactNo" class="form-control">
                                       </div>
                                       <div class="form-group">
-                                        <label>Address: </label><input type="text" ng-model="personalDetails.location" class="form-control">
+                                        <label>Address: </label>
+                                        <input type="text" ng-model="personalDetails.location" class="form-control">
                                       </div>
                                       <div class="form-group">
-                                      <button ng-click="showEditPD('showFalse');submitPD(personalDetails);" class="btn btn-primary btn-default">Submit</button>
-                                      <button ng-click="showEditPD('showFalse')" class="btn btn-primary btn-default">Cancel</button>
+                                        <button ng-click="showEditPD('showFalse');submitPD(personalDetails);" class="btn btn-primary btn-default">Submit</button>
+                                        <button ng-click="showEditPD('showFalse')" class="btn btn-primary btn-default">Cancel</button>
                                       </div>
                                     </form>
                                   </div>
@@ -107,19 +114,22 @@
                                   <div class="rl">
                                     <div class="close ab"><i class="fa fa-close"></i></div>
                                   </div>
-                                <div class="form-group">
-                                  <label>Examination: </label><input type="text" ng-model="edu.examination" class="form-control">
+                                  <div class="form-group">
+                                    <label>Examination: </label>
+                                    <input type="text" ng-model="edu.examination" class="form-control">
+                                  </div>
+                                  <div class="form-group">
+                                    <label>Percentage: </label>
+                                    <input type="text" ng-model="edu.percentage" class="form-control">
+                                  </div>
+                                  <div class="form-group">
+                                    <label>Institution: </label>
+                                    <input type="text" ng-model="edu.institution" class="form-control">
+                                  </div>
                                 </div>
                                 <div class="form-group">
-                                  <label>Percentage: </label><input type="text" ng-model="edu.percentage" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                  <label>Institution: </label><input type="text" ng-model="edu.institution" class="form-control">
-                                </div>
-                                </div>
-                                <div class="form-group">
-                                <button ng-click="addNewEdu()" class="btn btn-primary btn-default">Add New Education Detail</button>
-                                <button ng-click="showEditEdu('showFalse');submitEdu(education);" class="btn btn-primary btn-default">Submit</button>
+                                  <button ng-click="addNewEdu()" class="btn btn-primary btn-default">Add New Education Detail</button>
+                                  <button ng-click="showEditEdu('showFalse');submitEdu(education);" class="btn btn-primary btn-default">Submit</button>
                                 </div>
                               </form>
                             </div>
@@ -149,23 +159,27 @@
                                 <div ng-show="isEditExp">
                                   <form>
                                     <div ng-repeat="we in experience">
-                                    <div class="form-group">
-                                      <label>Company: </label><input type="text" ng-model="we.company" class="form-control">
+                                      <div class="form-group">
+                                        <label>Company: </label>
+                                        <input type="text" ng-model="we.company" class="form-control">
+                                      </div>
+                                      <div class="form-group">
+                                        <label>Duration: </label>
+                                        <input type="text" ng-model="we.duration" class="form-control">
+                                      </div>
+                                      <div class="form-group">
+                                        <label>Responsibilities: </label>
+                                        <textarea ng-model="we.responsibilities" class="form-control"></textarea>
+                                      </div>
+                                      <div class="form-group">
+                                        <label>Designation: </label>
+                                        <input type="text" ng-model="we.designation" class="form-control">
+                                      </div>
+                                      <hr>
                                     </div>
                                     <div class="form-group">
-                                      <label>Duration: </label><input type="text" ng-model="we.duration" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                      <label>Responsibilities: </label><textarea ng-model="we.responsibilities" class="form-control"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                      <label>Designation: </label><input type="text" ng-model="we.designation" class="form-control">
-                                    </div>
-                                    <hr>
-                                    </div>
-                                    <div class="form-group">
-                                    <button ng-click="addNewExp()" class="btn btn-primary btn-default">Add New Experience</button>
-                                    <button ng-click="showEditExp('showFalse');submitExp(experience);" class="btn btn-primary btn-default">Submit</button>
+                                      <button ng-click="addNewExp()" class="btn btn-primary btn-default">Add New Experience</button>
+                                      <button ng-click="showEditExp('showFalse');submitExp(experience);" class="btn btn-primary btn-default">Submit</button>
                                     </div>
                                   </form>
                                 </div>
@@ -174,7 +188,7 @@
                           </div>
                         </div>
                       </div>
-              <!--         <div class="read-more">
+                      <!--         <div class="read-more">
                         <button class="btn btn-primary">Read More</button>
                       </div> -->
                     </div>
@@ -252,20 +266,20 @@
                   <div class="col-md-3">
                     <div class="company-imgholder">
                       <div ng-controller="UploadCtrl">
-                      <form name="uploadForm">
-                      <img src="{{company.image|serverimage}}" alt="Profile Image" class="m-center img-responsive">
-                      <div class="edit-profile pointer">
-                        <input type="file" class="form-control ab" ng-model="company.image" accept=".jpg,.png" file-model = "company.image" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-init="imageAccess = 'editClient'">
-                        <div ng-if="done">
-                          <div ng-init="submitLogo(company, uploadForm)"></div>
-                        </div>
-                        <div ng-if="company.image">
-                          <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
-                        </div>
-                        <i class="fa fa-camera block text-center"></i>
-                        <span class="text-center block">Edit Profile Picture</span>
-                      </div>
-                      </form>
+                        <form name="uploadForm">
+                          <img src="{{company.image|serverimage}}" alt="Profile Image" class="m-center img-responsive">
+                          <div class="edit-profile pointer">
+                            <input type="file" class="form-control ab" ng-model="company.image" accept=".jpg,.png" file-model="company.image" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-init="imageAccess = 'editClient'">
+                            <div ng-if="done">
+                              <div ng-init="submitLogo(company, uploadForm)"></div>
+                            </div>
+                            <div ng-if="company.image">
+                              <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
+                            </div>
+                            <i class="fa fa-camera block text-center"></i>
+                            <span class="text-center block">Edit Profile Picture</span>
+                          </div>
+                        </form>
                       </div>
                       <!-- <img src="{{company.image|serverimage}}" alt="Company Image" class="img-responsive"> -->
                     </div>
@@ -304,23 +318,28 @@
                                 <div ng-show="isEditCD">
                                   <form name="editCD">
                                     <div class="form-group">
-                                      <label>Name: </label><input type="text" ng-model="company.name" class="form-control">
+                                      <label>Name: </label>
+                                      <input type="text" ng-model="company.name" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                      <label>Email: </label><input type="text" ng-model="company.email" class="form-control">
+                                      <label>Email: </label>
+                                      <input type="text" ng-model="company.email" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                      <label>Contact Number: </label><input type="text" ng-model="company.contactNo" class="form-control">
+                                      <label>Contact Number: </label>
+                                      <input type="text" ng-model="company.contactNo" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                      <label>Website: </label><input type="text" ng-model="company.company.website" class="form-control">
+                                      <label>Website: </label>
+                                      <input type="text" ng-model="company.company.website" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                      <label>Address: </label><input type="text" ng-model="company.company.address" class="form-control">
+                                      <label>Address: </label>
+                                      <input type="text" ng-model="company.company.address" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                    <button ng-click="submitCD(company, editCD)" class="btn btn-primary btn-default">Submit</button>
-                                    <button ng-click="EditCD('showFalse')" class="btn btn-primary btn-default">Cancel</button>
+                                      <button ng-click="submitCD(company, editCD)" class="btn btn-primary btn-default">Submit</button>
+                                      <button ng-click="EditCD('showFalse')" class="btn btn-primary btn-default">Cancel</button>
                                     </div>
                                   </form>
                                 </div>
@@ -370,11 +389,11 @@
                                   <form name="editDescription">
                                     <div class="form-group">
                                       <label>Description: </label>
-                                        <textarea type="text" ng-model="company.company.description" class="form-control"></textarea>
+                                      <textarea type="text" ng-model="company.company.description" class="form-control"></textarea>
                                     </div>
                                     <div class="form-group">
-                                    <button ng-click="submitCD(company, editDescription)" class="btn btn-primary btn-default">Submit</button>
-                                    <button ng-click="EditDescription('showFalse')" class="btn btn-primary btn-default">Cancel</button>
+                                      <button ng-click="submitCD(company, editDescription)" class="btn btn-primary btn-default">Submit</button>
+                                      <button ng-click="EditDescription('showFalse')" class="btn btn-primary btn-default">Cancel</button>
                                     </div>
                                   </form>
                                 </div>
