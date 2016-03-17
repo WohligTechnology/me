@@ -59,7 +59,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider,cfpLo
     controller: 'SearchcategoryCtrl'
   })
   .state('resume', {
-    url: "/resume",
+    url: "/resume/:id",
     templateUrl: "views/template.html",
     controller: 'ResumeCtrl',
     params: {

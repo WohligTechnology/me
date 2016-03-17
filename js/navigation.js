@@ -189,12 +189,12 @@ var navigationservice = angular.module('navigationservice', [])
         method: 'POST'
       }).success(callback);
     },
-    getResume: function (callback) {
+    getResume: function (id, callback) {
       $http({
-        url: adminurl+'viewresume',
+        url: adminurl+'user/findOne',
         method: 'POST',
-        params: {
-          data: data
+        data: {
+          "_id": id
         }
       }).success(callback);
     },
