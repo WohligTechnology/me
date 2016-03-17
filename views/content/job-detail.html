@@ -44,11 +44,11 @@
                     <div class="pull-right">
                       <div class="btn btn-primary ">Apply Now</div>
                     </div>
-                    <h5 class="blue-color">{{jobDetail.company.name}} <span>({{job.designation}})</span></h5>
-                    <p>{{job.city}}</p>
+                    <h5 class="blue-color">{{jobDetail.company.name}} <span>({{jobDetail.company.job.designation}})</span></h5>
+                    <p>{{jobDetail.company.job.city}}</p>
                     <ul class="list-unstyled bottom-ul ab post-made">
-                      <li class="bold" am-time-ago="data.company.job.reporting">Posting Date: </li>
-                      <li>expires {{job.appdate | amDateFormat:'MMMM Do YYYY'}}</li>
+                      <li class="bold" am-time-ago="jobDetail.company.job.reporting">Posting Date: </li>
+                      <li>expires {{jobDetail.company.job.appdate | amDateFormat:'MMMM Do YYYY'}}</li>
                     </ul>
                   </div>
                 </div>
@@ -61,7 +61,7 @@
               </div>
               <div class="box-cont">
                 <h5 class="bold">Job Details</h5>
-                <p>{{job.description}}</p>
+                <p>{{jobDetail.company.job.description}}</p>
               </div>
               <!-- <div class="box-cont">
                 <h5 class="bold">Responsibility</h5>
@@ -79,7 +79,7 @@
                   </li>
                   <li> -->
                     <span class="head">Role</span>
-                    <span class="sub-title">{{job.designation}}</span>
+                    <span class="sub-title">{{jobDetail.company.job.designation}}</span>
                   </li>
                 </ul>
               </div>

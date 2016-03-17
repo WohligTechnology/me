@@ -157,12 +157,14 @@ var navigationservice = angular.module('navigationservice', [])
         withCredentials:true
       }).success(callback);
     },
-    getEachJobDetail: function (job, callback) {
+    getEachJobDetail: function (id, job, callback) {
+      console.log('job id: ', job)
       $http({
-        url: adminurl+'user/findCompanyProfile',
+        url: adminurl+'user/viewCompanyProfile',
         method:'POST',
         data: {
-          "_id":job._id
+          "_id":id,
+          "job":job
         }
       }).success(callback);
     },

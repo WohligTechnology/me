@@ -102,12 +102,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider,cfpLo
     controller: 'JobListingCtrl'
   })
   .state('jobdetail', {
-    url: "/jobdetail",
+    url: "/jobdetail/:id/job/:job",
     templateUrl: "views/template.html",
     controller: 'JobDetailCtrl',
-    params: {
-      job: 'job'
-    }
+    // params: {
+    //   job: 
+    // }
   })
   .state('jobsearch', {
     url: "/jobsearch",

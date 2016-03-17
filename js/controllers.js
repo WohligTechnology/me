@@ -210,9 +210,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //   "image":"img/joblist.jpg"
     // }
     console.log('stateParams: ', $stateParams.job);
-    NavigationService.getEachJobDetail($stateParams.job, function (data) {
+    NavigationService.getEachJobDetail($stateParams.id, $stateParams.job, function (data) {
       $scope.jobDetail = data;
-      $scope.job = $stateParams.job;
+      // $scope.job = $stateParams.job;
       console.log('job detail: ', $scope.jobDetail);
     });
 
@@ -1057,7 +1057,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
               console.log('In the else statement');
               $scope.wrongCredentials = false;
               // $uibModal.dismiss();
-              $scope.navigation.splice(1,1);
+              // var flag4 = $scope.navigation.link.indexOf('registerlancer')
+              // if(flag4 == -1) {
+              //   $scope.navigation.splice(1,1);
+              // }
               $state.go('searchcategory');
             }
           });
@@ -1183,7 +1186,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
             if(data.accesslevel == "client") {
               console.log('In the if statement!!!');
               $scope.wrongCredentials = false;
-              $scope.navigation.splice(1,1);
+              // var flag3 = $scope.navigation.link.indexOf('registerlancer');
+              // if(flag3 == -1) {
+              //   $scope.navigation.splice(1,1);
+              // }              
               $state.go('postjob');
             }
           });
@@ -1428,12 +1434,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
   $scope.template = TemplateService;
   $scope.navigation = NavigationService.getnav();
   // $scope.isSession = true;
+  // var flag4 = $scope.navigation.link.indexOf('registerlancer')
+  console.log('navigation: ', $scope.navigation)
   console.log('session variable: ', $scope.isSession);
   NavigationService.session(function (data) {
     console.log('session data: ', data);
     if(data.name) {
       $scope.isSession = true;
       $scope.profile = data;
+      var flag1 = $scope.navigation[1].link.indexOf('registerlancer');
+      if(flag1 !== -1) {
+        $scope.navigation.splice(1,1);
+      }
     }
   });
   console.log('session variable2: ', $scope.isSession);
@@ -1450,13 +1462,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       console.log('logout response: ', data);
       if(data.value) {
         $scope.isSession = false;
-        var flag = $scope.navigation.link.indexOf('registerlancer')
-        if(flag !== -1) {
+        var flag2 = $scope.navigation[1].link.indexOf('registerlancer');
+        if(flag2 == -1) {
           $scope.navigation.splice(1,0,{name: "Register/Sign in",
             classis: "active",
             icon: "fa-key",
             link: "registerlancer"});
         }
+        $state.go('home')
       }
     });
   };
