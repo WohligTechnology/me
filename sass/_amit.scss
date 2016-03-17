@@ -421,6 +421,7 @@ i.fa-mobile.input-icon {
 // company job  - profile page
 .company-imgholder {
   @include square(180px);
+  border: 1px solid $brand-gray;
   overflow: hidden;
   position: relative;
   img {
@@ -428,6 +429,12 @@ i.fa-mobile.input-icon {
     max-width: 100%;
     @extend .ab;
     @extend .get-center;
+  }
+}
+.profile-info {
+  ul {
+    padding: 0;
+    li { list-style-type: none; }
   }
 }
 .edit-profile {

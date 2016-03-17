@@ -1,6 +1,6 @@
 // window.uploadUrl = "http://www.myfynx.com/newfynx/index.php/json/uploadImage";
 // window.uploadUrl = "http://130.211.164.166/uploadfile/upload";
-window.uploadUrl = "http://192.168.0.126:80/uploadfile/upload";
+window.uploadUrl = "http://vignesh.com/uploadfile/upload";
 angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'angularFileUpload', 'angularMoment','angular-loading-bar'])
 
 
@@ -494,8 +494,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.personalDetails = {};
     NavigationService.getMyProfilePage(function (data) {
       // $scope.myProfile = data;
-      console.log('access level: ', data);
-      $scope.data = data;
+      console.log(data);
+      // $scope.data = data;
       if(data.accesslevel == 'lancer') {
         $scope.profilepic = data.profilepic;
         $scope.personalDetails= {"name": data.name, "email": data.email, "contactNo": data.contactNo, "location": data.location};
@@ -520,7 +520,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
         // $scope.data = data;
         console.log('company: ', $scope.company);
       }
-      console.log(data);
+      console.log('profile data: ', data);
+      console.log('personal details: ', $scope.personalDetails)
     });
 
     $scope.submitPD = function (value) {
@@ -667,7 +668,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     // })
 
     NavigationService.getJob(function (data) {
-      $scope.jobs = data.company.job;
+      if(data.company) {
+        $scope.jobs = data.company.job;
+      }
     });
 
     $scope.job = function () {
