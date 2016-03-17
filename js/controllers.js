@@ -1,6 +1,6 @@
 // window.uploadUrl = "http://www.myfynx.com/newfynx/index.php/json/uploadImage";
 // window.uploadUrl = "http://130.211.164.166/uploadfile/upload";
-window.uploadUrl = "http://vignesh.com/uploadfile/upload";
+window.uploadUrl = "http://vignesh.com:81/uploadfile/upload";
 angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'angularFileUpload', 'angularMoment','angular-loading-bar','ngImgCrop'])
 
 
