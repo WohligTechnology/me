@@ -676,6 +676,20 @@ footer {
 .mt0{
   margin-top:0!important;
 }
+.info-name h4 {
+    text-transform: capitalize;
+}
 // loader end
+// terms and condition
+.terms-condition {
+  .terms-main { margin: 30px 0; }  
+  span
+  ,p { font-size: 16px; }
+  ul {
+    padding: 0;
+    li { list-style-type: none; }
+  }
+}
+// terms and condition end
 @import "amit";
 /* Start writing sass here */

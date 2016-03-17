@@ -119,6 +119,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider,cfpLo
     templateUrl: "views/template.html",
     controller: 'SearchCtrl'
   })
+  .state('termsconditions', {
+    url: "/termsconditions",
+    templateUrl: "views/template.html",
+    controller: 'TermsConditionsCtrl'
+  })
 
   .state('successstories', {
     url: "/successstories",

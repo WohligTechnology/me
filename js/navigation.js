@@ -33,17 +33,32 @@ var navigationservice = angular.module('navigationservice', [])
         classis: "active",
         icon: "fa-briefcase",
         link: "successstories"
-    }, {
+    },
+    {
         name: "My Community (Coming Soon)",
         classis: "active",
         icon: "fa-commenting-o",
         link: "home"
-    }, {
+    },
+    {
+        name: "View Applicants",
+        classis: "active",
+        icon: "fa-search",
+        link: "postjob"
+    },
+    {
+        name: "Search Job",
+        classis: "active",
+        icon: "fa-search",
+        link: "searchcategory"
+    },
+     {
         name: "About Us",
         classis: "active",
         icon: "fa-user",
         link: "about"
-    }];
+    }
+  ];
 
     return {
         getnav: function () {
@@ -170,7 +185,7 @@ var navigationservice = angular.module('navigationservice', [])
     },
     getMyProfilePage: function (callback) {
       $http({
-        url: adminurl+'user/findProfile',
+        url: adminurl+'user/profile',
         method: 'POST'
       }).success(callback);
     },
