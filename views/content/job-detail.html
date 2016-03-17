@@ -27,7 +27,6 @@
           </div>
           <!-- end -->
         </form>
-        <p class="result-text bold"> 1000 Mobile developers found!</p>
       </div>
       <div class="row">
         <div class="col-md-9 pr5">
@@ -42,12 +41,16 @@
                 <div class="col-md-9">
                   <div class="name-row">
                     <div class="pull-right">
+<<<<<<< HEAD
                       <div class="btn btn-primary " ng-click="openpop()">Apply Now</div>
+=======
+                      <div class="btn btn-primary">Apply Now</div>
+>>>>>>> 173ee27c339272190b53c469b63e356e0a043f85
                     </div>
                     <h5 class="blue-color">{{jobDetail.company.name}} <span>({{jobDetail.company.job.designation}})</span></h5>
                     <p>{{jobDetail.company.job.city}}</p>
                     <ul class="list-unstyled bottom-ul ab post-made">
-                      <li class="bold" am-time-ago="jobDetail.company.job.reporting">Posting Date: </li>
+                      <li class="bold" am-time-ago="jobDetail.company.job.reporting">Posting Date: {{jobDetail.company.job.reporting | amDateFormat:'MMMM Do YYYY'}}</li>
                       <li>expires {{jobDetail.company.job.appdate | amDateFormat:'MMMM Do YYYY'}}</li>
                     </ul>
                   </div>
