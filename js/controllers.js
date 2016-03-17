@@ -494,8 +494,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.personalDetails = {};
     NavigationService.getMyProfilePage(function (data) {
       // $scope.myProfile = data;
-      console.log(data);
-      // $scope.data = data;
+      console.log('profile data1: ', data);
+      $scope.data = data;
       if(data.accesslevel == 'lancer') {
         $scope.profilepic = data.profilepic;
         $scope.personalDetails= {"name": data.name, "email": data.email, "contactNo": data.contactNo, "location": data.location};
@@ -515,7 +515,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
          console.log('experience:', $scope.experience);
         }
       }
-      else if(data.accesslevel){
+      else if(data.accesslevel == 'client'){
         $scope.company = data;
         // $scope.data = data;
         console.log('company: ', $scope.company);
@@ -668,7 +668,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     // })
 
     NavigationService.getJob(function (data) {
-      if(data.company) {
+      if(data.accesslevel == 'client') {
         $scope.jobs = data.company.job;
       }
     });
