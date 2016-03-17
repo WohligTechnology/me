@@ -325,7 +325,7 @@ a.navbar-brand {
     font-size: 15px;
   }
 }
-footer {
+.footer {
   background: $base-primary;
   padding: 8px 0 3px;
   position: relative;
@@ -703,5 +703,5 @@ footer {
   }
 }
 // popup end
-@import "amit"; 
+@import "amit";
 /* Start writing sass here */
