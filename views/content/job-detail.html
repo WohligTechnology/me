@@ -3,13 +3,12 @@
     <div class="container">
       <div class="search-job">
         <form action="" class="form-inline">
-        <!-- do afterwards -->
           <div class="row">
             <div class="col-md-3">
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon white-bg no-radius"><i class="fa fa-search"></i></span>
-                  <input type="text" class="form-control no-radius" placeholder="Mobile Developer">
+                  <input type="text" class="form-control no-radius" placeholder="Graphic Designer" ng-model="data.category">
                 </div>
               </div>
             </div>
@@ -17,15 +16,14 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon white-bg no-radius"><i class="fa fa-map-marker"></i></span>
-                  <input type="text" class="form-control no-radius" placeholder="Mumbai">
+                  <input type="text" class="form-control no-radius" placeholder="Mumbai" ng-model="data.city">
                 </div>
               </div>
             </div>
             <div class="col-md-3">
-              <button class="btn btn-primary ">Search Jobs</button>
+              <button class="btn btn-primary" ng-click="search(data, 1)">Search Jobs</button>
             </div>
           </div>
-          <!-- end -->
         </form>
       </div>
       <div class="row">
@@ -41,11 +39,7 @@
                 <div class="col-md-9">
                   <div class="name-row">
                     <div class="pull-right">
-<<<<<<< HEAD
                       <div class="btn btn-primary " ng-click="openpop()">Apply Now</div>
-=======
-                      <div class="btn btn-primary">Apply Now</div>
->>>>>>> 173ee27c339272190b53c469b63e356e0a043f85
                     </div>
                     <h5 class="blue-color">{{jobDetail.company.name}} <span>({{jobDetail.company.job.designation}})</span></h5>
                     <p>{{jobDetail.company.job.city}}</p>
