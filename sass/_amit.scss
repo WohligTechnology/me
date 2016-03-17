@@ -501,9 +501,8 @@ i.fa-mobile.input-icon {
 .notifications { padding: 20px 10px; }
 .job-list-main {
   padding: 20px;
-  margin-bottom: 5px;
-  margin-top: 10px;
   border-radius: 8px;
+  margin: 10px 0 20px 20px;
   background-color: $brand-gray;
   @include box-shadow(0 2px 3px #6B6A6A);
   .job-detail { margin-top: 20px; }
@@ -514,6 +513,9 @@ i.fa-mobile.input-icon {
     color: #b0b0b0;
     cursor: pointer;
     font-size: 18px;
+    &:hover {
+      color: $brand-primary;
+    }
   }
 }
 .company-detail .form-control:focus { border-color: #ccc; }
@@ -521,6 +523,10 @@ i.fa-mobile.input-icon {
   padding-bottom: 20px;
   border-bottom: 1px solid #ddd;
   margin-bottom: 20px;
+}
+.close {
+  top: -8px;
+  right: 0;
 }
 .pro-head {
   .head-title { margin: 0px 0px 15px; }
