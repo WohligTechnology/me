@@ -1,6 +1,6 @@
 // window.uploadUrl = "http://www.myfynx.com/newfynx/index.php/json/uploadImage";
-window.uploadUrl = "http://130.211.164.166/uploadfile/upload";
-// window.uploadUrl = "http://192.168.0.126:80/uploadfile/upload";
+// window.uploadUrl = "http://130.211.164.166/uploadfile/upload";
+window.uploadUrl = "http://192.168.0.126:80/uploadfile/upload";
 angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'angularFileUpload', 'angularMoment','angular-loading-bar'])
 
 
@@ -231,6 +231,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("job-search");
     $scope.menutitle = NavigationService.makeactive("Job Search");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+  })
+  .controller('TermsConditionsCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("termsconditions");
+    $scope.menutitle = NavigationService.makeactive("Terms and Conditions");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
