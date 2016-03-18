@@ -38,6 +38,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider,cfpLo
     templateUrl: "views/template.html",
     controller: 'AboutCtrl'
   })
+  .state('editjob', {
+    url: "/editjob",
+    templateUrl: "views/template.html",
+    controller: 'EditJobCtrl'
+  })
   .state('profile', {
     url: "/profile",
     templateUrl: "views/template.html",
@@ -62,9 +67,10 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider,cfpLo
     url: "/resume/:id",
     templateUrl: "views/template.html",
     controller: 'ResumeCtrl',
-    params: {
-      data: '1'
-    }
+    // params: {
+    //   "job": job,
+    //   "lancer":lancer
+    // }
   })
   .state('community', {
     url: "/community",

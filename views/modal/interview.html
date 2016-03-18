@@ -1,0 +1,19 @@
+  <div class="message-main">
+    <!-- <div class="msg">
+      <p>{{message}}</p>
+      <p>Failed to apply! Apologies for the inconvenience</p>
+    </div> -->
+    <div class="brand-gray-bg login-head">
+      <h2 class="text-uppercase text-center blue-color m-clear">Set Interview</h2>
+  	</div>
+    <form name="interviewForm">
+    <div class="form-group">
+	    <input class="form-control" placeholder="Date of Interview" type="text" onfocus= "type='date';" required></input></div>
+	    <div class="form-group">
+	    <input class="form-control" type="text" placeholder="Time of Interview" required>
+	    </div>
+	    <div class="form-group">
+	    <textarea class="form-control" placeholder="Venue Address" ng-model="interview.venue" required></textarea></div>
+	    <button type="button" class="btn btn-primary" ng-click="set()">Set Interview</button>
+    </form>
+  </div>

@@ -59,7 +59,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       'img/banners/1.jpg',
     ];
   })
-  .controller('JobListingCtrl', function($scope, TemplateService, NavigationService, $timeout,$uibModal) {
+    .controller('EditJobCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("editjob");
+    $scope.menutitle = NavigationService.makeactive("Edit Job");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+  })
+  .controller('JobListingCtrl', function($scope, TemplateService, NavigationService, 
+    $timeout,$uibModal) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("joblisting");
     $scope.menutitle = NavigationService.makeactive("Job Listing");
@@ -106,6 +115,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
         $scope.count = data.total;
       });
     };
+
+    var data = {};
+    if($.jStorage.get('isSearch')){
+      data.city = _.startCase($.jStorage.get('searchData.city'))
+      data.category = _.startCase($.jStorage.get('searchData.category'))
+      NavigationService.findAllJobs(data, 1, function (data) {
+        $scope.joblist = data.data;
+        $scope.count = data.total;
+      });
+    }
+    
     // var page = 1;
     // NavigationService.findAllJobs(page, function (data) {
     //   $scope.joblist = data.data;
@@ -126,6 +146,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     // }
 
     $scope.search = function (data, page) {
+      data.city = _.startCase(data.city)
+      data.category = _.startCase(data,category)
       NavigationService.findAllJobs(data, page, function (data) {
         $scope.joblist = data.data;
         $scope.count = data.total;
@@ -151,13 +173,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       'img/landing.jpg',
     ];
 
-    $scope.applyForJob = function (job) {
-      console.log('in the applyForJob function: ', job);
+    // $scope.applyForJob = function (job) {
+    //   console.log('in the applyForJob function: ', job);
+    //   NavigationService.jobApply(job, function (data) {
+    //     console.log('apply for job: ', data);
+    //   });
+    // };
+
+    $scope.openpop = function(job) {
+      $scope.message = ""
       NavigationService.jobApply(job, function (data) {
         console.log('apply for job: ', data);
+        // if(data.value) {
+          $scope.message = data.comment;
+        // }
       });
+      $uibModal.open({
+        animation: true,
+        templateUrl: "views/modal/message.html",  
+        scope: $scope
+      })
     };
-
     // $scope.joblist = [
     //   {
     //     img: "img/resgration.png",
@@ -188,20 +224,39 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     //   },
     // ];
   })
-  .controller('JobDetailCtrl', function($stateParams, $scope, TemplateService, NavigationService, $timeout,$uibModal) {
+  .controller('JobDetailCtrl', function($state, $stateParams, $scope, TemplateService, 
+    NavigationService, $timeout,$uibModal) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("job-detail");
     $scope.menutitle = NavigationService.makeactive("Job Listing");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    $scope.openpop = function() {
-    $uibModal.open({
-    animation: true,
-    templateUrl: "views/modal/message.html",
-    controller: "JobDetailCtrl"
-    })
-  };
+    $scope.openpop = function(job) {
+      $scope.message = ""; 
+      NavigationService.jobApply(job, function (data) {
+        console.log('apply for job: ', data);
+        $scope.message = data.comment;
+        // if(data.value) {
+          
+        // }
+        // else {
+        //   $scope.successApplyJob = false
+        // }
+      });
+
+      $uibModal.open({
+        animation: true,
+        templateUrl: "views/modal/message.html",
+        scope: $scope 
+      })
+    };
+
+    $scope.search = function (data) {
+      $.jStorage.set('isSearch', true);
+      $.jStorage.set('searchData', data);
+      $state.go('joblisting');
+    }
 
     // $scope.jobDetail = {
     //   "company": "BobCorn",
@@ -243,7 +298,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
-  .controller('TermsConditionsCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('TermsConditionsCtrl', function($scope, TemplateService, NavigationService, 
+    $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("termsconditions");
     $scope.menutitle = NavigationService.makeactive("Terms and Conditions");
@@ -251,7 +307,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.navigation = NavigationService.getnav();
   })
 
-  .controller('SearchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('SearchCtrl', function($uibModal, $scope, TemplateService, NavigationService, 
+    $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("search");
     $scope.menutitle = NavigationService.makeactive("Search");
@@ -340,9 +397,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       // }
     };
 
-    $scope.shortlist = function (lancer, job) {
+    // $scope.shortlist = function (lancer, job) {
+    //   NavigationService.getShortlist(lancer, job, function (data) {
+    //     console.log('shortlist response: ', data);
+    //   })
+    // }
+
+    $scope.openpop = function(lancer, job) {
+      $scope.message = ""
       NavigationService.getShortlist(lancer, job, function (data) {
-        console.log('shortlist response: ', data);
+        console.log('apply for job: ', data);
+        // if(data.value) {
+        $scope.message = data.comment;
+        // }
+      });
+      $uibModal.open({
+        animation: true,
+        templateUrl: "views/modal/message.html",  
+        scope: $scope
+      })
+    };
+
+    $scope.openInterview = function () {
+      $uibModal.open({
+        animation: true,
+        templateUrl: "views/modal/interview.html",  
+        scope: $scope
       })
     }
     // $scope.jobs = [
@@ -695,6 +775,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       }
     });
 
+    $scope.deleteJob = function (id) {
+      NavigationService.deleteJob(id, function (data) {
+        console.log('delete job: ', data)
+      })
+    }
+
+    // $scope.editJob = function () {
+
+    // }
+
     $scope.job = function () {
       NavigationService.session(function (data) {
         console.log('data: ', data);
@@ -1034,7 +1124,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     };
   })
 
-  .controller('ResumeCtrl', function($stateParams, $scope, TemplateService, NavigationService, $timeout) {
+  .controller('ResumeCtrl', function($uibModal, $stateParams, $scope, TemplateService, 
+    NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("resume");
     $scope.menutitle = NavigationService.makeactive("Resume");
@@ -1042,10 +1133,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     $scope.navigation = NavigationService.getnav();
     // $scope.resume = $stateParams.data;
     // console.log('Resume: ', $scope.resume);
+    $scope.resume = {};
     NavigationService.getResume($stateParams.id, function (data) {
       $scope.resume = data;
       console.log('Resume: ', $scope.resume);
     });
+    console.log('lancer controller: ', $stateParams.lancer)
+    console.log('job controller: ', $stateParams.job)
+    $scope.message = "";
+    $scope.openpop = function (data) {
+      NavigationService.getShortlist($scope.resume, $.jStorage.get('jobCategory'), function (data) {
+        $scope.message = data.comment; 
+      })
+      $uibModal.open({
+        animation: true,
+        templateUrl: "views/modal/message.html",  
+        scope: $scope
+      })
+    }
+    
   })
 
   .controller('Commmunity', function($scope, TemplateService, NavigationService, $timeout) {
@@ -1508,11 +1614,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       // var flag4 = $scope.navigation[4].link.indexOf('postjob');
       if(flag4 === 1 && flag1 === 0) {
         console.log('in if statement4')
-        $scope.navigation.splice(3,1);
+        $scope.navigation.splice(4,1);
       }
 
       else if(flag4 === 1 && flag1 === 1) {
-        $scope.navigation.splice(4,1);
+        $scope.navigation.splice(3,1);
       }
     }
   });
@@ -1520,9 +1626,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
   $scope.slideclass = "slide-out";
   $scope.slidemenu = function() {
     if($scope.slideclass == "slide-out")
-    $scope.slideclass = "slide-in";
+      $scope.slideclass = "slide-in";
     else
-    $scope.slideclass = "slide-out";
+      $scope.slideclass = "slide-out";
   };
 
   $scope.logout = function () {
@@ -1532,10 +1638,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
         $scope.isSession = false;
         var flag2 = $scope.navigation[1].link.indexOf('registerlancer');
         if(flag2 == -1) {
-          $scope.navigation.splice(1,0,{name: "Register/Sign in",
+          $scope.navigation.splice(1,0,{
+            name: "Register/Sign in",
             classis: "active",
             icon: "fa-key",
-            link: "registerlancer"});
+            link: "registerlancer"
+          });
+          console.log('navigation splice: ', $scope.navigation);
         }
         $state.go('home')
       }
@@ -1550,18 +1659,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     // console.log('toParams: ', toParams)
     // console.log('fromState: ', fromState)
     // console.log('fromParams: ', fromParams)
-    if(!$scope.isSession) {
-      console.log('session variable: ', $scope.isSession)
-      if(toState.name !== 'home') {
-        if(toState.name !== 'searchcategory' && 
-          toState.name !== 'successstories' && 
-          toState.name !== 'registerlancer' && 
-          toState.name !== 'registerclient'){
-            alert('Please sign up or login first');
-            $state.go('home');
+    NavigationService.session(function (data) {
+      if(data.name) {
+        $scope.isSession = true;
+      }
+      if(!$scope.isSession) {
+        $scope.navigation.splice(4,1);
+        console.log('session variable: ', $scope.isSession)
+        if(toState.name !== 'home') {
+          if(toState.name !== 'searchcategory' && 
+            toState.name !== 'successstories' && 
+            toState.name !== 'registerlancer' && 
+            toState.name !== 'registerclient' && 
+            toState.name !== 'about'){
+              alert('Please sign up or login first');
+              $state.go('home');
+          }
         }
       }
-    }
+    })
   });
 
 })

@@ -1,5 +1,5 @@
 <ul class="nav navbar-nav">
-    <li ng-repeat="menu in navigation" class="{{menu.classis}}">
+    <li ng-repeat="menu in navigation" ng-class="menu.classis">
         <a ui-sref="{{menu.link}}"><i class="fa {{menu.icon}}"></i>
 {{menu.name}}</a>
         <!-- <ul class="dropdown-menu" ng-if="menu.subnav!='';">

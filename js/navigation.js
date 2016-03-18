@@ -312,8 +312,37 @@ var navigationservice = angular.module('navigationservice', [])
           'job': job._id,
           '_id':lancer._id
         }
-      })
-    }
+      }).success(callback)
+    },
+    deleteJob: function (id, callback) {
+      $http({
+        url: adminurl+'job/delete',
+        method: 'POST',
+        data: {
+          '_id': id
+        }
+      }).success(callback)
+    },
+    editJob: function (id, callback) {
+      $http({
+        url: adminurl+'job/save',
+        method: 'POST',
+        data: {
+          '_id':id
+        }
+      }).success(callback)
+    },
+    // getShortlistDetail: function (lancer, job) {
+    //   $http({
+    //     url: adminurl+'user/shortlistForJob',
+    //     method: 'POST',
+    //     data: {
+    //       'jobname':job.designation,
+    //       'job': job._id,
+    //       '_id':lancer._id
+    //     }
+    //   }).success(callback)
+    // }
     // setInterview: function (argument) {
     //   $http({
     //     url: adminurl+

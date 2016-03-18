@@ -42,7 +42,7 @@
                 <div class="name-row">
                   <div class="pull-right">
                     <div class="btn btn-inverse  mgr" ui-sref="jobdetail({id: data._id, job: data.company.job._id})">View Details</div>
-                    <div class="btn btn-primary" ng-click="applyForJob(data.company.job) openpop();">Apply Now</div>
+                    <div class="btn btn-primary" ng-click="openpop(data.company.job);">Apply Now</div>
                   </div>
                   <h5 class="blue-color bold">{{data.company.name}}</h5>
                   <div class="job-cont">
@@ -50,8 +50,8 @@
                       <!-- <li class="bold">{{data.jobPayment}}</li> -->
                       <!-- <li class="bold">{{data.payment}}</li> -->
                       <!-- <li class="bold">{{data.timeCommitment}}</li> -->
-                      <!-- <li class="bold">{{data._id}}</li> -->
-                      <li class="bold" am-time-ago="data.company.job.reporting" ng-if="data.company.job.reporting">Posting Date: </li>
+                      <!-- <li class="bold">{{data.company.job.reporting}}</li> -->
+                      <li class="bold" ng-if="data.company.job.reporting">Posting Date: {{data.company.job.reporting | amDateFormat:'MMMM Do YYYY'}}</li>
                       <li class="bold">expires {{data.company.job.appdate | amDateFormat:'MMMM Do YYYY'}}</li>
                       <li class="bold">{{data.company.job.city}}</li>
                       <li class="bold">{{data.company.job.designation}}</li>
