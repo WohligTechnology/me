@@ -432,7 +432,7 @@
                     <div class="job-list-main" ng-repeat="job in jobs">
                       <div class="edit-btn pull-right">
                         <i class="fa fa-pencil"></i>
-                        <i class="fa fa-trash"></i>
+                        <i class="fa fa-trash" ng-click="deleteJob(job._id)"></i>
                       </div>
                       <h4 class="blue-color job-title text-uppercase m-clear">{{job.department}}</h4>
                       <div class="job-detail">

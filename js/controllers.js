@@ -1550,15 +1550,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     // console.log('toParams: ', toParams)
     // console.log('fromState: ', fromState)
     // console.log('fromParams: ', fromParams)
-    if($scope.isSession == false) {
+    if(!$scope.isSession) {
+      console.log('session variable: ', $scope.isSession)
       if(toState.name !== 'home') {
-        if(toState.name !== 'searchcategory'){
-         if(toState.name !== 'registerlancer') {
-          if(toState.name !== 'registerclient') {
+        if(toState.name !== 'searchcategory' && 
+          toState.name !== 'successstories' && 
+          toState.name !== 'registerlancer' && 
+          toState.name !== 'registerclient'){
             alert('Please sign up or login first');
             $state.go('home');
-          }
-         }
         }
       }
     }

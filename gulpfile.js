@@ -5,7 +5,7 @@ var jsArray = [
   './bower_components/gsap/src/minified/TweenMax.min.js',
   './bower_components/ScrollMagic/scrollmagic/minified/plugins/animation.gsap.min.js',
   './bower_components/flexslider/jquery.flexslider-min.js',
-  './bower_components/ng-img-crop/source/js/ng-img-crop.js',
+  './bower_components/ng-img-crop/compile/minified/ng-img-crop.js',
   './bower_components/wowjs/dist/wow.min.js',
   './bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
   './bower_components/lodash/lodash.min.js',

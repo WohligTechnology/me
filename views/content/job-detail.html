@@ -1,113 +1,85 @@
-<section>
-  <div class=" brand-gray-bg">
-    <div class="container">
-      <div class="search-job">
-        <form action="" class="form-inline">
-        <!-- do afterwards -->
-          <div class="row">
-            <div class="col-md-3">
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon white-bg no-radius"><i class="fa fa-search"></i></span>
-                  <input type="text" class="form-control no-radius" placeholder="Mobile Developer">
-                </div>
+<div class=" brand-gray-bg">
+  <div class="container">
+    <div class="search-job">
+      <form action="" class="form-inline">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon white-bg no-radius"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control no-radius" placeholder="Graphic Designer" ng-model="data.category">
               </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon white-bg no-radius"><i class="fa fa-map-marker"></i></span>
-                  <input type="text" class="form-control no-radius" placeholder="Mumbai">
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <button class="btn btn-primary">Search Jobs</button>
             </div>
           </div>
-          <!-- end -->
-        </form>
-      </div>
-      <div class="row">
-        <div class="col-md-9 pr5">
-          <div class="white-bg">
-            <div class="list">
-              <div class="row">
-                <div class="col-md-3">
-                  <div class="left-side">
-                    <img src="{{jobDetail.image|serverimage}}" alt="">
-                  </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon white-bg no-radius"><i class="fa fa-map-marker"></i></span>
+                <input type="text" class="form-control no-radius" placeholder="Mumbai" ng-model="data.city">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <button class="btn btn-primary" ng-click="search(data, 1)">Search Jobs</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <div class="col-md-9 pr5">
+        <div class="white-bg">
+          <div class="list">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="left-side">
+                  <img src="{{jobDetail.image|serverimage}}" alt="">
                 </div>
-                <div class="col-md-9">
-                  <div class="name-row">
-                    <div class="pull-right">
-<<<<<<< HEAD
-                      <div class="btn btn-primary " ng-click="openpop()">Apply Now</div>
-=======
-                      <div class="btn btn-primary">Apply Now</div>
->>>>>>> 173ee27c339272190b53c469b63e356e0a043f85
-                    </div>
-                    <h5 class="blue-color">{{jobDetail.company.name}} <span>({{jobDetail.company.job.designation}})</span></h5>
-                    <p>{{jobDetail.company.job.city}}</p>
-                    <ul class="list-unstyled bottom-ul ab post-made">
-                      <li class="bold" am-time-ago="jobDetail.company.job.reporting">Posting Date: {{jobDetail.company.job.reporting | amDateFormat:'MMMM Do YYYY'}}</li>
-                      <li>expires {{jobDetail.company.job.appdate | amDateFormat:'MMMM Do YYYY'}}</li>
-                    </ul>
+              </div>
+              <div class="col-md-9">
+                <div class="name-row">
+                  <div class="pull-right">
+                    <div class="btn btn-primary " ng-click="openpop()">Apply Now</div>
                   </div>
+                  <h5 class="blue-color">{{jobDetail.company.name}} <span>({{jobDetail.company.job.designation}})</span></h5>
+                  <p>{{jobDetail.company.job.city}}</p>
+                  <ul class="list-unstyled bottom-ul ab post-made">
+                    <li class="bold" am-time-ago="jobDetail.company.job.reporting">Posting Date: {{jobDetail.company.job.reporting | amDateFormat:'MMMM Do YYYY'}}</li>
+                    <li>expires {{jobDetail.company.job.appdate | amDateFormat:'MMMM Do YYYY'}}</li>
+                  </ul>
                 </div>
               </div>
             </div>
-            <div class="box">
-              <div class="box-cont brand-gray-bg">
-                <h5 class="bold">About Company</h5>
-                <p>{{jobDetail.company.description}}</p>
+          </div>
+          <div class="box">
+            <div class="box-cont brand-gray-bg">
+              <h5 class="bold">About Company</h5>
+              <p>{{jobDetail.company.description}}</p>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="box-cont">
+                  <h5 class="bold">Job Details</h5>
+                  <p>{{jobDetail.company.job.description}}</p>
+                </div>
               </div>
-              <div class="box-cont">
-                <h5 class="bold">Job Details</h5>
-                <p>{{jobDetail.company.job.description}}</p>
-              </div>
-              <!-- <div class="box-cont">
-                <h5 class="bold">Responsibility</h5>
-                <p class="blue-color">{{jobDetail.jobResponsibilities}}</p>
-              </div> -->
-              <div class="box-cont">
-                <ul class="list-unstyled inline-make">
-                  <!-- <li>
-                    <span class="head">Salary</span>
-                    <span class="sub-title">{{jobDetail.payment}}</span>
-                  </li>
-                  <li>
-                    <span class="head">Exposure</span>
-                    <span class="sub-title">{{jobDetail.exposure}}</span>
-                  </li>
-                  <li> -->
-                    <span class="head">Role</span>
-                    <span class="sub-title">{{jobDetail.company.job.designation}}</span>
-                  </li>
-                </ul>
+              <div class="col-md-6">
+                <div class="box-cont">
+                  <ul class="list-unstyled inline-make">
+                    <h5 class="bold">Role</h5>
+                    <p>{{jobDetail.company.job.designation}}</p>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-3 rl5">
-          <div class="right-side">
-            <img src="img/right.jpg" alt="" class="img-responsive">
-            <!-- <div class="detail-cont">
-              Want to Apply? Please Sign in Register to apply.
-              <button type="button" name="button" class="btn btn-primary btn-lg no-radius">Registration</button>
-              Already a member? <a href="#">SignIn</a>
-            </div>
-            <div class="detail-cont">
-              <h5> Similar Jobs</h5>
-              <ul class="list-unstyled">
-                <li>Aapot ,Mumbai,(Mobile Developer)</li>
-                <li>BindCity ,Mumbai,(Mobile Developer)</li>
-                <li>Caploft ,Mumbai,(Mobile Developer)</li>
-              </ul>
-            </div> -->
-          </div>
+      </div>
+      <div class="col-md-3 rl5">
+        <div class="right-side">
+          <img src="img/right.jpg" alt="" class="img-responsive">
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
