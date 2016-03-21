@@ -1,6 +1,6 @@
 // var adminurl = 'http://192.168.0.126:1337/callApi/flexi/json/';
-// var adminurl = 'http://130.211.164.166/';
-var adminurl = 'http://vignesh.com:81/';
+var adminurl = 'http://130.211.164.166/';
+// var adminurl = 'http://vignesh.com:81/';
 
 var navigationservice = angular.module('navigationservice', [])
 
@@ -173,7 +173,7 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
     getEachJobDetail: function (id, job, callback) {
-      console.log('job id: ', job)
+      // console.log('job id: ', job)
       $http({
         url: adminurl+'user/viewCompanyProfile',
         method:'POST',
@@ -301,9 +301,9 @@ var navigationservice = angular.module('navigationservice', [])
         }).success(callback);
     },
     getShortlist: function (lancer, job, callback) {
-      console.log('lancer: ', lancer)
-      var job = JSON.parse(job)
-      console.log('job: ', job)
+      // console.log('lancer: ', lancer)
+      var job = JSON.parse(job);
+      // console.log('job: ', job)
       $http({
         url: adminurl+'user/shortlistForJob',
         method: 'POST',
@@ -312,7 +312,7 @@ var navigationservice = angular.module('navigationservice', [])
           'job': job._id,
           '_id':lancer._id
         }
-      }).success(callback)
+      }).success(callback);
     },
     deleteJob: function (id, callback) {
       $http({
@@ -321,7 +321,7 @@ var navigationservice = angular.module('navigationservice', [])
         data: {
           '_id': id
         }
-      }).success(callback)
+      }).success(callback);
     },
     editJob: function (id, job, callback) {
       $http({
@@ -338,7 +338,7 @@ var navigationservice = angular.module('navigationservice', [])
           'reporting' : job.reporting,
           'state' : job.state
         }
-      }).success(callback)
+      }).success(callback);
     },
     getEachJob: function (id, callback) {
       $http({
@@ -347,7 +347,7 @@ var navigationservice = angular.module('navigationservice', [])
         data: {
           '_id':id
         }
-      }).success(callback)
+      }).success(callback);
     },
     setInterview: function (data, job, lancer, callback) {
       console.log('lancer: ', lancer);
@@ -365,7 +365,7 @@ var navigationservice = angular.module('navigationservice', [])
           'time': data.time,
           'venue': data.venue
         }
-      }).success(callback)
+      }).success(callback);
     }
     // getShortlistDetail: function (lancer, job) {
     //   $http({
