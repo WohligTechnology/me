@@ -12,27 +12,34 @@
                   <div class="ab" ng-show="newjobform.designation.$error.required && newjobform.designation.$touched" role="alert">Please enter your Job Designation.</div>
                 </div> -->
                 <div class="form-group">
-                  <input type="text" name="designation" class="form-control" placeholder="Job Designation" ng-model="job.designation" required>
+                <!-- {{jobDetail}} -->
+                  <label for="designation">Designation: </label>
+                  <input type="text" name="designation" id="designation" class="form-control" ng-model="jobDetail.designation" required>
                   <div class="ab" ng-show="newjobform.designation.$error.required && newjobform.designation.$touched" role="alert">Please enter your Job Designation.</div>
                 </div>
                 <div class="form-group">
-                  <input type="text" name="department" ng-model="job.department" class="form-control" placeholder="Department" required>
+                  <label for="department">Department: </label>
+                  <input type="text" name="department" id="department" ng-model="jobDetail.department" class="form-control" placeholder="Department" required>
                   <div class="ab" ng-show="newjobform.department.$error.required && newjobform.department.$touched" role="alert">Please enter your Department.</div>
                 </div>
                 <div class="form-group">
-                  <input type="text" name="description" class="form-control" ng-model="job.description" placeholder="Description" required>
+                  <label for="description">Description: </label>
+                  <input type="text" name="description" id="description" class="form-control" ng-model="jobDetail.description" placeholder="Description" required>
                   <div class="ab" ng-show="newjobform.description.$error.required && newjobform.description.$touched" role="alert">Please enter your Description.</div>
                 </div>
                 <div class="form-group">
-                  <input type="text" onfocus="type='date';" name="reporting" ng-model="job.reporting" class="form-control" placeholder="Reporting Date" required>
+                  <label for="reporting">Reporting: </label>
+                  <input type="text" onfocus="type='date';" name="reporting" id="reporting" ng-model="jobDetail.reporting" class="form-control" placeholder="Reporting Date" required>
                   <div class="ab" ng-show="newjobform.reporting.$error.required && newjobform.reporting.$touched" role="alert">Please enter Reporting.</div>
                 </div>
                 <div class="form-group">
-                  <input type="text" name="city" ng-model="job.city" class="form-control" placeholder="Location of Job/City" required>
+                  <label for="city">City: </label>
+                  <input type="text" name="city" id="city" ng-model="jobDetail.city" class="form-control" placeholder="Location of Job/City" required>
                   <div class="ab" ng-show="newjobform.city.$error.required && newjobform.city.$touched" role="alert">Please enter Reporting.</div>
                 </div>
                 <div class="form-group">
-                  <input type="text" name="state" class="form-control" ng-model="job.state" placeholder="State" required>
+                  <label for="state">State: </label>
+                  <input type="text" name="state" id="state" class="form-control" ng-model="jobDetail.state" placeholder="State" required>
                   <div class="ab" ng-show="newjobform.state.$error.required && newjobform.state.$touched" role="alert">Please enter your state.</div>
                 </div>
                 <!-- <div class="form-group">
@@ -48,8 +55,9 @@
                   <div class="ab" ng-show="newjobform.paymentRangeHigh.$error.required && newjobform.paymentRangeHigh.$touched" role="alert">Please enter your Description.</div>
                 </div> -->
                 <div class="form-group">
+                  <label for="experience">Experience: </label>
                   <div class="search-input select-newjob custom-select text-center">
-                    <select class="form-control" name="experience" required ng-model="job.experience">
+                    <select class="form-control" name="experience" id="experience" required ng-model="jobDetail.experience" ng-change="selectOption(jobDetail.experience)">
                       <option value="">Experience</option>
                       <option>Less than 1 Year</option>
                       <option>1 - 5 Years</option>
@@ -57,7 +65,7 @@
                       <option>11 - 15 Years</option>
                       <option>More than 15 Years</option>
                     </select>
-                    <span class="job-select"></span>
+                    <!-- <span class="job-select"></span> -->
                   </div>
                   <div class="ab" ng-show="newjobform.experience.$error.required && newjobform.experience.$touched" role="alert">Please enter your Experience.</div>
                 </div>
@@ -105,11 +113,12 @@
                   <div class="ab" ng-show="newjobform.startDate.$error.required && newjobform.startDate.$touched" role="alert" onfocus="(this.type='date')" type="text">Please enter Application Date.</div>
                 </div> -->
                 <div class="form-group">
-                  <input type="text" onfocus="type='date';"name="expiryDate" ng-model="job.expiryDate" class="form-control" placeholder="Applications Are Open Till" required>
+                  <label for="expiry">Expires at: </label>
+                  <input type="text" onfocus="type='date';" id="expiry" name="expiryDate" ng-model="jobDetail.expiryDate" class="form-control" placeholder="Applications Are Open Till" required>
                   <div class="ab" ng-show="newjobform.expiryDate.$error.required && newjobform.expiryDate.$touched" role="alert" onfocus="(this.type='date')" type="text">Please enter Application Date.</div>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary" ui-sref="companyprofile" ng-click="newJob(newjobform,job)">Post Job</button>
+                  <button type="submit" class="btn btn-primary" ng-click="editJob(newjobform,jobDetail)">Edit Job</button>
                 </div>
               </form>
             </div>

@@ -39,9 +39,14 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider,cfpLo
     controller: 'AboutCtrl'
   })
   .state('editjob', {
-    url: "/editjob",
+    url: "/editjob/:id",
     templateUrl: "views/template.html",
-    controller: 'EditJobCtrl'
+    controller: 'EditJobCtrl',
+    // params: {
+    //   'jobDetail' : {
+    //     value: null
+    //   }
+    // }
   })
   .state('profile', {
     url: "/profile",

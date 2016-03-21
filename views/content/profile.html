@@ -1,4 +1,4 @@
-<div class="" ng-init="abc=false;" ng-if="data.accesslevel == 'lancer'">
+<div class="" ng-init="abc=false;" ng-if="data.accesslevel == 'lancer' || !data.company">
   <div class="company-profiletab brand-gray-bg">
     <div class="container">
       <h3 class="company-name blue-color">My Profile</h3>
@@ -99,19 +99,25 @@
                           </div>
                           <div class="col-md-10">
                             <div class="edit-btn pull-right">
-                              <img src="img/pencil.jpg" class="img-responsive" ng-click="toggleEdu(isEditEdu)">
+                              <img src="img/pencil.jpg" class="img-responsive" ng-click="toggleEdu(education, isEditEdu)">
                             </div>
                             <div class="profile-info">
                               <div class="pro-head">
                                 <h4 class="blue-color head-title">Education</h4>
-                                <span class="block" ng-repeat="edu in education" ng-hide="isEditEdu" ng-if="education.length > 0">{{edu.examination}}, {{edu.percentage}}, {{edu.institution}}</span>
+                                <span class="block" ng-repeat="edu in education" ng-hide="isEditEdu" ng-if="education.length > 0">
+                                  <div class="education-block">
+                                    <div class="education-detail-one">{{edu.examination}}</div>
+                                    <div class="education-detail-two">{{edu.institution}}</div>
+                                    <div class="education-detail-three">{{edu.percentage}}</div>
+                                  </div>
+                                </span>
                                 <!-- <span class="block">K.J Somaiya Of Science &amp; Comm.</span> -->
                               </div>
                             </div>
                             <div ng-show="isEditEdu">
                               <form>
                                 <div ng-repeat="edu in education">
-                                  <div class="rl">
+                                  <div class="rl" ng-if="$index > 0" ng-click="popOneEdu()">
                                     <div class="close ab"><i class="fa fa-close"></i></div>
                                   </div>
                                   <div class="form-group">
@@ -145,20 +151,25 @@
                           </div>
                           <div class="col-md-10">
                             <div class="edit-btn pull-right">
-                              <img src="img/pencil.jpg" alt="" class="img-responsive" ng-click="toggleExp(isEditExp)">
+                              <img src="img/pencil.jpg" alt="" class="img-responsive" ng-click="toggleExp(experience, isEditExp)">
                             </div>
                             <div class="profile-info">
                               <div class="pro-head">
                                 <h4 class="blue-color head-title">Experience</h4>
-                                <ul ng-repeat="we in experience" ng-hide="isEditExp" ng-if="experience.length > 0">
-                                  <li>{{we.company}}</li>
-                                  <li>{{we.duration}}</li>
-                                  <li>{{we.responsibilities}}</li>
-                                  <li>{{we.designation}}</li>
-                                </ul>
+                                <div ng-repeat="we in experience" ng-hide="isEditExp" ng-if="experience.length > 0">
+                                  <div class="education-block">
+                                    <div class="education-detail-one">{{we.company}}</div>
+                                    <div class="education-detail-two">{{we.designation}}</div>
+                                    <div class="education-detail-three">For {{we.duration}}</div>
+                                    <div class="new-block">{{we.responsibilities}}</div>
+                                  </div>
+                                </div>
                                 <div ng-show="isEditExp">
                                   <form>
                                     <div ng-repeat="we in experience">
+                                      <div class="rl" ng-if="$index > 0" ng-click="popOneExp()">
+                                        <div class="close ab"><i class="fa fa-close"></i></div>
+                                      </div>
                                       <div class="form-group">
                                         <label>Company: </label>
                                         <input type="text" ng-model="we.company" class="form-control">
@@ -431,11 +442,12 @@
                   <div class="col-md-12">
                     <div class="job-list-main" ng-repeat="job in jobs">
                       <div class="edit-btn pull-right">
-                        <a ui-sref="editjob"><i class="fa fa-pencil"></i></a>
-                        <a ng-click="deleteJob(job._id)"><i class="fa fa-trash"></i></a>
+                        <a ng-click="editJobDetail(job._id)"><i class="fa fa-pencil"></i></a>
+                        <a ng-click="sureDelete(job)"><i class="fa fa-trash"></i></a>
                       </div>
                       <h4 class="blue-color job-title text-uppercase m-clear">{{job.department}}</h4>
                       <div class="job-detail">
+                        <!-- <p class="text-justify">{{job._id}}</p> -->
                         <p class="text-justify">{{job.description}}</p>
                         <p class="text-justify">{{job.designation}}</p>
                         <p class="text-justify">{{job.city}}</p>

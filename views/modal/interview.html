@@ -8,12 +8,20 @@
   	</div>
     <form name="interviewForm">
     <div class="form-group">
-	    <input class="form-control" placeholder="Date of Interview" type="text" onfocus= "type='date';" required></input></div>
-	    <div class="form-group">
+	    <input class="form-control" placeholder="Date of Interview" type="text" onfocus= "type='date';" required>
+	</div>
+	<div class="form-group">
 	    <input class="form-control" type="text" placeholder="Time of Interview" required>
-	    </div>
-	    <div class="form-group">
-	    <textarea class="form-control" placeholder="Venue Address" ng-model="interview.venue" required></textarea></div>
-	    <button type="button" class="btn btn-primary" ng-click="set()">Set Interview</button>
+	</div>
+	<div class="form-group">
+	    <textarea class="form-control" placeholder="Venue Address" ng-model="interview.venue" required></textarea>
+    </div>
+    <div class="form-group">
+    	<textarea class="form-control" placeholder="Any Other Comments(Optional)" ng-model="interview.content" required></textarea>
+    </div>
+	<div class="center">
+		<button type="button" class="btn btn-primary" ng-click="set(interview, job, lancer);$close();">Set Interview</button>
+		<button type="button" class="btn btn-primary" ng-click="$close();">Cancel</button>
+	</div>
     </form>
   </div>

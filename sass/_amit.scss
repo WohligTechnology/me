@@ -551,6 +551,32 @@ i.fa-mobile.input-icon {
     margin-right: 10px;
   }
 }
+.education-detail-one {
+  font-weight: bold;
+  display: inline-block;
+  text-transform: uppercase;
+}
+.education-detail-two {
+  font-style: italic;
+  /*font-weight: 700;*/
+  text-transform: capitalize;
+  display: table-cell;
+}
+.education-detail-three {
+  font-weight: 300;
+}
+.education-block {
+  display: block;
+  margin: 20px 0px;
+  text-align: justify;
+}
+.new-block {
+  width: 410px;
+  margin: 5px 0;
+  text-align: justify;
+  display: block;
+  overflow-wrap: break-word;
+}
 .skill-list {
   padding: 0;
   li { list-style-type: none; }

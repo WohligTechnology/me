@@ -29,10 +29,10 @@ var navigationservice = angular.module('navigationservice', [])
     //     link: "profile"
     // },
     {
-        name: "Success Stories",
+        name: "Success Stories (Coming Soon)",
         classis: "active",
         icon: "fa-briefcase",
-        link: "successstories"
+        link: "home"
     },
     {
         name: "My Community (Coming Soon)",
@@ -323,15 +323,50 @@ var navigationservice = angular.module('navigationservice', [])
         }
       }).success(callback)
     },
-    editJob: function (id, callback) {
+    editJob: function (id, job, callback) {
       $http({
         url: adminurl+'job/save',
+        method: 'POST',
+        data: {
+          '_id':id,
+          'appdate' : job.appdate,
+          'department' : job.department,
+          'description' : job.description,
+          'designation' : job.designation,
+          'experience' : job.experience,
+          'expiryDate' : job.expiryDate,
+          'reporting' : job.reporting,
+          'state' : job.state
+        }
+      }).success(callback)
+    },
+    getEachJob: function (id, callback) {
+      $http({
+        url: adminurl+'job/findone',
         method: 'POST',
         data: {
           '_id':id
         }
       }).success(callback)
     },
+    setInterview: function (data, job, lancer, callback) {
+      console.log('lancer: ', lancer);
+      jobDetail = JSON.parse(job);
+      console.log('job: ', jobDetail);
+      $http({
+        url: adminurl+'user/setInterview',
+        method: 'POST',
+        data: {
+          '_id':lancer._id,
+          'job': jobDetail._id,
+          'jobname': jobDetail.designation,
+          'content': data.content,
+          'date': data.date,
+          'time': data.time,
+          'venue': data.venue
+        }
+      }).success(callback)
+    }
     // getShortlistDetail: function (lancer, job) {
     //   $http({
     //     url: adminurl+'user/shortlistForJob',
