@@ -1,6 +1,6 @@
 // window.uploadUrl = "http://www.myfynx.com/newfynx/index.php/json/uploadImage";
-window.uploadUrl = "http://130.211.164.166/uploadfile/upload";
-// window.uploadUrl = "http://vignesh.com:81/uploadfile/upload";
+// window.uploadUrl = "http://130.211.164.166/uploadfile/upload";
+window.uploadUrl = "http://vignesh.com:81/uploadfile/upload";
 angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'angularFileUpload', 'angularMoment','angular-loading-bar','ngImgCrop'])
 
 
@@ -500,7 +500,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
   .controller('SearchcategoryCtrl', function($state, $scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("search-category");
-    $scope.menutitle = NavigationService.makeactive("Search Category");
+    $scope.menutitle = NavigationService.makeactive("Search Job");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
@@ -529,7 +529,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
             $scope.cityOptions.push(value.city);
           }
         }
-      console.log('cityOptions: ', $scope.cityOptions);
+      // console.log('cityOptions: ', $scope.cityOptions);
       });
     });
 
@@ -548,7 +548,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
         }
         // $scope.categoryOptions.push(value.designation)
       });
-      console.log('categoryOptions: ', $scope.categoryOptions);
+      // console.log('categoryOptions: ', $scope.categoryOptions);
     });
 
     $scope.getJobs = function () {
@@ -1179,7 +1179,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
   .controller('PostjobCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("post-job");
-    $scope.menutitle = NavigationService.makeactive("Post Job");
+    $scope.menutitle = NavigationService.makeactive("View Applicants");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
@@ -1661,7 +1661,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
 
 .controller('headerctrl', function($scope, $state, TemplateService, NavigationService) {
   $scope.template = TemplateService;
-  $scope.navigation = NavigationService.getnav();
+  $scope.navigation = NavigationService.getnav('general');
   // $scope.isSession = true;
   // var flag4 = $scope.navigation.link.indexOf('registerlancer')
   console.log('navigation: ', $scope.navigation);
@@ -1671,45 +1671,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
     if(data.name) {
       $scope.isSession = true;
       $scope.profile = data;
-      var flag1 = 0, flag4 = 0, flag3 = 0;
-      for(var m=0; m<$scope.navigation.length; m++) {
-        if($scope.navigation[m].link == 'registerlancer') {
-          flag1 = 1;
-        }
-        else if($scope.navigation[m].link == 'searchcategory' && data.accesslevel == 'client') {
-          flag3 = 1;
-        }
-        else if($scope.navigation[m].link == 'postjob' && data.accesslevel == 'lancer') {
-          flag4 = 1;
-        }
+      if(data.accesslevel == 'lancer') {
+        $scope.navigation = NavigationService.getnav('lancer');  
       }
-
-      if(flag1 === 1) {
-        $scope.navigation.splice(1,1);
-      }
-
-      console.log('in if statement1');
-      console.log('flag 3: ', flag3);
-      console.log('flag 1: ', flag1);
-      console.log('flag 4: ', flag4);
-      if(flag3 === 1 && flag1 === 1) {
-        console.log('in if statement2');
-        $scope.navigation.splice(4,1);
-      }
-
-      else if(flag3 === 1 && flag1 === 0){
-        $scope.navigation.splice(5,1);
-      }
-
-      // console.log('in if statement3')
-      // var flag4 = $scope.navigation[4].link.indexOf('postjob');
-      if(flag4 === 1 && flag1 === 0) {
-        console.log('in if statement4');
-        $scope.navigation.splice(4,1);
-      }
-
-      else if(flag4 === 1 && flag1 === 1) {
-        $scope.navigation.splice(3,1);
+      else if(data.accesslevel == 'client') {
+        $scope.navigation = NavigationService.getnav('client');  
       }
     }
   });
@@ -1727,16 +1693,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'infinite-scroll', 
       console.log('logout response: ', data);
       if(data.value) {
         $scope.isSession = false;
-        var flag2 = $scope.navigation[1].link.indexOf('registerlancer');
-        if(flag2 == -1) {
-          $scope.navigation.splice(1,0,{
-            name: "Register/Sign in",
-            classis: "active",
-            icon: "fa-key",
-            link: "registerlancer"
-          });
-          console.log('navigation splice: ', $scope.navigation);
-        }
+        $scope.navigation = NavigationService.getnav('general');
         $state.go('home');
       }
     });

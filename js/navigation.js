@@ -1,32 +1,67 @@
 // var adminurl = 'http://192.168.0.126:1337/callApi/flexi/json/';
-var adminurl = 'http://130.211.164.166/';
-// var adminurl = 'http://vignesh.com:81/';
+// var adminurl = 'http://130.211.164.166/';
+var adminurl = 'http://vignesh.com:81/';
 
 var navigationservice = angular.module('navigationservice', [])
 
 .factory('NavigationService', function ($http) {
-    var navigation = [{
-        name: "Home",
-        classis: "active",
-        icon: "fa-home",
-        link: "home",
-    }, {
-        name: "Register/Sign in",
-        classis: "active",
-        icon: "fa-key",
-        link: "registerlancer"
+    var navigationGeneral = [
+    {
+      name: "Home",
+      classis: "active",
+      icon: "fa-home",
+      link: "home",
+    }, 
+    {
+      name: "Register/Sign in",
+      classis: "active",
+      icon: "fa-key",
+      link: "registerlancer"
+    },
+    {
+      name: "Success Stories (Coming Soon)",
+      classis: "active",
+      icon: "fa-briefcase",
+      link: "home"
+    },
+    {
+      name: "My Community (Coming Soon)",
+      classis: "active",
+      icon: "fa-commenting-o",
+      link: "home"
     },
     // {
-    //     name: "My Profile",
+    //     name: "View Applicants",
     //     classis: "active",
-    //     icon: "fa-user",
-    //     link: "profile"
+    //     icon: "fa-search",
+    //     link: "postjob"
     // },
     // {
-    //     name: "My Profile",
+    //     name: "Search Job",
     //     classis: "active",
-    //     icon: "fa-user",
-    //     link: "profile"
+    //     icon: "fa-search",
+    //     link: "searchcategory"
+    // },
+    {
+      name: "About Us",
+      classis: "active",
+      icon: "fa-user",
+      link: "about"
+    }
+  ];
+
+  var navigationClient = [
+    {
+      name: "Home",
+      classis: "active",
+      icon: "fa-home",
+      link: "home",
+    }, 
+    // {
+    //     name: "Register/Sign in",
+    //     classis: "active",
+    //     icon: "fa-key",
+    //     link: "registerlancer"
     // },
     {
         name: "Success Stories (Coming Soon)",
@@ -46,34 +81,157 @@ var navigationservice = angular.module('navigationservice', [])
         icon: "fa-search",
         link: "postjob"
     },
+    // {
+    //     name: "Search Job",
+    //     classis: "active",
+    //     icon: "fa-search",
+    //     link: "searchcategory"
+    // },
+   {
+      name: "About Us",
+      classis: "active",
+      icon: "fa-user",
+      link: "about"
+    }
+  ];
+
+  var navigationLancer = [{
+        name: "Home",
+        classis: "active",
+        icon: "fa-home",
+        link: "home",
+    }, 
+    // {
+    //     name: "Register/Sign in",
+    //     classis: "active",
+    //     icon: "fa-key",
+    //     link: "registerlancer"
+    // },
+    {
+        name: "Success Stories (Coming Soon)",
+        classis: "active",
+        icon: "fa-briefcase",
+        link: "home"
+    },
+    {
+        name: "My Community (Coming Soon)",
+        classis: "active",
+        icon: "fa-commenting-o",
+        link: "home"
+    },
+    // {
+    //     name: "View Applicants",
+    //     classis: "active",
+    //     icon: "fa-search",
+    //     link: "postjob"
+    // },
     {
         name: "Search Job",
         classis: "active",
         icon: "fa-search",
         link: "searchcategory"
     },
-     {
+    {
         name: "About Us",
         classis: "active",
         icon: "fa-user",
         link: "about"
     }
   ];
+  var navigation = [];
 
     return {
-        getnav: function () {
-            return navigation;
+        getnav: function (value) {
+          if(value == 'general'){
+            navigation = navigationGeneral;
+          }
+          if(value == 'client'){
+            navigation = navigationClient;
+          }
+          if(value == 'lancer'){
+            navigation = navigationLancer;
+          }
+          return navigation;
         },
-        makeactive: function (menuname) {
-            for (var i = 0; i < navigation.length; i++) {
-                if (navigation[i].name == menuname) {
-                    navigation[i].classis = "active";
-                } else {
-                    navigation[i].classis = "";
-                }
-            }
-            return menuname;
+        makeactive: function (menuname, value) {
+          for (var i = 0; i < navigation.length; i++) {
+              if (navigation[i].name == menuname) {
+                  navigation[i].classis = "active";
+              } else {
+                  navigation[i].classis = "";
+              }
+          }
+          return menuname;
         },
+        // loggedIn: function (data) {
+        //   var flag1 = 0, flag4 = 0, flag3 = 0;
+        //   for(var m=0; m<navigation.length; m++) {
+        //     if(navigation[m].link == 'registerlancer') {
+        //       flag1 = 1;
+        //     }
+        //     if(navigation[m].link == 'searchcategory' && data.accesslevel == 'client' 
+        //       && !navigation[4].link.indexOf('postjob')) {
+        //       flag3 = 1;
+        //     }
+        //     if(navigation[m].link == 'postjob' && data.accesslevel == 'lancer' 
+        //       && !navigation[5].link.indexOf('searchcategory')) {
+        //       flag4 = 1;
+        //     }
+        //   }
+
+        //   if(flag1 === 1) {
+        //     navigation.splice(1,1);
+        //   }
+
+        //   console.log('in if statement1');
+        //   console.log('flag 3: ', flag3);
+        //   console.log('flag 1: ', flag1);
+        //   console.log('flag 4: ', flag4);
+        //   if(flag3 === 1 && flag1 === 1) {
+        //     console.log('in if statement2');
+        //     navigation.splice(4,1);
+        //   }
+
+        //   else if(flag3 === 1 && flag1 === 0  ){
+        //     navigation.splice(5,1);
+        //   }
+
+        //   // console.log('in if statement3')
+        //   // var flag4 = $scope.navigation[4].link.indexOf('postjob');
+        //   if(flag4 === 1 && flag1 === 0) {
+        //     console.log('in if statement4');
+        //     navigation.splice(4,1);
+        //   }
+
+        //   else if(flag4 === 1 && flag1 === 1) {
+        //     navigation.splice(3,1);
+        //   }
+        //   return navigation;
+        // },
+        // loggedOut: function (argument) {
+        //   var flag2 = navigation[1].link.indexOf('registerlancer');
+        //   if(flag2 == -1) {
+        //     navigation.splice(1,0,{
+        //       name: "Register/Sign in",
+        //       classis: "active",
+        //       icon: "fa-key",
+        //       link: "registerlancer"
+        //     });
+        //     console.log('navigation splice: ', navigation);
+        //   }
+        //   var flag5 = -1, flag6 = -1;
+        //   for(var n=0; n<navigation.length; n++) {
+        //     flag5 = navigation[n].link.indexOf('searchcategory');
+        //     if(flag5 != -1) {
+        //       navigation.splice(n,1);
+        //     }
+        //     flag6 = navigation[n].link.indexOf('postjob');
+        //     if(flag6 != -1) {
+        //       navigation.splice(n,1);
+        //     }
+        //   }
+        //   return navigation;
+        // },
         signUpClient: function (formData, callback) {
           console.log('form data: ', formData);
           $http({
